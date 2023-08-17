@@ -1,7 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #210b38;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            text-align: center;
+            background-color: #210b38;
+        }
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .portfolio-item {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .portfolio-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <header>
+        <h1>Austin's Portfolio</h1>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </nav>
+<div class="container">
+        <section id="about">
+            <!-- ... About section content ... -->
+        </section>
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <div class="portfolio-item">
+                <h3>Project 1</h3>
+                <p>Description of your project.</p>
+                <div class="image-gallery">
+                    <div class="carousel">
+                        <div><img src="image1.png" alt="Project 1 Image 1"></div>
+                        <div><img src="image2.png" alt="Project 1 Image 2"></div>
+                        <div><img src="image3.png" alt="Project 1 Image 3"></div>
+                    </div>
+                </div>
+                <a href="#">View Project</a>
+            </div>
+            <div class="portfolio-item">
+                <h3>Project 2</h3>
+                <p>Description of your project.</p>
+                <div class="image-gallery">
+                    <div class="carousel">
+                        <div><img src="image4.jpg" alt="Project 2 Image 1"></div>
+                        <div><img src="image5.jpg" alt="Project 2 Image 2"></div>
+                        <div><img src="image6.jpg" alt="Project 2 Image 3"></div>
+                    </div>
+                </div>
+                <a href="#">View Project</a>
+            </div>
+            <!-- Add more portfolio items here -->
+        </section>
+        <section id="contact">
+            <!-- ... Contact section content ... -->
+        </section>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').slick({
+                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+                nextArrow: '<button type="button" class="slick-next">Next</button>',
+            });
+        });
+    </script>
 </body>
 </html>
