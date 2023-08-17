@@ -4,13 +4,12 @@
 	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #bfc2c7;
         }
         header {
             background-color: #210b38;
@@ -29,19 +28,66 @@
             display: inline-block;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
+
         }
         .portfolio-item {
-            background-color: #ffffff;
+            background-color: #d3d6db;
             padding: 20px;
-            margin: 20px;
+            margin: 30px;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .portfolio-item:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+		        .slideshow-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .slideshow-image {
+            display: none;
+            max-width: 100%;
+            height: auto;
+        }
+		.slideshow-caption {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .prev, .next {
+			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 24px;
+			padding: 10px;
+			background-color: rgba(0, 0, 0, 0.3);
+			color: #fff;
+			border: none;
+			outline: none;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+		.slideshow-container .prev,
+		.slideshow-container .next {
+		top: 50%;
+		transform: translateY(-50%);
+		}
+		        #portfolio h2 {
+            text-align: left;
+            margin-left: 30px;
+        }
+
+		  #about h2 {
+            text-align: left;
+            margin-left: 30px;
         }
     </style>
 </head>
@@ -56,6 +102,7 @@
     </nav>
 <div class="container">
         <section id="about">
+		<h2>About Me</h2>
             <!-- ... About section content ... -->
         </section>
         <section id="portfolio">
@@ -63,25 +110,35 @@
             <div class="portfolio-item">
                 <h3>Project 1</h3>
                 <p>Description of your project.</p>
-                <div class="image-gallery">
-                    <div class="carousel">
-                        <div><img src="image1.png" alt="Project 1 Image 1"></div>
-                        <div><img src="image2.png" alt="Project 1 Image 2"></div>
-                        <div><img src="image3.png" alt="Project 1 Image 3"></div>
-                    </div>
+                <div class="slideshow-container">
+                    <img class="slideshow-image" src="image1.png" alt="Image 1">
+                    <figcaption class="slideshow-caption">Caption for Image 1</figcaption>
+                    
+                    <img class="slideshow-image" src="image2.png" alt="Image 2">
+                    <figcaption class="slideshow-caption">Caption for Image 2</figcaption>
+                    
+                    <img class="slideshow-image" src="image3.png" alt="Image 3">
+                    <figcaption class="slideshow-caption">Caption for Image 3</figcaption>
                 </div>
+                <button class="prev" onclick="changeSlide(0, -1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(0, 1)">&#10095;</button>
                 <a href="#">View Project</a>
             </div>
             <div class="portfolio-item">
-                <h3>Project 2</h3>
+                <h3>Grim Harvest - Mini Capstone</h3>
                 <p>Description of your project.</p>
-                <div class="image-gallery">
-                    <div class="carousel">
-                        <div><img src="image4.jpg" alt="Project 2 Image 1"></div>
-                        <div><img src="image5.jpg" alt="Project 2 Image 2"></div>
-                        <div><img src="image6.jpg" alt="Project 2 Image 3"></div>
-                    </div>
+                <div class="slideshow-container">
+                    <img class="slideshow-image" src="image4.png" alt="Image 4">
+                    <figcaption class="slideshow-caption">Caption for Image 4</figcaption>
+                    
+                    <img class="slideshow-image" src="image5.png" alt="Image 5">
+                    <figcaption class="slideshow-caption">Caption for Image 5</figcaption>
+                    
+                    <img class="slideshow-image" src="image6.png" alt="Image 6">
+                    <figcaption class="slideshow-caption">Caption for Image 6</figcaption>
                 </div>
+                <button class="prev" onclick="changeSlide(1, -1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(1, 1)">&#10095;</button>
                 <a href="#">View Project</a>
             </div>
             <!-- Add more portfolio items here -->
@@ -90,15 +147,36 @@
             <!-- ... Contact section content ... -->
         </section>
     </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.8.1/slick.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('.carousel').slick({
-                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-                nextArrow: '<button type="button" class="slick-next">Next</button>',
-            });
-        });
+
+	    <script>
+        const currentSlide = [0, 0];
+
+        function showSlide(galleryIndex, index) {
+            const galleries = document.querySelectorAll('.slideshow-container');
+            const slides = galleries[galleryIndex].querySelectorAll('.slideshow-image');
+            const captions = galleries[galleryIndex].querySelectorAll('.slideshow-caption');
+
+            if (index < 0) {
+                currentSlide[galleryIndex] = slides.length - 1;
+            } else if (index >= slides.length) {
+                currentSlide[galleryIndex] = 0;
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+                captions[i].style.display = 'none';
+            }
+
+            slides[currentSlide[galleryIndex]].style.display = 'block';
+            captions[currentSlide[galleryIndex]].style.display = 'block';
+        }
+
+        function changeSlide(galleryIndex, n) {
+            showSlide(galleryIndex, currentSlide[galleryIndex] + n);
+        }
+
+        showSlide(0, currentSlide[0]);
+        showSlide(1, currentSlide[1]);
     </script>
 </body>
 </html>
