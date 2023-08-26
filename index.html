@@ -1,16 +1,27 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
+            font-size: 18px; /* Set a base font size */
+            position: relative;
+            min-height: 100vh;
+            background-color: #bfc2c7;
             margin: 0;
             padding: 0;
-            background-color: #bfc2c7;
         }
+        h1 {
+            font-size: 36px;
+        }
+        h2, h3 {
+            font-size: 24px; /* Increase font size for headings */
+        }
+        p {
+            font-size: 18px; /* Increase font size for paragraphs */
+        }
+
         header {
             background-color: #210b38;
             color: #ffffff;
@@ -49,21 +60,21 @@
             position: relative;
         }
         .slideshow-image {
-            display: none;
             max-width: 100%;
             height: auto;
         }
 		.slideshow-caption {
             text-align: center;
             margin-top: 10px;
+			display: none;
         }
         .prev, .next {
 			cursor: pointer;
 			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
+			z-index: 99;
+			top: 40%;
 			font-size: 24px;
-			padding: 10px;
+			padding: 20px;
 			background-color: rgba(0, 0, 0, 0.3);
 			color: #fff;
 			border: none;
@@ -75,11 +86,10 @@
         .next {
             right: 10px;
         }
-		.slideshow-container .prev,
-		.slideshow-container .next {
-		top: 50%;
-		transform: translateY(-50%);
-		}
+        .contact-buttons{
+            margin-left: 28px;
+        }
+
 		        #portfolio h2 {
             text-align: left;
             margin-left: 30px;
@@ -88,6 +98,34 @@
 		  #about h2 {
             text-align: left;
             margin-left: 30px;
+        }
+
+        #about p
+        {
+            text-align: left;
+            margin-left: 30px;
+        }
+        #contact {
+            text-align: center;
+            margin-top: auto;
+        }
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-buttons button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #210b38;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-buttons button:hover {
+            background-color: #2e1459;
         }
     </style>
 </head>
@@ -100,83 +138,111 @@
         <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
     </nav>
-<div class="container">
+    <div class="container">
         <section id="about">
-		<h2>About Me</h2>
-            <!-- ... About section content ... -->
+            <h2>About Me</h2>
+            <p>I'm currently a year 3 student taking Game Development at Algonquin College of Applied Arts and Technology, and plan on 
+               becoming a technical gameplay developer, creating complex systems, core mechanics, and unique character functions. I have 
+               experience in Unreal and Unity, and I'm proficient in C++, Unreal C++, C#, and some Javascript/CSS. I have experience working in 
+               a team environment because of the 2 Capstone projects Algonquin has tasked me, and will happily work with others to make a successful game.
+            </p>
         </section>
         <section id="portfolio">
             <h2>Portfolio</h2>
             <div class="portfolio-item">
-                <h3>Project 1</h3>
-                <p>Description of your project.</p>
+                <h3>Untitled Project - Capstone</h3>
                 <div class="slideshow-container">
-                    <img class="slideshow-image" src="image1.png" alt="Image 1">
-                    <figcaption class="slideshow-caption">Caption for Image 1</figcaption>
-                    
-                    <img class="slideshow-image" src="image2.png" alt="Image 2">
-                    <figcaption class="slideshow-caption">Caption for Image 2</figcaption>
-                    
-                    <img class="slideshow-image" src="image3.png" alt="Image 3">
-                    <figcaption class="slideshow-caption">Caption for Image 3</figcaption>
+                    <button class="prev" onclick="changeSlideProject1(-1)">&#10094;</button>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image1.png" alt="Image 1">
+                        <figcaption class="slideshow-caption">Caption for Image 1</figcaption>
+                    </div>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image2.png" alt="Image 2">
+                        <figcaption class="slideshow-caption">Caption for Image 2</figcaption>
+                    </div>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image3.png" alt="Image 3">
+                    </div>
+                    <button class="next" onclick="changeSlideProject1(1)">&#10095;</button>
                 </div>
-                <button class="prev" onclick="changeSlide(0, -1)">&#10094;</button>
-                <button class="next" onclick="changeSlide(0, 1)">&#10095;</button>
-                <a href="#">View Project</a>
+
             </div>
             <div class="portfolio-item">
                 <h3>Grim Harvest - Mini Capstone</h3>
-                <p>Description of your project.</p>
                 <div class="slideshow-container">
-                    <img class="slideshow-image" src="image4.png" alt="Image 4">
-                    <figcaption class="slideshow-caption">Caption for Image 4</figcaption>
-                    
-                    <img class="slideshow-image" src="image5.png" alt="Image 5">
-                    <figcaption class="slideshow-caption">Caption for Image 5</figcaption>
-                    
-                    <img class="slideshow-image" src="image6.png" alt="Image 6">
-                    <figcaption class="slideshow-caption">Caption for Image 6</figcaption>
+                    <button class="prev" onclick="changeSlideProject1(-1)">&#10094;</button>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image4.png" alt="Image 4">
+                    </div>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image5.png" alt="Image 5">
+                    </div>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image6.png" alt="Image 6">
+                    </div>
+                    <button class="next" onclick="changeSlideProject2(1)">&#10095;</button>
                 </div>
-                <button class="prev" onclick="changeSlide(1, -1)">&#10094;</button>
-                <button class="next" onclick="changeSlide(1, 1)">&#10095;</button>
-                <a href="#">View Project</a>
+
             </div>
-            <!-- Add more portfolio items here -->
         </section>
         <section id="contact">
-            <!-- ... Contact section content ... -->
+            <h2>Contact Me</h2>
+            <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
+            <div class="contact-buttons">
+                <button onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</button>
+            </div>
+            <div class="contact-buttons">
+                <a href="tel:+1234567890"><button>Phone:705-854-xxxx</button></a>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank"><button>LinkedIn</button></a>
+            </div>
         </section>
     </div>
 
-	    <script>
-        const currentSlide = [0, 0];
+    <script>
+        // Define the currentSlide array for each project
+        let currentSlide = [0, 0]; // Initial slide index for each project
 
-        function showSlide(galleryIndex, index) {
-            const galleries = document.querySelectorAll('.slideshow-container');
-            const slides = galleries[galleryIndex].querySelectorAll('.slideshow-image');
-            const captions = galleries[galleryIndex].querySelectorAll('.slideshow-caption');
-
-            if (index < 0) {
-                currentSlide[galleryIndex] = slides.length - 1;
-            } else if (index >= slides.length) {
-                currentSlide[galleryIndex] = 0;
-            }
-
+        // Function to show the correct slide for a project
+        function showSlide(id) {
+            let slides = document.querySelectorAll('.slideshow-container')[id].querySelectorAll('.image-container');
             for (let i = 0; i < slides.length; i++) {
                 slides[i].style.display = 'none';
-                captions[i].style.display = 'none';
             }
-
-            slides[currentSlide[galleryIndex]].style.display = 'block';
-            captions[currentSlide[galleryIndex]].style.display = 'block';
+            slides[currentSlide[id]].style.display = 'block';
         }
 
-        function changeSlide(galleryIndex, n) {
-            showSlide(galleryIndex, currentSlide[galleryIndex] + n);
+        // Separate functions for changing slides in each project
+        function changeSlideProject1(increment) {
+            currentSlide[0] = (currentSlide[0] + increment) % 3;
+            if (currentSlide[0] < 0) {
+                currentSlide[0] = 2;
+            }
+            showSlide(0);
         }
 
-        showSlide(0, currentSlide[0]);
-        showSlide(1, currentSlide[1]);
+        function changeSlideProject2(increment) {
+            currentSlide[1] = (currentSlide[1] + increment) % 3;
+            if (currentSlide[1] < 0) {
+                currentSlide[1] = 2;
+            }
+            showSlide(1);
+        }
+
+        // Copy to email button
+        function copyToClipboard(text) {
+            var textField = document.createElement('textarea');
+            textField.innerText = 'your-email@example.com';
+            document.body.appendChild(textField);
+            textField.select();
+            document.execCommand('copy');
+            textField.remove();
+        }
+        // Initialize slides for each project
+        showSlide(0);
+        showSlide(1);
     </script>
 </body>
 </html>
