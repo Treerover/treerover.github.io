@@ -1,7 +1,254 @@
 <!DOCTYPE html>
+<<<<<<< Updated upstream
 <html>
 <body>
 <h1>Hello World</h1>
 <p>I'm hosted with GitHub Pages.</p>
+=======
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px; /* Set a base font size */
+            position: relative;
+            min-height: 100vh;
+            background-color: #bfc2c7;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 36px;
+        }
+        h2, h3 {
+            font-size: 24px; /* Increase font size for headings */
+        }
+        p {
+            font-size: 18px; /* Increase font size for paragraphs */
+        }
+
+        header {
+            background-color: #210b38;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            text-align: center;
+            background-color: #210b38;
+        }
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+
+        }
+        .portfolio-item {
+            background-color: #d3d6db;
+            padding: 20px;
+            margin: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .portfolio-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+		        .slideshow-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .slideshow-image {
+            max-width: 100%;
+            height: auto;
+        }
+		.slideshow-caption {
+            text-align: center;
+            margin-top: 10px;
+			display: none;
+        }
+        .prev, .next {
+			cursor: pointer;
+			position: absolute;
+			z-index: 99;
+			top: 40%;
+			font-size: 24px;
+			padding: 20px;
+			background-color: rgba(0, 0, 0, 0.3);
+			color: #fff;
+			border: none;
+			outline: none;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .contact-buttons{
+            margin-left: 28px;
+        }
+
+		        #portfolio h2 {
+            text-align: left;
+            margin-left: 30px;
+        }
+
+		  #about h2 {
+            text-align: left;
+            margin-left: 30px;
+        }
+
+        #about p
+        {
+            text-align: left;
+            margin-left: 30px;
+        }
+        #contact {
+            text-align: center;
+            margin-top: auto;
+        }
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-buttons button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #210b38;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-buttons button:hover {
+            background-color: #2e1459;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Austin's Portfolio</h1>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm currently a year 3 student taking Game Development at Algonquin College of Applied Arts and Technology, and plan on 
+               becoming a technical gameplay developer, creating complex systems, core mechanics, and unique character functions. I have 
+               experience in Unreal and Unity, and I'm proficient in C++, Unreal C++, C#, and some Javascript/CSS. I have experience working in 
+               a team environment because of the 2 Capstone projects Algonquin has tasked me, and will happily work with others to make a successful game.
+            </p>
+        </section>
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <div class="portfolio-item">
+                <h3>Untitled Project - Capstone</h3>
+                <div class="slideshow-container">
+                    <button class="prev" onclick="changeSlideProject1(-1)">&#10094;</button>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image1.png" alt="Image 1">
+                    </div>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image2.png" alt="Image 2">
+                    </div>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image3.png" alt="Image 3">
+                    </div>
+                    <button class="next" onclick="changeSlideProject1(1)">&#10095;</button>
+                </div>
+
+            </div>
+            <div class="portfolio-item">
+                <h3>Grim Harvest - Mini Capstone</h3>
+                <div class="slideshow-container">
+                    <button class="prev" onclick="changeSlideProject1(-1)">&#10094;</button>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image4.png" alt="Image 4">
+                    </div>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image5.png" alt="Image 5">
+                    </div>
+                    <div class="image-container">
+                        <img class="slideshow-image" src="image6.png" alt="Image 6">
+                    </div>
+                    <button class="next" onclick="changeSlideProject2(1)">&#10095;</button>
+                </div>
+
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
+            <div class="contact-buttons">
+                <button onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</button>
+            </div>
+            <div class="contact-buttons">
+                <a href="tel:+1234567890"><button>Phone:705-854-xxxx</button></a>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank"><button>LinkedIn</button></a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Define the currentSlide array for each project
+        let currentSlide = [0, 0]; // Initial slide index for each project
+
+        // Function to show the correct slide for a project
+        function showSlide(id) {
+            let slides = document.querySelectorAll('.slideshow-container')[id].querySelectorAll('.image-container');
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slides[currentSlide[id]].style.display = 'block';
+        }
+
+        // Separate functions for changing slides in each project
+        function changeSlideProject1(increment) {
+            currentSlide[0] = (currentSlide[0] + increment) % 3;
+            if (currentSlide[0] < 0) {
+                currentSlide[0] = 2;
+            }
+            showSlide(0);
+        }
+
+        function changeSlideProject2(increment) {
+            currentSlide[1] = (currentSlide[1] + increment) % 3;
+            if (currentSlide[1] < 0) {
+                currentSlide[1] = 2;
+            }
+            showSlide(1);
+        }
+
+        // Copy to email button
+        function copyToClipboard(text) {
+            var textField = document.createElement('textarea');
+            textField.innerText = 'your-email@example.com';
+            document.body.appendChild(textField);
+            textField.select();
+            document.execCommand('copy');
+            textField.remove();
+        }
+        // Initialize slides for each project
+        showSlide(0);
+        showSlide(1);
+    </script>
+>>>>>>> Stashed changes
 </body>
 </html>
