@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,7 +6,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            font-size: 18px; /* Set a base font size */
+            font-size: 18px;
             position: relative;
             min-height: 100vh;
             background-color: #bfc2c7;
@@ -13,7 +14,13 @@
             padding: 0;
         }
         h1 {
-            font-size: 36px;
+            font-size: 48px;
+            margin-top: 0;
+            padding: 10px 0;
+            background: linear-gradient(to right, #ab85d3, #8825e4);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-align: center;
         }
         h2, h3 {
             font-size: 24px; /* Increase font size for headings */
@@ -24,7 +31,7 @@
 
         header {
             background-color: #210b38;
-            color: #ffffff;
+            color: #210b38;
             padding: 10px 0;
             text-align: center;
         }
@@ -223,7 +230,7 @@
                     </div>
                     <button class="next" onclick="changeSlideProject1(1)">&#10095;</button>
                 </div>
-                <a href="project2.html" class="view-project">View Project</a>
+                <a href="portfolio/project1.html" class="view-project">View Project</a>
 
             </div>
             <div class="portfolio-item">
@@ -241,7 +248,7 @@
                     </div>
                     <button class="next" onclick="changeSlideProject2(1)">&#10095;</button>
                 </div>
-                <a href="project2.html" class="view-project">View Project</a>
+                <a href="portfolio/project2.html" class="view-project">View Project</a>
 
             </div>
         </section>
@@ -269,6 +276,9 @@
             </div>
             <div class="contact-buttons">
                 <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank"><button>LinkedIn</button></a>
+            </div>
+            <div class="contact-buttons">
+                <button onclick="toTop()">Back to Top</button>
             </div>
         </section>
     </div>
@@ -315,6 +325,8 @@
         // Initialize slides for each project
         showSlide(0);
         showSlide(1);
+
+        const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
     </script>
 </body>
 </html>
