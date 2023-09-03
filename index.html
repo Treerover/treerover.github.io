@@ -109,7 +109,10 @@
         #blog {
             margin-left: 30px;
         }
-
+        #resume {
+            margin-left: 30px;
+            text-align: center;
+        }
 
         #about p
         {
@@ -138,37 +141,7 @@
         .contact-buttons button:hover {
             background-color: #2e1459;
         }
-        .dropbtn {
-    background-color: #210b38;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    }
 
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    }
-
-    /* Show the dropdown content on hover */
-    .dropdown:hover .dropdown-content {
-    display: block;
-    }
-
-    /* Style the dropdown links */
-    .dropdown-content a {
-    color: black;
-    padding: 12px 12px;
-    text-decoration: none;
-    display: block;
-    }
     .horizontal-nav ul {
     list-style-type: none;
     padding: 0;
@@ -180,10 +153,11 @@
 .horizontal-nav li {
     margin-right: 0px;
 }
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
+
+.horizontal-nav a:hover {
+        background-color: #2e1459; /* Change the background color on hover */
+        color: white; /* Change the text color on hover */
+    }
     </style>
 </head>
 <body>
@@ -193,16 +167,10 @@
     <nav class="horizontal-nav">
         <ul>
             <li><a href="">Home</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropbtn">Portfolio</a>
-                <div class="dropdown-content">
-                    <a href="portfolio/project1.html">Project 1</a>
-                    <a href="portfolio/project2.html">Project 2</a>
-                    <!-- Add more project links... -->
-                </div>
-            </li>
+            <li><a href="portfolio/portfolio.html">Portfolio</a></li>
             <li><a href="blog/blog.html">Project Blog</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="resume.html">Resume</a></li>
             <!-- Other navigation links... -->
         </ul>
     </nav>
@@ -234,7 +202,7 @@
                     </div>
                     <button class="next" onclick="changeSlideProject1(1)">&#10095;</button>
                 </div>
-                <a href="portfolio/project1.html" class="view-project">View Project</a>
+                <a href="portfolio/portfolio.html" class="view-project">View Project</a>
 
             </div>
             <div class="portfolio-item">
@@ -252,22 +220,24 @@
                     </div>
                     <button class="next" onclick="changeSlideProject2(1)">&#10095;</button>
                 </div>
-                <a href="portfolio/project2.html" class="view-project">View Project</a>
+                <a href="portfolio/portfolio.html" class="view-project">View Project</a>
 
             </div>
         </section>
         <section id="blog">
+            <br>
             <h2>Blog</h2>
             <div class="blog-post">
                 <h3>Project Update #1</h3>
-                <p>Test paragraph</p>
+                <p>This was week 1 of the major capstone project...</p>
                 <a href="blog/blog.html#" class="read-more">Read more</a>
             </div>
-
-            <!-- Add more blog posts here... -->
+            
         </section>
-        <section id="contact">
-            <!-- Contact section content... -->
+        <section id="resume">
+            <br>
+            <h2>Resume</h2>
+            <img src="resume.png" alt="resume">
         </section>
         <section id="contact">
             <h2>Contact Me</h2>

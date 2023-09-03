@@ -1,0 +1,409 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            position: relative;
+            min-height: 100vh;
+            background-color: #bfc2c7;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 36px;
+            
+        }
+        h2 {
+            font-size: 26px;
+            text-decoration: underline;
+        }
+        h3 {
+            font-size: 20px;
+            text-decoration: underline;
+        }
+        h4 {
+           
+        }
+        
+        p {
+            font-size: 18px;
+        }
+
+        header {
+            background-color: #210b38;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            text-align: center;
+            background-color: #210b38;
+        }
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #contact {
+            text-align: center;
+            margin-top: auto;
+        }
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-buttons button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #210b38;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-buttons button:hover {
+            background-color: #2e1459;
+        }
+        .slideshow-image {
+            max-width: 35%;
+            height: auto;}
+
+
+    .horizontal-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+}
+
+.horizontal-nav li {
+    margin-right: 0px;
+}
+.horizontal-nav li:hover {
+    text-decoration: underline;
+    color: #ffcc00; 
+}
+
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+.project-details {
+    display: flex;
+    align-items: center;
+}
+
+.project-image {
+    flex: 1;
+}
+.project-image img {
+    max-width: 100%; 
+    height: auto;
+}
+
+.project-description {
+    flex: 2;
+}
+
+
+.code-image {
+    display: none;
+}
+.sidebar {
+    background: linear-gradient(to bottom, #210b38, #431d80);
+    color: white;
+    width: 200px;
+    padding: 20px;
+    position:absolute;
+    top: 150;
+    left: 0;
+    height: 100%;
+    overflow-y: auto; 
+    border-right: 2px solid #000; 
+    border-top: 2px solid #000;
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 15px;
+}
+.text {
+    position:fixed;
+    text-align: center;
+}
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s; 
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+    color: #ffcc00; 
+}
+
+
+.sidebar a.active {
+    font-weight: bold; 
+    color: #ffcc00; 
+}
+hr {
+    border: none;
+    border-top: 1px solid #ddd; 
+    margin: 20px 0; 
+}
+iframe {
+            display: none; 
+        }
+#toggleButton1 {
+        padding: 10px 20px;
+        background-color: #210b38;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 20px; /* Add some spacing to separate it from the PDF */
+    }
+#read-more-button {
+        padding: 10px 20px;
+        background-color: #210b38;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 10px; /* Add some spacing to separate it from the PDF */
+}
+#read-more-button:hover {
+        background-color: #2e1459;
+    }
+    #toggleButton1:hover {
+        background-color: #2e1459;
+    }
+    .horizontal-nav a:hover {
+        background-color: #2e1459; /* Change the background color on hover */
+        color: white; /* Change the text color on hover */
+    }
+    .sidebar-divider {
+            border-top: 1px solid #ccc; /* Divider line style */
+            margin: 15px 0; /* Adjust margin as needed */
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Grim Harvest - Mini Capstone</h1>
+    </header>
+    <aside class="sidebar">
+        <div class="text">
+        <h2>Project Timeline</h2>
+        <ul>
+            <li><a href="#project1">Major Capstone</a></li>
+            <hr class="sidebar-divider">
+            <li><a href="#project2">Grim Harvest</a></li>
+            <hr class="sidebar-divider">
+            <li><a href="#project3">Custom 3D Game Engine</a></li>
+            <hr class="sidebar-divider">
+            <li><a href="#project4">Custom 2D Game Engine</a></li>
+        </ul>
+        </div>
+    </aside>
+    <nav class="horizontal-nav">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <a href="project1.html">Portfolio</a>
+            <li><a href="../blog/blog.html">Project Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="../resume.html">Resume</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="portfolio-item" id = "project1">
+            <h2>Major Capstone</h2>
+            <p>Date Made: September 2023 - April 2024</p>
+            <p>Class: High Level Development 3</p>
+
+            <img src="item-image.jpg" alt="Item Image1">
+            <p>
+                Description of your portfolio item goes here. You can provide details about the project, your role, and any notable achievements.
+            </p>
+        </div>
+        <hr>
+        <div class="portfolio-item" id = "project2">
+            <h2>Grim Harvest - Mini Capstone</h2>
+            <p>Date Made: January 2023 - April 2023</p>
+            <p>Class: High Level Development 2</p>
+            <video id="myVideo" width="850" height="560" controls autoplay>
+                <source src="your-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>
+                Grim Harvest is a 3D top-down vampire survivors-esque roguelike made by a team of 5 students. <br> I was the main gameplay programmer and implemented most of the UI 
+                in the game.
+            </p>
+
+            <h3>Documentation</h3>
+            <p>
+                A very crucial part of this class was keeping proper documentation of all development, including <br>
+                progress on a Trello page for our team. We were tasked to make 4 documentation pages for each programmer.<br>
+                Here is an example of the Player Module that I made.
+            </p>
+            <button id="toggleButton1">Toggle Example PDF</button>
+            <iframe id="pdfViewer" src="grimharvestpdf.pdf" width="1080" height="720" frameborder="0" allowfullscreen style="display: none;"></iframe>
+            <h3>Project Organization</h3>
+            <p>
+                We used Trello to keep track of weekly sprint tasks, and our team members work. Our professor also looked at these bi weekly to make sure <br>
+                we were on track. 
+            </p>
+            <img src="Trello.png" alt="trello">
+            <h3>What I Learned</h3>
+            <h4> Modular Design </h4>
+            <p>
+                One of the main systems that I worked on was the player ability system. At first, my idea was to make a modular <br>
+                ability system that has one ability parent class, with multiple child abilities depending on what needed to be made. <br>
+                However, this proved some complications because one of our weapons used projectiles, while the other 2 used slashes. <br>
+                <br>
+                <button id="read-more-button">Read More...</button>
+                <div class="hidden-text" style="display:none";>
+                <p>Given the time we had to complete the project, we were forced to go the clunky, but somewhat simpler approach of <br>
+                making every ability individually, rather than a modular system. We still kept it somewhat modular, but we had to "create"<br>
+                every ability within each weapon.cpp. We simply hid/disabled collision on the ability when it wasnt in use, and turned it on <br>
+                when it was in use. Reflecting back now, this is definitely not optimal in a larger-scale scenario, but it was what we ended up with. 
+                </p>
+                <img src="abilityexample.png" alt="abilityexample">
+                <h4> UE5 Subsystems </h4>
+                <p>
+                    Doing this project, I also learned a signifcant amount about Unreal Engine Subsystems. I originally designed a subsystem around a Blood <br> 
+                    Moon event that occurs in the game every 5 minutes. During this event, enemies gain increased damage and movement speed. Once I designed <br>
+                    a simple system like that, I decided to make an roguelike upgrade system. Using a subsystem for this was perfect, because going into a game, <br>
+                    exiting to main menu would keep track of your gold and upgrade progress. Below is an example of the purchase function for the upgrades.
+                </p>
+                <img src="upgrades.png" alt="upgrades">
+                <img src="upgradesystem.png" alt="upgradesystem">
+                <h4> And More... </h4>
+                <h4> Menu Creation & Ability Design</h4>
+                <img src="../image5.png" alt="upgradesystem" width ="1080" height="720">
+                <h4> Custom On Death Events</h4>
+                <img src="../ondeath.png" alt="ondeath" width ="720" height="480">
+                <img src="../ondeath1.png" alt="ondeath1" width ="720" height="480">
+                </div>
+            </p>
+        </div>
+        <hr>
+        <div class="portfolio-item" id = "project3">
+            <h2>Custom 3D Game Engine Using Open GL</h2>
+            <p>Date Made: January 2023 - April 2023</p>
+            <p>Class: Game & Graphics 3</p>
+            <p>
+                
+            </p>
+            <img src="item-image.jpg" alt="Item Image3">
+        </div>
+        <div class="portfolio-item" id = "project4">
+            <h2>Custom 2D Game Engine Using GameDev2D</h2>
+            <p>Date Made: September 2022 - December 2022</p>
+            <p>Class: Game & Graphics 2</p>
+            <img src="item-image.jpg" alt="Item Image4">
+            <p>
+                Description of your portfolio item goes here. You can provide details about the project, your role, and any notable achievements.
+            </p>
+        </div>
+        <hr>
+        </section>
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
+            <div class="contact-buttons">
+                <button onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</button>
+            </div>
+            <div class="contact-buttons">
+                <a href="tel:+1234567890"><button>Phone:705-854-xxxx</button></a>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank"><button>LinkedIn</button></a>
+            </div>
+            <div class="contact-buttons">
+                <button onclick="toTop()">Back to Top</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+
+
+    const projectSections = document.querySelectorAll('section[id^="project"]');
+const sidebarLinks = document.querySelectorAll('.sidebar a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    projectSections.forEach((projectSection) => {
+        const projectTop = projectSection.offsetTop;
+        const projectHeight = projectSection.clientHeight;
+        if (pageYOffset >= projectTop - projectHeight / 2) {
+            current = projectSection.getAttribute('id');
+        }
+    });
+
+    sidebarLinks.forEach((sidebarLink) => {
+        sidebarLink.classList.remove('active');
+        if (sidebarLink.getAttribute('href').substring(1) === current) {
+            sidebarLink.classList.add('active');
+        }
+    });
+});
+
+    const toggleButton1 = document.getElementById('toggleButton1');
+    const pdfViewer = document.getElementById('pdfViewer');
+
+        // Add a click event listener to the button
+        toggleButton1.addEventListener('click', function () {
+            if (pdfViewer.style.display === 'none') {
+                // If the PDF is hidden, show it
+                pdfViewer.style.display = 'block';
+            } else {
+                // If the PDF is shown, hide it
+                pdfViewer.style.display = 'none';
+            }
+        });
+
+    const readMoreButton = document.getElementById('read-more-button');
+    const hiddenText = document.querySelector('.hidden-text');
+
+// Add a click event listener to the "read more" button
+readMoreButton.addEventListener('click', function () {
+    // Toggle the hidden text's visibility
+    if (hiddenText.style.display === 'none' || hiddenText.style.display === '') {
+        hiddenText.style.display = 'block';
+        readMoreButton.textContent = 'Read Less';
+    } else {
+        hiddenText.style.display = 'none';
+        readMoreButton.textContent = 'Read More';
+    }
+});
+
+    </script>
+</body>
+</html>
