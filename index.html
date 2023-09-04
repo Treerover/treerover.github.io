@@ -25,8 +25,62 @@
             height: 100vh;
         }
 
+        .name-animation {
+            animation: wavyAnimation 3s infinite alternate ease-in-out;
+            display: inline-block;
+        }
+        .name-animation:nth-child(1) {
+           animation: wavyAnimation 3s infinite alternate ease-in-out 0.1s;
+        }
+
+        .name-animation:nth-child(2) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 0.3s;
+        }
+
+            .name-animation:nth-child(3) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 0.5s;
+        }
+        .name-animation:nth-child(4) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 0.7s;
+        }
+        .name-animation:nth-child(5) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 0.9s;
+        }
+        .name-animation:nth-child(6) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 1.1s;
+        }
+        .name-animation:nth-child(7) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 1.3s;
+        }
+        .name-animation:nth-child(8) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 1.5s;
+        }
+        .name-animation:nth-child(9) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 1.7s;
+        }
+        .name-animation:nth-child(10) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 1.9s;
+        }
+        .name-animation:nth-child(11) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 2.1s;
+        }
+        .name-animation:nth-child(12) {
+          animation: wavyAnimation 3s infinite alternate ease-in-out 2.3s;
+        }
+        @keyframes wavyAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
         h1 {
-            font-size: 48px;
+            font-size: 64px;
             margin-bottom: 20px;
             margin-top:540px;
         }
@@ -93,7 +147,8 @@
     <div id="stars3"></div>
 
     <div class="container">
-        <h1>Austin Morris</h1>
+        <h1><span class="name-animation">A</span><span class="name-animation">u</span><span class="name-animation">s</span><span class="name-animation">t</span><span class="name-animation">i</span><span class="name-animation">n </span> <span class="name-animation">M</span><span class="name-animation">o</span><span class="name-animation">r</span><span class="name-animation">r</span><span class="name-animation">i</span><span class="name-animation">s</span>
+        </h1>
         <div class="button-container">
             <a class="button" href="portfolio/portfolio.html">Portfolio</a>
             <a class="button" href="blog/blog.html">Blog</a>
