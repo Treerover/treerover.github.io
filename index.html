@@ -1,267 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            position: relative;
-            min-height: 100vh;
-            background-color: #bfc2c7;
             margin: 0;
             padding: 0;
-        }
-        h1 {
-            font-size: 48px;
-            margin-top: 0;
-            padding: 10px 0;
-            background: linear-gradient(to right, #ab85d3, #8825e4);
-            -webkit-background-clip: text;
-            color: transparent;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
             text-align: center;
-        }
-        h2, h3 {
-            font-size: 24px; /* Increase font size for headings */
-        }
-        p {
-            font-size: 18px; /* Increase font size for paragraphs */
+            overflow: hidden;
         }
 
-        header {
-            background-color: #210b38;
-            color: #210b38;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav {
-            text-align: center;
-            background-color: #210b38;
-        }
-        nav a {
-            text-decoration: none;
-            color: #ffffff;
-            padding: 10px 20px;
-            display: inline-block;
-        }
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-
-        }
-        .portfolio-item {
-            background-color: #d3d6db;
-            padding: 20px;
-            margin: 30px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .portfolio-item:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-		        .slideshow-container {
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .slideshow-image {
-            max-width: 100%;
-            height: auto;
-        }
-		.slideshow-caption {
-            text-align: center;
-            margin-top: 10px;
-			display: none;
-        }
-        .prev, .next {
-			cursor: pointer;
-			position: absolute;
-			z-index: 99;
-			top: 40%;
-			font-size: 24px;
-			padding: 20px;
-			background-color: rgba(0, 0, 0, 0.3);
-			color: #fff;
-			border: none;
-			outline: none;
-        }
-        .prev {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .contact-buttons{
-            margin-left: 28px;
-        }
-
-		        #portfolio h2 {
-            text-align: left;
-            margin-left: 30px;
-        }
-
-		  #about h2 {
-            text-align: left;
-            margin-left: 30px;
-        }
-        #blog {
-            margin-left: 30px;
-        }
-        #resume {
-            margin-left: 30px;
-            text-align: center;
-        }
-
-        #about p
-        {
-            text-align: left;
-            margin-left: 30px;
-        }
-        #contact {
-            text-align: center;
-            margin-top: auto;
-        }
-        .contact-buttons {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+            height: 100vh;
         }
-        .contact-buttons button {
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            margin-top:540px;
+        }
+
+        .button-container {
+         display: flex;
+          gap: 20px;
+         flex-direction: row; /* Display buttons horizontally */
+        justify-content: center; /* Center the buttons horizontally */
+          }
+
+
+        .button {
             padding: 10px 20px;
-            margin: 10px;
             background-color: #210b38;
-            color: white;
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            z-index: 1000;
         }
-        .contact-buttons button:hover {
+
+        .button:hover {
             background-color: #2e1459;
         }
 
-    .horizontal-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center; /* Add this line */
-}
+        .contact {
+            margin-top: 450px;
+        }
+        .contact-button-container {
+         display: flex;
+          gap: 30px;
+         flex-direction: row; /* Display buttons horizontally */
+        justify-content: center; /* Center the buttons horizontally */
+          }
 
-.horizontal-nav li {
-    margin-right: 0px;
-}
+        .contact-buttons {
+            padding: 10px 20px;
+            background-color: #210b38;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
 
-.horizontal-nav a:hover {
-        background-color: #2e1459; /* Change the background color on hover */
-        color: white; /* Change the text color on hover */
-    }
+        .contact-buttons:hover  {
+            background-color: #2e1459;
+        }
+
+
+
     </style>
 </head>
 <body>
-    <header>
-        <h1>Austin's Portfolio</h1>
-    </header>
-    <nav class="horizontal-nav">
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="portfolio/portfolio.html">Portfolio</a></li>
-            <li><a href="blog/blog.html">Project Blog</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <!-- Other navigation links... -->
-        </ul>
-    </nav>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
     <div class="container">
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I'm currently a year 3 student taking Game Development at Algonquin College of Applied Arts and Technology, and plan on 
-               becoming a technical gameplay developer, creating complex systems, core mechanics, and unique character functions. I have 
-               experience in Unreal and Unity, and I'm proficient in C++, Unreal C++, C#, and some Javascript/CSS. I have experience working in 
-               a team environment because of the 2 Capstone projects Algonquin has tasked me, and will happily work with others to make a successful game.
-            </p>
-        </section>
-        <section id="portfolio">
-            <h2>Portfolio</h2>
-            <div class="portfolio-item">
-                <h3>Untitled Project - Capstone</h3>
-                <div class="slideshow-container">
-                    <button class="prev" onclick="changeSlideProject1(-1)">&#10094;</button>
-                    <div class="image-container">
-                        <img class="slideshow-image" src="image1.png" alt="Image 1">
-                        <figcaption class="slideshow-caption">Caption for Image 1</figcaption>
-                    </div>
-                    <div class="image-container">
-                        <img class="slideshow-image" src="image2.png" alt="Image 2">
-                        <figcaption class="slideshow-caption">Caption for Image 2</figcaption>
-                    </div>
-                    <div class="image-container">
-                        <img class="slideshow-image" src="image3.png" alt="Image 3">
-                    </div>
-                    <button class="next" onclick="changeSlideProject1(1)">&#10095;</button>
-                </div>
-                <a href="portfolio/portfolio.html" class="view-project">View Project</a>
-
-            </div>
-            <div class="portfolio-item">
-                <h3>Grim Harvest - Mini Capstone</h3>
-                <div class="slideshow-container">
-                    <button class="prev" onclick="changeSlideProject1(-1)">&#10094;</button>
-                    <div class="image-container">
-                        <img class="slideshow-image" src="image4.png" alt="Image 4">
-                    </div>
-                    <div class="image-container">
-                        <img class="slideshow-image" src="image5.png" alt="Image 5">
-                    </div>
-                    <div class="image-container">
-                        <img class="slideshow-image" src="image6.png" alt="Image 6">
-                    </div>
-                    <button class="next" onclick="changeSlideProject2(1)">&#10095;</button>
-                </div>
-                <a href="portfolio/portfolio.html" class="view-project">View Project</a>
-
-            </div>
-        </section>
-        <section id="blog">
-            <br>
-            <h2>Blog</h2>
-            <div class="blog-post">
-                <h3>Project Update #1</h3>
-                <p>This was week 1 of the major capstone project...</p>
-                <a href="blog/blog.html#" class="read-more">Read more</a>
-            </div>
-            
-        </section>
-        <section id="resume">
-            <br>
-            <h2>Resume</h2>
-            <img src="Resume.png" alt="resume">
-        </section>
-        <section id="contact">
+        <h1>Austin Morris</h1>
+        <div class="button-container">
+            <a class="button" href="portfolio/portfolio.html">Portfolio</a>
+            <a class="button" href="blog/blog.html">Blog</a>
+            <a class="button" href="resume.html">Resume</a>
+        </div>
+       <div class="contact">
             <h2>Contact Me</h2>
             <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
-            <div class="contact-buttons">
-                <button onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</button>
-            </div>
-            <div class="contact-buttons">
-                <a href="tel:+1234567890"><button>Phone:705-854-xxxx</button></a>
-            </div>
-            <div class="contact-buttons">
-                <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank"><button>LinkedIn</button></a>
-            </div>
-            <div class="contact-buttons">
-                <button onclick="toTop()">Back to Top</button>
-            </div>
+             <section id="contact-button-container">
+                <a class ="contact-buttons" onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</a>
+                <a class ="contact-buttons" href="tel:+1234567890">Phone:705-854-xxxx</a>
+                <a class ="contact-buttons" href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a>
         </section>
+        </div>
+
     </div>
 
-    <script>
-        // Define the currentSlide array for each project
-        let currentSlide = [0, 0]; // Initial slide index for each project
 
-        // Function to show the correct slide for a project
+    <script>
+        let currentSlide = [0, 0];
+
         function showSlide(id) {
             let slides = document.querySelectorAll('.slideshow-container')[id].querySelectorAll('.image-container');
             for (let i = 0; i < slides.length; i++) {
@@ -270,7 +123,6 @@
             slides[currentSlide[id]].style.display = 'block';
         }
 
-        // Separate functions for changing slides in each project
         function changeSlideProject1(increment) {
             currentSlide[0] = (currentSlide[0] + increment) % 3;
             if (currentSlide[0] < 0) {
@@ -299,6 +151,7 @@
         // Initialize slides for each project
         showSlide(0);
         showSlide(1);
+
 
         const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
     </script>

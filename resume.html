@@ -1,37 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+
+        <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
+            text-align: center;
             font-size: 18px;
             position: relative;
             min-height: 100vh;
-            background-color: #bfc2c7;
+            background-color: #000000;
             margin: 0;
             padding: 0;
+            color: #ddd;
         }
         h1 {
-            font-size: 48px;
-            margin-top: 0;
-            padding: 10px 0;
-            background: linear-gradient(to right, #ab85d3, #8825e4);
-            -webkit-background-clip: text;
-            color: transparent;
-            text-align: center;
+            font-size: 46px;
+          
         }
-        h2, h3 {
-            font-size: 24px; /* Increase font size for headings */
+        h2 {
+            font-size: 34px;
+            text-decoration: underline;
         }
+        h3 {
+            font-size: 20px;
+            text-decoration: underline;
+        }
+        
         p {
-            font-size: 18px; /* Increase font size for paragraphs */
+            font-size: 24px;
         }
 
         header {
             background-color: #210b38;
-            color: #210b38;
+            color: #ffffff;
             padding: 10px 0;
             text-align: center;
         }
@@ -46,77 +49,10 @@
             display: inline-block;
         }
         .container {
-            max-width: 1400px;
+            max-width: 1800px;
             margin: 0 auto;
             padding: 20px;
-
-        }
-        .portfolio-item {
-            background-color: #d3d6db;
-            padding: 20px;
-            margin: 30px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .portfolio-item:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-		        .slideshow-container {
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-        .slideshow-image {
-            max-width: 100%;
-            height: auto;
-        }
-		.slideshow-caption {
-            text-align: center;
-            margin-top: 10px;
-			display: none;
-        }
-        .prev, .next {
-			cursor: pointer;
-			position: absolute;
-			z-index: 99;
-			top: 40%;
-			font-size: 24px;
-			padding: 20px;
-			background-color: rgba(0, 0, 0, 0.3);
-			color: #fff;
-			border: none;
-			outline: none;
-        }
-        .prev {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
-        .contact-buttons{
-            margin-left: 28px;
-        }
-
-		        #portfolio h2 {
-            text-align: left;
-            margin-left: 30px;
-        }
-
-		  #about h2 {
-            text-align: left;
-            margin-left: 30px;
-        }
-        #blog {
-            margin-left: 30px;
-        }
-        #resume {
-            margin-left: 30px;
-        }
-
-        #about p
-        {
-            text-align: left;
-            margin-left: 30px;
+            margin-left: 350px;
         }
         #contact {
             text-align: center;
@@ -140,13 +76,19 @@
         .contact-buttons button:hover {
             background-color: #2e1459;
         }
+        .slideshow-image {
+            max-width: 35%;
+            height: auto;}
+
 
     .horizontal-nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    font-size: 24px;
+    text-indent: 20;
     display: flex;
-    justify-content: center; /* Add this line */
+    justify-content: center; 
 }
 
 .horizontal-nav li {

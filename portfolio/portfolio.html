@@ -5,19 +5,21 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            text-align: center;
             font-size: 18px;
             position: relative;
             min-height: 100vh;
-            background-color: #bfc2c7;
+            background-color: #000000;
             margin: 0;
             padding: 0;
+            color: #ddd;
         }
         h1 {
-            font-size: 36px;
-          
+            font-size: 46px;
+            margin-bottom: 20px;
         }
         h2 {
-            font-size: 26px;
+            font-size: 34px;
             text-decoration: underline;
         }
         h3 {
@@ -26,7 +28,7 @@
         }
         
         p {
-            font-size: 18px;
+            font-size: 24px;
         }
 
         header {
@@ -49,7 +51,7 @@
             max-width: 1800px;
             margin: 0 auto;
             padding: 20px;
-            margin-left: 270px;
+            margin-left: 350px;
         }
         #contact {
             text-align: center;
@@ -82,6 +84,8 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+    font-size: 24px;
+    text-indent: 20;
     display: flex;
     justify-content: center; 
 }
@@ -125,12 +129,13 @@
     width: 200px;
     padding: 20px;
     position:absolute;
-    top: 150;
+    top: 184;
     left: 0;
     height: 100%;
     overflow-y: auto; 
-    border-right: 2px solid #000; 
-    border-top: 2px solid #000;
+    border-right: 2px solid #9031e9; 
+    border-top: 2px solid #9031e9;
+    border-left: 2px solid #9031e9;
 }
 
 .sidebar h2 {
@@ -161,7 +166,9 @@
     text-decoration: underline;
     color: #ffcc00; 
 }
-
+   #myvideo {
+    border: 2px solid #9031e9;
+ }
 
 .sidebar a.active {
     font-weight: bold; 
@@ -175,6 +182,7 @@ hr {
 iframe {
             display: none; 
         }
+
 #toggleButton1 {
         padding: 10px 20px;
         background-color: #210b38;
@@ -204,7 +212,7 @@ iframe {
         color: white;
     }
     .sidebar-divider {
-            border-top: 1px solid #ccc;
+            border-top: 1px solid #9031e9;
             margin: 15px 0; 
         }
 
@@ -232,7 +240,7 @@ iframe {
     <nav class="horizontal-nav">
         <ul>
             <li><a href="../index.html">Home</a></li>
-            <a href="project1.html">Portfolio</a>
+            <a href="">Portfolio</a>
             <li><a href="../blog/blog.html">Project Blog</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="../resume.html">Resume</a></li>
@@ -249,18 +257,22 @@ iframe {
                 Description of your portfolio item goes here. You can provide details about the project, your role, and any notable achievements.
             </p>
         </div>
-        <hr>
+        <hr class="sidebar-divider">
         <div class="portfolio-item" id = "project2">
             <h2>Grim Harvest - Mini Capstone</h2>
             <p>Date Made: January 2023 - April 2023</p>
             <p>Class: High Level Development 2</p>
             <video id="myVideo" width="850" height="560" controls autoplay>
-                <source src="your-video.mp4" type="video/mp4">
+                //Add border to the video
+
+                <source src="your-video.mp4" type="video/mp4" id = "myvideo">
+                
                 Your browser does not support the video tag.
             </video>
             <p>
-                Grim Harvest is a 3D top-down vampire survivors-esque roguelike made by a team of 5 students. <br> I was the main gameplay programmer and implemented most of the UI 
-                in the game.
+                Grim Harvest is a 3D top-down vampire survivors-esque roguelike made by a team of 5 students. 
+                <br> The game was in a prototype stage, so animations & art assets weren't completely implemented.
+                <br> I was the main gameplay programmer and implemented most of the UI in the game.
             </p>
 
             <h3>Documentation</h3>
@@ -274,7 +286,7 @@ iframe {
             <h3>Project Organization</h3>
             <p>
                 We used Trello to keep track of weekly sprint tasks, and our team members work. Our professor also looked at these bi weekly to make sure <br>
-                we were on track. 
+                we were on track and established a good workflow. Here is a snippet of our Trello board.
             </p>
             <img src="trello.png" alt="trello"  width="1480" height="720">
             <h3>What I Learned</h3>
@@ -289,7 +301,8 @@ iframe {
                 <p>Given the time we had to complete the project, we were forced to go the clunky, but somewhat simpler approach of <br>
                 making every ability individually, rather than a modular system. We still kept it somewhat modular, but we had to "create"<br>
                 every ability within each weapon.cpp. We simply hid/disabled collision on the ability when it wasnt in use, and turned it on <br>
-                when it was in use. Reflecting back now, this is definitely not optimal in a larger-scale scenario, but it was what we ended up with. 
+                when it was in use. Reflecting back now, this is definitely not optimal in a larger-scale scenario, but it was what we ended up with. <br>
+                Each weapon had 5 abilities, and each ability had a different effect. Below is an example of the ability system.<br>
                 </p>
                 <img src="abilityexample.png" alt="abilityexample">
                 <h4> UE5 Subsystems </h4>
@@ -310,7 +323,7 @@ iframe {
                 </div>
             </p>
         </div>
-        <hr>
+        <hr class="sidebar-divider">
         <div class="portfolio-item" id = "project3">
             <h2>Custom 3D Game Engine Using Open GL</h2>
             <p>Date Made: January 2023 - April 2023</p>
@@ -329,7 +342,7 @@ iframe {
                 Description of your portfolio item goes here. You can provide details about the project, your role, and any notable achievements.
             </p>
         </div>
-        <hr>
+        <hr class="sidebar-divider">
         </section>
         <section id="contact">
             <h2>Contact Me</h2>
@@ -396,7 +409,7 @@ readMoreButton.addEventListener('click', function () {
         readMoreButton.textContent = 'Read More';
     }
 });
-
+const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
     </script>
 </body>
 </html>
