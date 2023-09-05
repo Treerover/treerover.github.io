@@ -145,6 +145,7 @@
 
 .code-image {
     display: none;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 .sidebar {
     background: linear-gradient(to bottom, #210b38, #431d80);
@@ -297,17 +298,17 @@ iframe {
     <nav class="horizontal-nav">
         <ul>
             <li><a href="../index.html">Home</a></li>
-             <li class="active"><a href="#">Portfolio</a></li>
+            <li class="active"><a href="#">Portfolio</a></li>
             <li><a href="../blog/blog.html">Project Blog</a></li>
-            <li><a href="#contact">Contact</a></li>
             <li><a href="../resume.html">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
     <div class="container">
         <div class="portfolio-item" id = "project1">
             <h2>Major Capstone</h2>
             <p>Date Made: September 2023 - April 2024</p>
-            <p>Class: High Level Development 3</p>
+            <p>Class: Capstone I</p>
 
             <img src="item-image.jpg" alt="Item Image1">
             <p>
@@ -343,7 +344,7 @@ iframe {
             <h3>Project Organization</h3>
             <p>
                 We used Trello to keep track of weekly sprint tasks, and our team members work. Our professor also looked at these bi weekly to make sure <br>
-                we were on track and established a good workflow. Here is a snippet of our Trello board.
+                we were on track and established a good workflow. Here is a snippet of our Trello board. I'm the blue "AM".
             </p>
             <img src="trello.png" alt="trello"  width="1480" height="720">
             <h3>What I Learned</h3>
@@ -554,6 +555,11 @@ iframe {
             <p>
                 Description of your portfolio item goes here. You can provide details about the project, your role, and any notable achievements.
             </p>
+            <video id="myVideo1" width="850" height="560" controls autoplay>
+                <source src="../walking.mp4" type="video/mp4" id = "myvideo1">
+                
+                Your browser does not support the video tag.
+            </video>
         </div>
         <hr class="sidebar-divider">
         </section>
@@ -561,9 +567,9 @@ iframe {
             <h2>Contact Me</h2>
             <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
             <section id="contact-button-container">
-                <a class ="contact-buttons" onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</a>
+                <a class ="contact-buttons" onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: austinmacdonaldmorris@gmail.com</a>
                 <a class ="contact-buttons" href="tel:+1234567890">Phone:705-854-xxxx</a>
-                <a class ="contact-buttons" href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a>
+                <a class ="contact-buttons" href="https://www.linkedin.com/in/austin-macdonald-morris/" target="https://www.linkedin.com/in/austin-macdonald-morris/">LinkedIn</a>
                 <br>
                 <br>
                 <a class ="contact-buttons" onclick="toTop()" target="_blank">To Top</a>
@@ -654,6 +660,16 @@ const toggleButton2 = document.getElementById('toggleButton2');
         readMoreButton1.textContent = 'Read More';
     }
 });
+
+        // Copy to email button
+        function copyToClipboard(text) {
+            var textField = document.createElement('textarea');
+            textField.innerText = 'austinmacdonaldmorris@gmail.com';
+            document.body.appendChild(textField);
+            textField.select();
+            document.execCommand('copy');
+            textField.remove();
+        }
 const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
     </script>
 </body>
