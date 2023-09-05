@@ -24,7 +24,7 @@
             text-decoration: underline;
         }
         h3 {
-            font-size: 20px;
+            font-size: 26px;
             text-decoration: underline;
         }
         
@@ -215,6 +215,24 @@ iframe {
         transition: background-color 0.3s;
         margin-bottom: 20px; 
     }
+    #toggleButton2 {
+        padding: 10px 20px;
+        background-color: #210b38;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 20px; 
+    }
+    #toggleButton3 {
+        padding: 10px 20px;
+        background-color: #210b38;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 20px; 
+    }
 #read-more-button {
         padding: 10px 20px;
         background-color: #210b38;
@@ -227,7 +245,25 @@ iframe {
 #read-more-button:hover {
         background-color: #2e1459;
     }
+    #read-more-button1 {
+        padding: 10px 20px;
+        background-color: #210b38;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 10px;
+}
+#read-more-button1:hover {
+        background-color: #2e1459;
+    }
     #toggleButton1:hover {
+        background-color: #2e1459;
+    }
+    #toggleButton2:hover {
+        background-color: #2e1459;
+    }
+    #toggleButton3:hover {
         background-color: #2e1459;
     }
     .horizontal-nav a:hover {
@@ -349,10 +385,165 @@ iframe {
             <h2>Custom 3D Game Engine Using Open GL</h2>
             <p>Date Made: January 2023 - April 2023</p>
             <p>Class: Game & Graphics 3</p>
+            <br>
+            
             <p>
-                
+                This class was a continuation of Game & Graphics 2, where we made a custom 3D game engine using OpenGL. <br>
+                We were tasked to make a 3D game engine with a custom renderer and physics engine. <br>
+                The first part of the final assignment was to create a island with varying terrain heights, and a water plane. <br>
             </p>
-            <img src="item-image.jpg" alt="Item Image3">
+            
+            <p>
+                Here is an example of terraforming, with lowering the ground, and raising the ground.
+            </p>
+            <h3>Terraforming</h3>
+            <video id="myVideo1" width="850" height="560" controls autoplay>
+                <source src="../lowerground.mp4" type="video/mp4" id = "myvideo1">
+                
+                Your browser does not support the video tag.
+            </video>
+            <video id="myVideo1" width="850" height="560" controls autoplay>
+                <source src="../raiseground.mp4" type="video/mp4" id = "myvideo2">
+                
+                Your browser does not support the video tag.
+            </video>
+
+            <br>
+            <button id="toggleButton2">See Code</button>
+            <textarea id = "codeReader" cols="150" rows="30" readonly style ="background-color: #272525; color:white; display: none; margin-left: 325px;">
+                void HeightmapComponent::RaiseTerrain(float x, float z, float radius, float height, float falloff)
+                {
+                    float sqrRadius = radius * radius;
+                
+                    for (uint32 i = 0; i < m_vertNum.x; i++)
+                    {
+                        for (uint32 j = 0; j < m_vertNum.y; j++)
+                        {
+                            // Calculate the position of the current vertex.
+                            uint32 index = i * m_vertNum.x + j;
+                
+                            vec3 vertPos = m_meshVertices[index].pos;
+                            float  sqrDist = (vertPos.x - x) * (vertPos.x - x) + (vertPos.z - z) * (vertPos.z - z);
+                
+                            // If the vertex is within the radius of the brush, and in front of the player
+                            if (sqrDist <= sqrRadius)
+                            {
+                                float dist = sqrt(sqrDist);
+                                float Falloff = 1 - dist / falloff;
+                                float raise = height * Falloff;
+                
+                                m_meshVertices[index].pos.y += raise;
+                            }
+                        }
+                
+                    }
+                
+                    Rebuild();
+                }
+            </textarea>
+            </div>
+            <h3>Dynamic Lighting</h3>
+            <p> 
+                We were also tasked to implement dynamic lighting into our game engine. <br>
+                This was done in GLSL shaders, and we were tasked to implement a simple point light that interacts with the terrain and player. <br>
+                The player was given the ability to place down up to 8 torches, and the closest 6 torches to the player would be used for lighting. <br>
+                As seen in the video to the right, the torches are always placed at the height of the terrain. This was accomplished by <br>
+                getting the height of the terrain at the location in front of the player. We used math to loop through every vertice in the terrain, <br>
+                and return the height for the torch to be placed at. 
+            </p>
+            <video id="myVideo1" width="850" height="560" controls autoplay>
+                <source src="../dynamiclighting.mp4" type="video/mp4" id = "myvideo1">
+                
+                Your browser does not support the video tag.
+            </video>
+            <video id="myVideo1" width="850" height="560" controls autoplay>
+                <source src="../GLSLlighting.mp4" type="video/mp4" id = "myvideo2">
+                
+                Your browser does not support the video tag.
+            </video>
+            <button id="toggleButton3">See Code</button>
+            <textarea id = "codeReader1" cols="150" rows="50" readonly style ="background-color: #272525; color:white; display: none; margin-left: 325px;">
+                void IslandScene::LightUpdate(float deltaTime)
+            {
+                //Makes torches always follow the island height at xz
+                for (int i = 0; i < m_pLightObj.size(); i++)
+                {
+            		m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.y = m_Objects[0]->GetComponent<fw::HeightmapComponent>()->GetHeightAtXZ(m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.x, m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.z);
+            	}
+            
+            
+            
+                //Updates the lights of the player and sun
+                for (int i = 0; i < 2; i++)
+                {
+                    m_LightPosition[i] = vec4(m_Objects[i + 3]->GetComponent<fw::TransformComponent>()->m_Position, 1);
+                    m_LightColor[i] = vec4(m_Objects[i + 3]->GetComponent<fw::LightComponent>()->GetColor(), 1);
+                    m_LightRange[i] = m_Objects[i + 3]->GetComponent<fw::LightComponent>()->GetRange();
+                }
+            
+                //Updates the lights of the closest 6 torches to the player
+                std::vector<fw::GameObject*> pClosestLights;
+                std::vector<float> closestDistances(6, std::numeric_limits<float>::max());
+                int Index = 0;
+                
+                for (int i = 0; i < m_pLightObj.size(); i++)
+                {
+                    float dx = m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.x - m_Objects[3]->GetComponent<fw::TransformComponent>()->m_Position.x;
+                    float dy = m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.y - m_Objects[3]->GetComponent<fw::TransformComponent>()->m_Position.y;
+                    float dz = m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.z - m_Objects[3]->GetComponent<fw::TransformComponent>()->m_Position.z;
+                    //Gets distance from light object and player using pythagorean theorem
+                    float distance = sqrt(dx * dx + dy * dy + dz * dz);
+                
+                    //Check if this light is closer than any of the current closest lights
+                    bool bIsCloser = false;
+                    for (int j = 0; j < pClosestLights.size(); j++) 
+                    {
+                        if (distance < closestDistances[j]) 
+                        {
+                            //Insert the new light at this position
+                            pClosestLights.insert(pClosestLights.begin() + j, m_pLightObj[i]);
+                            closestDistances.insert(closestDistances.begin() + j, distance);
+                        
+                            //If theres more than 6 lights, remove the last one
+                            if (pClosestLights.size() > 6) 
+                            {
+                                pClosestLights.pop_back();
+                                closestDistances.pop_back();
+                            }
+                        
+                            bIsCloser = true;
+                            break;
+                        }
+                    
+                    }
+                    //If this light is closer than any of the current closest lights, add it to the list
+                    if (!bIsCloser && pClosestLights.size() < 6)
+                    {
+                        pClosestLights.push_back(m_pLightObj[i]);
+                        closestDistances.push_back(distance);
+                    }
+                }
+            
+                for (int i = 0; i < pClosestLights.size(); i++)
+                {
+                    m_LightPosition[i+2] = vec4(pClosestLights[i]->GetComponent<fw::TransformComponent>()->m_Position, 1);
+                    m_LightColor[i+2] = vec4(pClosestLights[i]->GetComponent<fw::LightComponent>()->GetColor(), 1);
+                    m_LightRange[i+2] = pClosestLights[i]->GetComponent<fw::LightComponent>()->GetRange();
+                }
+            
+            
+                fw::Uniforms* pUniforms = m_Objects[4]->GetScene()->GetGameCore()->GetUniforms();
+            
+                bgfx::setUniform(pUniforms->GetUniform("u_LightColor"), &m_LightColor, 8);
+                bgfx::setUniform(pUniforms->GetUniform("u_LightPosition"), &m_LightPosition, 8);
+                bgfx::setUniform(pUniforms->GetUniform("u_LightRange"), &m_LightRange, 8);
+            }
+
+            </textarea>
+            <p>
+                These were the main features that I implemented into the game engine, however there is much more going on behind the scenes, <br>
+               so if you wish to discuss it, please contact me at the avenues below!
+            </p>
         </div>
         <hr class="sidebar-divider">
         <div class="portfolio-item" id = "project4">
@@ -425,6 +616,42 @@ readMoreButton.addEventListener('click', function () {
     } else {
         hiddenText.style.display = 'none';
         readMoreButton.textContent = 'Read More';
+    }
+});
+
+const toggleButton2 = document.getElementById('toggleButton2');
+    const codeReader = document.getElementById('codeReader');
+
+        toggleButton2.addEventListener('click', function () {
+            if (codeReader.style.display === 'none') {
+                codeReader.style.display = 'block';
+            } else {
+                codeReader.style.display = 'none';
+            }
+        });
+
+
+        const toggleButton3 = document.getElementById('toggleButton3');
+    const codeReader1 = document.getElementById('codeReader1');
+
+        toggleButton3.addEventListener('click', function () {
+            if (codeReader1.style.display === 'none') {
+                codeReader1.style.display = 'block';
+            } else {
+                codeReader1.style.display = 'none';
+            }
+        });
+
+
+        const readMoreButton1 = document.getElementById('read-more-button1');
+    const hiddenTex1 = document.querySelector('.hidden-text1');
+        readMoreButton1.addEventListener('click', function () {
+    if (hiddenText1.style.display === 'none' || hiddenText1.style.display === '') {
+        hiddenText1.style.display = 'block';
+        readMoreButton1.textContent = 'Read Less';
+    } else {
+        hiddenText1.style.display = 'none';
+        readMoreButton1.textContent = 'Read More';
     }
 });
 const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
