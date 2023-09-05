@@ -15,19 +15,16 @@
             color: #ddd;
         }
         h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 38px;
+            text-decoration: underline;
         }
         h2 {
-            font-size: 34px;
-            text-decoration: underline;
+            font-size: 26px;
         }
-        h3 {
-            font-size: 20px;
-            text-decoration: underline;
-        }
+
+        
         p {
-            font-size: 18px; /* Increase font size for paragraphs */
+            font-size: 18px;
         }
 
         header {
@@ -47,18 +44,33 @@
             display: inline-block;
         }
         .container {
-            max-width: 1400px;
+            max-width: 1800px;
             margin: 0 auto;
             padding: 20px;
+            margin-left: 350px;
         }
         #contact {
             text-align: center;
             margin-top: auto;
         }
+        .contact-button-container {
+         display: flex;
+          gap: 30px;
+         flex-direction: row; /* Display buttons horizontally */
+        justify-content: center; /* Center the buttons horizontally */
+          }
+
         .contact-buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 10px 20px;
+            background-color: #210b38;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 10
         }
         .contact-buttons button {
             padding: 10px 20px;
@@ -76,102 +88,269 @@
         .slideshow-image {
             max-width: 35%;
             height: auto;}
-            .dropbtn {
-    background-color: #210b38;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    }
 
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    }
+            .blog-section {
+           background-color: #ffffff00;
+           color: white;
+           margin: 20px 0;
+           border-radius: 5px;
+        }
 
-    /* Show the dropdown content on hover */
-    .dropdown:hover .dropdown-content {
-    display: block;
-    }
-
-    /* Style the dropdown links */
-    .dropdown-content a {
-    color: black;
-    padding: 12px 12px;
-    text-decoration: none;
-    display: block;
-    }
-    .horizontal-nav ul {
+        .blog-section h3 {
+            font-size: 20px;
+            text-decoration: wavy;
+        }
+        .blog-section h2 {
+            text-decoration: underline;
+        }
+        .blog-section p {
+            font-size: 18px;
+        }
+        .horizontal-nav ul {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
     font-size: 24px;
     text-indent: 20;
     display: flex;
     justify-content: center; 
 }
 
-.horizontal-nav li {
-    margin-right: 0px;
+        .horizontal-nav li {
+            margin-right: 0px;
+        }
+        .horizontal-nav li:hover {
+            text-decoration: underline;
+            color: #ffcc00; 
+        }
+        .horizontal-nav li a {
+    text-decoration: none;
+    color: #fff; /* Set the default color */
+    border-bottom: 2px solid transparent; /* Add a transparent bottom border to all links */
+    padding-bottom: 2px; /* Add some space below the text for the underline effect */
 }
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #ddd;
+.horizontal-nav li.active a {
+    text-decoration: underline;
+    color: #ffcc00;
 }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .project-details {
+            display: flex;
+            align-items: center;
+        }
+
+        .project-image {
+            flex: 1;
+        }
+        .project-image img {
+            max-width: 100%; 
+            height: auto;
+        }
+
+        .project-description {
+            flex: 2;
+        }
+
+
+        .code-image {
+            display: none;
+        }
+        .sidebar {
+            background: linear-gradient(to bottom, #210b38, #431d80);
+            color: white;
+            width: 200px;
+            padding: 20px;
+            position:absolute;
+            top: 78;
+            left: 0;
+            height: 100%;
+            overflow-y: auto; 
+            border-right: 2px solid #9031e9; 
+            border-top: 2px solid #9031e9;
+            border-left: 2px solid #9031e9;
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            padding-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 15px;
+        }
+        .text {
+            position:fixed;
+            
+            text-align: center;
+        }
+        .text h2{
+            text-decoration: underline;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s; 
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+            color: #ffcc00; 
+        }
+           #myvideo {
+            border: 2px solid #9031e9;
+         }
+     
+        .sidebar a.active {
+            font-weight: bold; 
+            color: #ffcc00; 
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd; 
+            margin: 20px 0; 
+        }
+        iframe {
+                    display: none; 
+                }
+            
+        #toggleButton1 {
+                padding: 10px 20px;
+                background-color: #210b38;
+                color: white;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                margin-bottom: 20px; 
+            }
+        #read-more-button {
+                padding: 10px 20px;
+                background-color: #210b38;
+                color: white;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                margin-bottom: 10px;
+        }
+        #read-more-button:hover {
+                background-color: #2e1459;
+    }
+    #toggleButton1:hover {
+        background-color: #2e1459;
+    }
+    .horizontal-nav a:hover {
+        background-color: #2e1459;
+        color: white;
+    }
+    .sidebar-divider {
+            border-top: 1px solid #9031e9;
+            margin: 15px 0; 
+        }
+
+
     </style>
 </head>
 <body>
-    <header>
-        <h1>Capstone Blog</h1>
-    </header>
+    <aside class="sidebar">
+        <div class="text">
+        <h2>Weekly Updates</h2>
+        <ul>
+            <li><a href="#week3">Week 3</a></li>
+            <hr class="sidebar-divider">
+            <li><a href="#week2">Week 2</a></li>
+            <hr class="sidebar-divider">
+            <li><a href="#week1">Week 1</a></li>
+        </ul>
+        </div>
+    </aside>
     <nav class="horizontal-nav">
         <ul>
             <li><a href="../index.html">Home</a></li>
             <a href="../portfolio/portfolio.html">Portfolio</a>
-            <li><a href="">Project Blog</a></li>
+            <li class="active"><a href="../blog/blog.html">Project Blog</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="../resume.html">Resume</a></li>
         </ul>
     </nav>
     <div class="container">
-        <section id="posts">
-            <div class="blog-post">
-                <h3>Project Update #1</h3>
-                <p>2023-08-26</p>
-                <p>Project hasn't started yet!</p>
-                
-                <img class="slideshow-image" img src="image1.png" alt="Image 1">
-            </div>
-           
-        <section id="contact">
-            <!-- Contact section content... -->
+        <div id="week1" class="blog-section">
+            <h2>Week 1 Update</h2>
+            <h3><em>Sept 4th, 2023</em></h3>
+            <p>This is your Week 1 update. Write your content here.</p>
+            <img src="image1.png" alt="Item Image1" width="800" height="650">
+        </div>
+
+
+        <hr class="sidebar-divider">
         </section>
         <section id="contact">
             <h2>Contact Me</h2>
             <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
-            <div class="contact-buttons">
-                <button onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</button>
-            </div>
-            <div class="contact-buttons">
-                <a href="tel:+1234567890"><button>Phone:705-854-xxxx</button></a>
-            </div>
-            <div class="contact-buttons">
-                <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank"><button>LinkedIn</button></a>
-            </div>
-            <div class="contact-buttons">
-                <button onclick="toTop()">Back to Top</button>
-            </div>
+            <section id="contact-button-container">
+                <a class ="contact-buttons" onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</a>
+                <a class ="contact-buttons" href="tel:+1234567890">Phone:705-854-xxxx</a>
+                <a class ="contact-buttons" href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a>
+                <a class ="contact-buttons" onclick="toTop()" target="_blank">To Top</a>
+            </section>
         </section>
     </div>
 
     <script>
-       
+
+
+    const projectSections = document.querySelectorAll('section[id^="project"]');
+const sidebarLinks = document.querySelectorAll('.sidebar a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    projectSections.forEach((projectSection) => {
+        const projectTop = projectSection.offsetTop;
+        const projectHeight = projectSection.clientHeight;
+        if (pageYOffset >= projectTop - projectHeight / 2) {
+            current = projectSection.getAttribute('id');
+        }
+    });
+
+    sidebarLinks.forEach((sidebarLink) => {
+        sidebarLink.classList.remove('active');
+        if (sidebarLink.getAttribute('href').substring(1) === current) {
+            sidebarLink.classList.add('active');
+        }
+    });
+});
+
+    const toggleButton1 = document.getElementById('toggleButton1');
+    const pdfViewer = document.getElementById('pdfViewer');
+
+        toggleButton1.addEventListener('click', function () {
+            if (pdfViewer.style.display === 'none') {
+                pdfViewer.style.display = 'block';
+            } else {
+                pdfViewer.style.display = 'none';
+            }
+        });
+
+    const readMoreButton = document.getElementById('read-more-button');
+    const hiddenText = document.querySelector('.hidden-text');
+
+readMoreButton.addEventListener('click', function () {
+    if (hiddenText.style.display === 'none' || hiddenText.style.display === '') {
+        hiddenText.style.display = 'block';
+        readMoreButton.textContent = 'Read Less';
+    } else {
+        hiddenText.style.display = 'none';
+        readMoreButton.textContent = 'Read More';
+    }
+});
+const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
     </script>
 </body>
 </html>

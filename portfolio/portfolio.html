@@ -57,10 +57,24 @@
             text-align: center;
             margin-top: auto;
         }
+        .contact-button-container {
+         display: flex;
+          gap: 30px;
+         flex-direction: row; /* Display buttons horizontally */
+        justify-content: center; /* Center the buttons horizontally */
+          }
+
         .contact-buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 10px 20px;
+            background-color: #210b38;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 10
         }
         .contact-buttons button {
             padding: 10px 20px;
@@ -79,11 +93,10 @@
             max-width: 35%;
             height: auto;}
 
-
     .horizontal-nav ul {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
     font-size: 24px;
     text-indent: 20;
     display: flex;
@@ -97,7 +110,16 @@
     text-decoration: underline;
     color: #ffcc00; 
 }
-
+.horizontal-nav li a {
+    text-decoration: none;
+    color: #fff; /* Set the default color */
+    border-bottom: 2px solid transparent; /* Add a transparent bottom border to all links */
+    padding-bottom: 2px; /* Add some space below the text for the underline effect */
+}
+.horizontal-nav li.active a {
+    text-decoration: underline;
+    color: #ffcc00;
+}
 
 .dropdown-content a:hover {
     background-color: #ddd;
@@ -129,7 +151,7 @@
     width: 200px;
     padding: 20px;
     position:absolute;
-    top: 174;
+    top: 72;
     left: 0;
     height: 100%;
     overflow-y: auto; 
@@ -220,9 +242,7 @@ iframe {
     </style>
 </head>
 <body>
-    <header>
-        <h1>Portfolio</h1>
-    </header>
+
     <aside class="sidebar">
         <div class="text">
         <h2>Project Timeline</h2>
@@ -240,7 +260,7 @@ iframe {
     <nav class="horizontal-nav">
         <ul>
             <li><a href="../index.html">Home</a></li>
-            <a href="">Portfolio</a>
+             <li class="active"><a href="#">Portfolio</a></li>
             <li><a href="../blog/blog.html">Project Blog</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="../resume.html">Resume</a></li>
@@ -333,6 +353,7 @@ iframe {
             </p>
             <img src="item-image.jpg" alt="Item Image3">
         </div>
+        <hr class="sidebar-divider">
         <div class="portfolio-item" id = "project4">
             <h2>Custom 2D Game Engine Using GameDev2D</h2>
             <p>Date Made: September 2022 - December 2022</p>
@@ -347,18 +368,12 @@ iframe {
         <section id="contact">
             <h2>Contact Me</h2>
             <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
-            <div class="contact-buttons">
-                <button onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</button>
-            </div>
-            <div class="contact-buttons">
-                <a href="tel:+1234567890"><button>Phone:705-854-xxxx</button></a>
-            </div>
-            <div class="contact-buttons">
-                <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank"><button>LinkedIn</button></a>
-            </div>
-            <div class="contact-buttons">
-                <button onclick="toTop()">Back to Top</button>
-            </div>
+            <section id="contact-button-container">
+                <a class ="contact-buttons" onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</a>
+                <a class ="contact-buttons" href="tel:+1234567890">Phone:705-854-xxxx</a>
+                <a class ="contact-buttons" href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a>
+                <a class ="contact-buttons" onclick="toTop()" target="_blank">To Top</a>
+            </section>
         </section>
     </div>
 

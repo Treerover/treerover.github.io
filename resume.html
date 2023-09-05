@@ -103,6 +103,18 @@
         display: block;
         margin: 0 auto;
     }
+
+    .horizontal-nav li a {
+    text-decoration: none;
+    color: #fff; /* Set the default color */
+    border-bottom: 2px solid transparent; /* Add a transparent bottom border to all links */
+    padding-bottom: 2px; /* Add some space below the text for the underline effect */
+}
+.horizontal-nav li.active a {
+    text-decoration: underline;
+    color: #ffcc00;
+}
+
     </style>
 </head>
 <body>
@@ -115,12 +127,12 @@
             <li><a href="portfolio/portfolio.html">Portfolio</a></li>
             <li><a href="blog/blog.html">Project Blog</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="">Resume</a></li>
+            <li class="active"><a href="">Resume</a></li>
             <!-- Other navigation links... -->
         </ul>
     </nav>
     <div class="container">
-        <img src="resume.png" alt="Resume" width="1200" height="1550">
+        <img src="Resume.png" alt="Resume" width="1200" height="1550">
         <section id="contact">
             <h2>Contact Me</h2>
             <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
