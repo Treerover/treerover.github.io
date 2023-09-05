@@ -234,6 +234,24 @@ iframe {
         transition: background-color 0.3s;
         margin-bottom: 20px; 
     }
+    #toggleButton4 {
+        padding: 10px 20px;
+        background-color: #210b38;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 20px; 
+    }
+    #toggleButton5 {
+        padding: 10px 20px;
+        background-color: #210b38;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 20px; 
+    }
 #read-more-button {
         padding: 10px 20px;
         background-color: #210b38;
@@ -265,6 +283,12 @@ iframe {
         background-color: #2e1459;
     }
     #toggleButton3:hover {
+        background-color: #2e1459;
+    }
+    #toggleButton45:hover {
+        background-color: #2e1459;
+    }
+    #toggleButton5:hover {
         background-color: #2e1459;
     }
     .horizontal-nav a:hover {
@@ -398,13 +422,13 @@ iframe {
                 Here is an example of terraforming, with lowering the ground, and raising the ground.
             </p>
             <h3>Terraforming</h3>
-            <video id="myVideo1" width="850" height="560" controls autoplay>
-                <source src="../lowerground.mp4" type="video/mp4" id = "myvideo1">
+            <video id="myVideo" width="850" height="560" controls autoplay>
+                <source src="../lowerground.mp4" type="video/mp4" id = "myvideo">
                 
                 Your browser does not support the video tag.
             </video>
-            <video id="myVideo1" width="850" height="560" controls autoplay>
-                <source src="../raiseground.mp4" type="video/mp4" id = "myvideo2">
+            <video id="myVideo" width="850" height="560" controls autoplay>
+                <source src="../raiseground.mp4" type="video/mp4" id = "myvideo">
                 
                 Your browser does not support the video tag.
             </video>
@@ -452,13 +476,13 @@ iframe {
                 getting the height of the terrain at the location in front of the player. We used math to loop through every vertice in the terrain, <br>
                 and return the height for the torch to be placed at. 
             </p>
-            <video id="myVideo1" width="850" height="560" controls autoplay>
-                <source src="../dynamiclighting.mp4" type="video/mp4" id = "myvideo1">
+            <video id="myVideo" width="850" height="560" controls autoplay>
+                <source src="../dynamiclighting.mp4" type="video/mp4" id = "myvideo">
                 
                 Your browser does not support the video tag.
             </video>
-            <video id="myVideo1" width="850" height="560" controls autoplay>
-                <source src="../GLSLlighting.mp4" type="video/mp4" id = "myvideo2">
+            <video id="myVideo" width="850" height="560" controls autoplay>
+                <source src="../GLSLlighting.mp4" type="video/mp4" id = "myvideo">
                 
                 Your browser does not support the video tag.
             </video>
@@ -545,23 +569,143 @@ iframe {
                 These were the main features that I implemented into the game engine, however there is much more going on behind the scenes, <br>
                so if you wish to discuss it, please contact me at the avenues below!
             </p>
+            <hr class="sidebar-divider">
         </div>
-        <hr class="sidebar-divider">
+       
         <div class="portfolio-item" id = "project4">
-            <h2>Custom 2D Game Engine Using GameDev2D</h2>
+            <h2>Custom 2D Game Engine Using OpenGL</h2>
             <p>Date Made: September 2022 - December 2022</p>
             <p>Class: Game & Graphics 2</p>
             <img src="item-image.jpg" alt="Item Image4">
             <p>
-                Description of your portfolio item goes here. You can provide details about the project, your role, and any notable achievements.
+                Game and Graphics 2 was our introduction to OpenGL and custom game engines in C++. <br>
+                We started with a very basic template, and expanded on it weekly in classes and assignments. <br>
+                The final assignment was to make a 2D game with custom collision, and rendering with OpenGL. <br>
+                I decided to make a Vampire Survivors like game, with a focus on gaining new weapons the more you play. <br>
+                Here's an example of the game in action.
             </p>
-            <video id="myVideo1" width="850" height="560" controls autoplay>
-                <source src="../walking.mp4" type="video/mp4" id = "myvideo1">
+            <video id="myVideo" width="850" height="560" controls autoplay>
+                <source src="../walking.mp4" type="video/mp4" id = "myvideo">
                 
                 Your browser does not support the video tag.
             </video>
+            <video id="myVideo" width="850" height="560" controls autoplay>
+                <source src="upgrading.mp4" type="video/mp4" id = "myvideo">
+                
+                Your browser does not support the video tag.
+            </video>
+            <br>
+
+            <button id="toggleButton4">See Code</button>
+            <textarea id = "codeReader2" cols="150" rows="30" readonly style ="background-color: #272525; color:white; display: none;  margin-left: 700px;">
+                const FrameData* Animation::GetCurrentFrame()
+                {
+                    if (m_Frames.size() != 0)
+                    {
+                        return &m_Frames[m_FrameIndex];
+                    }
+            
+                    return nullptr;
+                }
+            
+                bool Animation::UpdateFrame(float deltaTime)
+                {
+                    if (m_Frames.size() != 0)
+                    {
+                        m_CurrentFrameTime += deltaTime;
+            
+                        if (m_CurrentFrameTime >= m_Frames[m_FrameIndex].displayTime)
+                        {
+                            m_CurrentFrameTime = 0.0f;
+                            IncrementFrame();
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            
+                void Animation::IncrementFrame()
+                {
+                    if (m_FrameIndex == (m_Frames.size() - 1))
+                    {
+                        m_FrameIndex = 0;
+                    }
+                    else
+                    {
+                        m_FrameIndex++;
+                    }
+                }  
+            </textarea>
+
+            <p>
+                If you look on the left, you can see the custom spritesheet animation we made for the player. <br>
+                The player had 4 animations, and directly used the spritesheet file to animate the player. <br>
+                The weapons that the player is firing can be seen on the right, with a basic fireball, and an explosion attack. <br>
+                The explosion attack has a lingering hitbox that damages enemies that walk into it. <br> 
+                This lingering hitbox is also used effectively in the next example, where the player can throw an acid pool on the ground. <br>
+            </p>
+            <video id="myVideo" width="850" height="560" controls autoplay>
+                <source src="../collision.mp4" type="video/mp4" id = "myvideo">
+                
+                Your browser does not support the video tag.
+            </video>
+            <br>
+            <button id="toggleButton5">See Code</button>
+            <textarea id = "codeReader3" cols="150" rows="30" readonly style ="background-color: #272525; color:white; display: none; margin-left: 705px;">
+               //In gameobject.cpp
+                bool GameObject::DidCollide(const GameObject& gameobj1)
+                {
+                    float distanceSquared = m_Position.DistanceSquared(gameobj1.m_Position);
+                
+                    float radiiSquared = (m_Radius + gameobj1.m_Radius) * (m_Radius + gameobj1.m_Radius);
+                
+                    bool didCollide = (distanceSquared <= radiiSquared);
+                    return didCollide;
+                }
+
+               //Collision example In game.cpp
+                for (int i = 0; i < m_AcidPool.size(); i++)
+                {
+                    for (int j = 0; j < m_Enemy.size(); j++)
+                    {
+                        if (m_AcidPool[i]->DidCollide(*m_Enemy[j]))
+                        {
+                          
+                            if (m_Enemy[j]->GetHealth() != 0)
+                            {
+                              
+                                m_Enemy[j]->TakeDamage(m_AcidPool[i]->GetAttack());
+                                
+                                if (m_Enemy[j]->GetHealth() == 0)
+                                {
+                                    m_EXPOrbs.push_back(new EXPOrb(m_Shaders[0], m_Enemy[j], m_Textures[3]));
+                                    m_Enemy.erase(m_Enemy.begin() + j);
+                                    m_EnemiesKilled++;
+                                }
+                              
+                            }
+                            
+                            
+                          
+                        }
+                    }
+                }
+
+            </textarea>
+            <p>
+                The collision in this game was done using a simple AABB collision system. <br>
+                The player and enemies had a collision box, and the projectiles had a collision box. <br>
+                The collision was done by checking if the player/enemy collision box was colliding with the projectile collision box. <br>
+                If it was, the projectile would be destroyed, and the player/enemy would take damage. <br>
+            </p>
+            <p>
+                I had a lot of fun with this project, and even though almost all of the collision & enemy stuff was <br>
+                not in the assignments, I enjoyed making it. If you wish to discuss it further, please contact me at the avenues below!
+
+            </p>
+            <hr class="sidebar-divider">
         </div>
-        <hr class="sidebar-divider">
+
         </section>
         <section id="contact">
             <h2>Contact Me</h2>
@@ -647,6 +791,30 @@ const toggleButton2 = document.getElementById('toggleButton2');
                 codeReader1.style.display = 'none';
             }
         });
+
+        const toggleButton4 = document.getElementById('toggleButton4');
+    const codeReader2 = document.getElementById('codeReader2');
+
+        toggleButton4.addEventListener('click', function () {
+            if (codeReader2.style.display === 'none') {
+                codeReader2.style.display = 'block';
+            } else {
+                codeReader2.style.display = 'none';
+            }
+        });
+
+
+        const toggleButton5 = document.getElementById('toggleButton5');
+    const codeReader3 = document.getElementById('codeReader3');
+
+        toggleButton5.addEventListener('click', function () {
+            if (codeReader3.style.display === 'none') {
+                codeReader3.style.display = 'block';
+            } else {
+                codeReader3.style.display = 'none';
+            }
+        });
+
 
 
         const readMoreButton1 = document.getElementById('read-more-button1');
