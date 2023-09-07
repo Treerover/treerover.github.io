@@ -54,9 +54,8 @@
             padding: 20px;
             margin-left: 390px;
         }
-        #contact {
-            text-align: center;
-            margin-top: auto;
+        .contact {
+            margin-top: 450px;
         }
         .contact-button-container {
          display: flex;
@@ -75,19 +74,10 @@
             border-radius: 3px;
             cursor: pointer;
             transition: background-color 0.3s;
-            z-index: 10
+            z-index: 1000;
         }
-        .contact-buttons button {
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: #210b38;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .contact-buttons button:hover {
+
+        .contact-buttons:hover  {
             background-color: #2e1459;
         }
         .slideshow-image {
@@ -175,8 +165,12 @@
 .sidebar li {
     margin-bottom: 15px;
 }
-.text {
-    position:fixed;
+.text{
+    position:sticky;
+    text-align: center;
+}
+.text a{
+    position:sticky;
     text-align: center;
 }
 .sidebar a {
@@ -299,6 +293,17 @@ iframe {
             border-top: 1px solid #9031e9;
             margin: 15px 0; 
         }
+    #Item Image{
+        width: 100%;
+        height: auto;
+        flex-wrap:wrap;
+    }
+    #pdfViewer {
+        display: none; 
+
+        padding-left: 365px;
+    }
+
 
 
     </style>
@@ -334,7 +339,7 @@ iframe {
             <p>Date Made: September 2023 - April 2024</p>
             <p>Class: Capstone I</p>
 
-            <img src="item-image.jpg" alt="Item Image1">
+            <img src="item-image.jpg" alt="Item Image">
             <p>
                 Description of your portfolio item goes here. You can provide details about the project, your role, and any notable achievements.
             </p>
@@ -398,10 +403,10 @@ iframe {
                 <img src="upgradesystem.png" alt="upgradesystem">
                 <h4> And More... </h4>
                 <h4> Menu Creation & Ability Design</h4>
-                <img src="../image5.png" alt="upgradesystem" width ="1080" height="720">
+                <img src="../image5.png" width ="1080" height="720" alt ="Item Image">
                 <h4> Custom On Death Events</h4>
-                <img src="../ondeath.png" alt="ondeath" width ="720" height="480">
-                <img src="../ondeath1.png" alt="ondeath1" width ="720" height="480">
+                <img src="../ondeath.png" alt="ondeath" width ="720" height="480" alt ="Item Image">
+                <img src="../ondeath1.png" alt="ondeath1" width ="720" height="480" alt ="Item Image">
                 </div>
             </p>
         </div>
@@ -466,7 +471,7 @@ iframe {
                     Rebuild();
                 }
             </textarea>
-            </div>
+
             <h3>Dynamic Lighting</h3>
             <p> 
                 We were also tasked to implement dynamic lighting into our game engine. <br>
@@ -576,7 +581,7 @@ iframe {
             <h2>Custom 2D Game Engine Using OpenGL</h2>
             <p>Date Made: September 2022 - December 2022</p>
             <p>Class: Game & Graphics 2</p>
-            <img src="item-image.jpg" alt="Item Image4">
+            <img src="item-image.jpg" alt="Item Image">
             <p>
                 Game and Graphics 2 was our introduction to OpenGL and custom game engines in C++. <br>
                 We started with a very basic template, and expanded on it weekly in classes and assignments. <br>
@@ -716,13 +721,13 @@ iframe {
                 <a class ="contact-buttons" href="https://www.linkedin.com/in/austin-macdonald-morris/" target="https://www.linkedin.com/in/austin-macdonald-morris/">LinkedIn</a>
                 <br>
                 <br>
-                <a class ="contact-buttons" onclick="toTop()" target="_blank">To Top</a>
+                <a class ="contact-buttons" onclick="toTop()" target="">To Top</a>
             </section>
         </section>
     </div>
 
     <script>
-
+const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
 
     const projectSections = document.querySelectorAll('section[id^="project"]');
 const sidebarLinks = document.querySelectorAll('.sidebar a');
@@ -838,7 +843,7 @@ const toggleButton2 = document.getElementById('toggleButton2');
             document.execCommand('copy');
             textField.remove();
         }
-const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
+
     </script>
 </body>
 </html>
