@@ -16,8 +16,7 @@
             color: #ddd;
         }
         h1 {
-            font-size: 46px;
-            margin-bottom: 20px;
+            font-size: 54px;
         }
         h2 {
             font-size: 34px;
@@ -32,12 +31,6 @@
             font-size: 24px;
         }
 
-        header {
-            background-color: #210b38;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-        }
         nav {
             text-align: center;
             background-color: #210b38;
@@ -53,6 +46,9 @@
             margin: 0 auto;
             padding: 20px;
             margin-left: 390px;
+            align-items: center;
+            flex-direction: column; /* Stack content vertically */
+          align-items: center; /* Center items horizontally */
         }
         .contact {
             margin-top: 420px;
@@ -208,7 +204,7 @@ iframe {
             display: none; 
         }
 
-#toggleButton1 {
+.toggle-button {
         padding: 10px 20px;
         background-color: #210b38;
         color: white;
@@ -217,42 +213,10 @@ iframe {
         transition: background-color 0.3s;
         margin-bottom: 20px; 
     }
-    #toggleButton2 {
-        padding: 10px 20px;
-        background-color: #210b38;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-bottom: 20px; 
+.toggle-button:hover {
+        background-color: #2e1459;
     }
-    #toggleButton3 {
-        padding: 10px 20px;
-        background-color: #210b38;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-bottom: 20px; 
-    }
-    #toggleButton4 {
-        padding: 10px 20px;
-        background-color: #210b38;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-bottom: 20px; 
-    }
-    #toggleButton5 {
-        padding: 10px 20px;
-        background-color: #210b38;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-bottom: 20px; 
-    }
+   
 #read-more-button {
         padding: 10px 20px;
         background-color: #210b38;
@@ -265,33 +229,9 @@ iframe {
 #read-more-button:hover {
         background-color: #2e1459;
     }
-    #read-more-button1 {
-        padding: 10px 20px;
-        background-color: #210b38;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-bottom: 10px;
-}
-#read-more-button1:hover {
-        background-color: #2e1459;
-    }
-    #toggleButton1:hover {
-        background-color: #2e1459;
-    }
-    #toggleButton2:hover {
-        background-color: #2e1459;
-    }
-    #toggleButton3:hover {
-        background-color: #2e1459;
-    }
-    #toggleButton45:hover {
-        background-color: #2e1459;
-    }
-    #toggleButton5:hover {
-        background-color: #2e1459;
-    }
+
+
+ 
     .horizontal-nav a:hover {
         background-color: #2e1459;
         color: white;
@@ -308,10 +248,28 @@ iframe {
     #pdfViewer {
         display: none; 
 
-        padding-left: 365px;
     }
-
-
+    .centered-container {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text inside items */
+}
+@media (max-width: 768px) {
+    .centered-container {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
+header {
+    background-color: #210b38; /* Set a background color */
+    color: #fff; /* Set text color to white */
+    text-align: center; /* Center-align text */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0px 4px 6px rgba(69, 7, 85, 0.445); /* Add a subtle shadow */
+    max-width: 80%; /* Set a maximum width for the header */
+    margin: 0 auto; /* Center the header within the container */
+    padding: 1px;
+}
     </style>
 </head>
 <body>
@@ -340,7 +298,11 @@ iframe {
         </ul>
         </div>
     </aside>
+    
     <div class="container">
+        <header>
+            <h1>Portfolio</h1>
+        </header>
         <div class="portfolio-item" id = "project1">
             <h2>Major Capstone</h2>
             <p>Date Made: September 2023 - April 2024</p>
@@ -375,15 +337,20 @@ iframe {
                 progress on a Trello page for our team. We were tasked to make 4 documentation pages for each programmer.<br>
                 Here is an example of the Player Module that I made.
             </p>
-            <button id="toggleButton1">Toggle Example PDF</button>
+            <div class="centered-container">
+            <button class="toggle-button" id="toggleButton">See PDF</button>
             <iframe id="pdfViewer" src="grimharvestpdf.pdf" width="1080" height="720" frameborder="0" allowfullscreen style="display: none;"></iframe>
+             </div>
             <h3>UML Diagrams</h3>
             <p>
                 Another crucial part of this class was making UML diagrams for our game. We were tasked to make 4 UML diagrams for each programmer.<br>
                 Below is an example of the UML diagram I made for the player module, including an overarching view of every diagram and how they connect.
             </p>
+            <button class="toggle-button" id="toggleButton5">See UMLs</button>
+            <div class="code-reader" style="display: none;">
             <img src="../PlayerUML.png" alt="Item Image">
-            <img src="../CombinedUMLDesigns.png" alt="Item Image" width="1780" height="840">
+            <img src="../CombinedUMLDesigns.png" alt="Item Image" width="1280" height="540">
+            </div>
             <h3>Project Organization</h3>
             <p>
                 We used Trello to keep track of weekly sprint tasks, and our team members work. Our professor also looked at these bi weekly to make sure <br>
@@ -392,13 +359,15 @@ iframe {
             <img src="trello.png" alt="trello"  width="1480" height="720">
             <h3>What I Learned</h3>
             <h4> Modular Design </h4>
-            <p>
+               <p>
                 One of the main systems that I worked on was the player ability system. At first, my idea was to make a modular <br>
                 ability system that has one ability parent class, with multiple child abilities depending on what needed to be made. <br>
                 However, this proved some complications because one of our weapons used projectiles, while the other 2 used slashes. <br>
                 <br>
-                <button id="read-more-button">Read More...</button>
-                <div class="hidden-text" style="display:none";>
+                 </p>
+                <button class="toggle-button" id="toggleButton5">Read More</button>
+            <div class="code-reader" style="display: none;">
+                
                 <p>Given the time we had to complete the project, we were forced to go the clunky, but somewhat simpler approach of <br>
                 making every ability individually, rather than a modular system. We still kept it somewhat modular, but we had to "create"<br>
                 every ability within each weapon.cpp. We simply hid/disabled collision on the ability when it wasnt in use, and turned it on <br>
@@ -421,7 +390,8 @@ iframe {
                 <h4> Custom On Death Events</h4>
                 <img src="../ondeath.png" alt="ondeath" width ="720" height="480" alt ="Item Image">
                 <img src="../ondeath1.png" alt="ondeath1" width ="720" height="480" alt ="Item Image">
-                </div>
+            </div>
+               
             </p>
         </div>
         <hr class="sidebar-divider">
@@ -453,7 +423,7 @@ iframe {
             </video>
 
             <br>
-            <button id="toggleButton2">See Code</button>
+            <button class="toggle-button" id="toggleButton1">See Code</button>
             <textarea id = "codeReader" cols="150" rows="30" readonly style ="background-color: #272525; color:white; display: none; margin-left: 325px;">
                 void HeightmapComponent::RaiseTerrain(float x, float z, float radius, float height, float falloff)
                 {
@@ -505,7 +475,8 @@ iframe {
                 
                 Your browser does not support the video tag.
             </video>
-            <button id="toggleButton3">See Code</button>
+            <br>
+            <button class="toggle-button" id="toggleButton2">See Code</button>
             <textarea id = "codeReader1" cols="150" rows="50" readonly style ="background-color: #272525; color:white; display: none; margin-left: 325px;">
                 void IslandScene::LightUpdate(float deltaTime)
             {
@@ -615,7 +586,7 @@ iframe {
             </video>
             <br>
 
-            <button id="toggleButton4">See Code</button>
+            <button class="toggle-button" id="toggleButton3">See Code</button>
             <textarea id = "codeReader2" cols="150" rows="30" readonly style ="background-color: #272525; color:white; display: none;  margin-left: 700px;">
                 const FrameData* Animation::GetCurrentFrame()
                 {
@@ -669,7 +640,7 @@ iframe {
                 Your browser does not support the video tag.
             </video>
             <br>
-            <button id="toggleButton5">See Code</button>
+            <button class="toggle-button" id="toggleButton4">See Code</button>
             <textarea id = "codeReader3" cols="150" rows="30" readonly style ="background-color: #272525; color:white; display: none; margin-left: 705px;">
                //In gameobject.cpp
                 bool GameObject::DidCollide(const GameObject& gameobj1)
@@ -780,89 +751,39 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", highlightSidebarLink);
 });
  
-
-    const toggleButton1 = document.getElementById('toggleButton1');
-    const pdfViewer = document.getElementById('pdfViewer');
-
-        toggleButton1.addEventListener('click', function () {
-            if (pdfViewer.style.display === 'none') {
-                pdfViewer.style.display = 'block';
-            } else {
-                pdfViewer.style.display = 'none';
-            }
-        });
-
-    const readMoreButton = document.getElementById('read-more-button');
-    const hiddenText = document.querySelector('.hidden-text');
-
-readMoreButton.addEventListener('click', function () {
-    if (hiddenText.style.display === 'none' || hiddenText.style.display === '') {
-        hiddenText.style.display = 'block';
-        readMoreButton.textContent = 'Read Less';
+// Function to toggle element display
+function toggleElementDisplay(element) {
+    if (element.style.display === 'none' || element.style.display === '') {
+        element.style.display = 'block';
     } else {
-        hiddenText.style.display = 'none';
-        readMoreButton.textContent = 'Read More';
+        element.style.display = 'none';
+    }
+}
+// Event delegation for "Read More" buttons
+document.addEventListener('click', function (event) {
+    const target = event.target;
+
+    if (target.classList.contains('read-more-button')) {
+        const hiddenText = target.nextElementSibling;
+
+        toggleElementDisplay(hiddenText);
+
+        if (hiddenText.style.display === 'none') {
+            target.textContent = 'Read More';
+        } else {
+            target.textContent = 'Read Less';
+        }
     }
 });
 
-const toggleButton2 = document.getElementById('toggleButton2');
-    const codeReader = document.getElementById('codeReader');
+// Event listeners for toggle buttons
+const toggleButtons = document.querySelectorAll('.toggle-button');
 
-        toggleButton2.addEventListener('click', function () {
-            if (codeReader.style.display === 'none') {
-                codeReader.style.display = 'block';
-            } else {
-                codeReader.style.display = 'none';
-            }
-        });
-
-
-        const toggleButton3 = document.getElementById('toggleButton3');
-    const codeReader1 = document.getElementById('codeReader1');
-
-        toggleButton3.addEventListener('click', function () {
-            if (codeReader1.style.display === 'none') {
-                codeReader1.style.display = 'block';
-            } else {
-                codeReader1.style.display = 'none';
-            }
-        });
-
-        const toggleButton4 = document.getElementById('toggleButton4');
-    const codeReader2 = document.getElementById('codeReader2');
-
-        toggleButton4.addEventListener('click', function () {
-            if (codeReader2.style.display === 'none') {
-                codeReader2.style.display = 'block';
-            } else {
-                codeReader2.style.display = 'none';
-            }
-        });
-
-
-        const toggleButton5 = document.getElementById('toggleButton5');
-    const codeReader3 = document.getElementById('codeReader3');
-
-        toggleButton5.addEventListener('click', function () {
-            if (codeReader3.style.display === 'none') {
-                codeReader3.style.display = 'block';
-            } else {
-                codeReader3.style.display = 'none';
-            }
-        });
-
-
-
-        const readMoreButton1 = document.getElementById('read-more-button1');
-    const hiddenTex1 = document.querySelector('.hidden-text1');
-        readMoreButton1.addEventListener('click', function () {
-    if (hiddenText1.style.display === 'none' || hiddenText1.style.display === '') {
-        hiddenText1.style.display = 'block';
-        readMoreButton1.textContent = 'Read Less';
-    } else {
-        hiddenText1.style.display = 'none';
-        readMoreButton1.textContent = 'Read More';
-    }
+toggleButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        const codeReader = button.nextElementSibling;
+        toggleElementDisplay(codeReader);
+    });
 });
 
         // Copy to email button

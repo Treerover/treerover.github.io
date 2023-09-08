@@ -16,8 +16,7 @@
             color: #ddd;
         }
         h1 {
-            font-size: 46px;
-            margin-bottom: 20px;
+            font-size: 54px;
         }
         h2 {
             font-size: 34px;
@@ -32,12 +31,6 @@
             font-size: 24px;
         }
 
-        header {
-            background-color: #210b38;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-        }
         nav {
             text-align: center;
             background-color: #210b38;
@@ -87,15 +80,20 @@
 
 
         .blog-section h3 {
-            font-size: 20px;
+            font-size: 26px;
             text-decoration: wavy;
         }
         .blog-section h2 {
             text-decoration: underline;
+            font-size: 34px;
         }
         .blog-section p {
-            font-size: 18px;
+            font-size: 21px;
+            text-align: left;
+            padding-left: 310px;
         }
+
+
         .horizontal-nav ul {
     list-style-type: none;
     padding-top: 15px;
@@ -218,16 +216,19 @@
         iframe {
                     display: none; 
                 }
-            
-        #toggleButton1 {
-                padding: 10px 20px;
-                background-color: #210b38;
-                color: white;
-                border: none;
-                cursor: pointer;
-                transition: background-color 0.3s;
-                margin-bottom: 20px; 
-            }
+                .toggle-button {
+        padding: 10px 20px;
+        display: flex;
+        background-color: #210b38;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 20px; 
+    }
+.toggle-button:hover {
+        background-color: #2e1459;
+    }
         #read-more-button {
                 padding: 10px 20px;
                 background-color: #210b38;
@@ -240,9 +241,7 @@
         #read-more-button:hover {
                 background-color: #2e1459;
     }
-    #toggleButton1:hover {
-        background-color: #2e1459;
-    }
+
     .horizontal-nav a:hover {
         background-color: #2e1459;
         color: white;
@@ -251,8 +250,40 @@
             border-top: 1px solid #9031e9;
             margin: 15px 0; 
         }
+        .centered-container {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text inside items */
+}
+@media (max-width: 768px) {
+    .centered-container {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
+.pdf-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
 
-
+    overflow: hidden;
+}
+.button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-bottom: 20px;
+}
+header {
+    background-color: #210b38; /* Set a background color */
+    color: #fff; /* Set text color to white */
+    text-align: center; /* Center-align text */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0px 4px 6px rgba(69, 7, 85, 0.445); /* Add a subtle shadow */
+    max-width: 80%; /* Set a maximum width for the header */
+    margin: 0 auto; /* Center the header within the container */
+    padding: 1px;
+}
     </style>
 </head>
 <body>
@@ -278,11 +309,44 @@
         </ul>
     </nav>
     <div class="container">
+        <header>
+            <h1>Project Blog</h1>
+        </header>
+        <div class="blog-section" id="week2">
+            <h2>Week 2</h2>
+            <h3><em>Fri, Sept 15, 2023</em></h3>
+            <p>
+                Hasnt happened yet!
+            </p>
+           
+        </div>
+
         <div class="blog-section" id="week1">
             <h2>Week 1</h2>
             <h3><em>Fri, Sept 8th, 2023</em></h3>
-            <p>Week 1 stuff goes here.</p>
-            <img src="image1.png" alt="Item Image1" width="800" height="650">
+            <p>This blog will be semi casual, mainly used as a way to document progress throughout capstone, and keep myself organized. <br>
+                I'll be updating it every week on Friday, with the occasional bi weekly update if stuff is busy. <br>
+                <br>
+                This week we formed our teams, and had our first meeting. <br>
+                I was chosen as one of the two "team captains" who had to pick who would be on my team, dodgeball style. <br>
+                Needless to say, it was nerve wracking, but I was happy to have a team of people I know and trust, <br>
+                as well as a few new faces I was looking forward to work with. <br>
+                <br>
+                Our first meeting was mainly introductions, and getting to know each other. <br>
+                We also discussed our project, and what we wanted to do, and were tasked to bring games to the meeting <br>
+                that were similar to what we wanted to make. I brought Subnautica because I adore deep sea games,<br>
+                and I think it would be a fun challenge to make something similar. <br> 
+                Here is a write up of a game pitch I created for the Subnautica inspired game. <br>
+                <br>
+                <button class="toggle-button" id="toggleButton1" style="margin-left: 550px;">See PDF</button>
+                <iframe id="pdfViewer" src="../Game Proposal - Project Abyss.pdf" width="1080" height="720" frameborder="0" allowfullscreen style="display: none;"></iframe>
+                For next week, we will be setting up our Jira board, and getting our project proposal ready. <br>
+                I'm looking forward to getting started on this project, and I'm excited to see what we can do! <br>
+                <br>
+                Signing off, <br>
+                Austin M
+            </p>
+           
         </div>
 
 
@@ -343,28 +407,39 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", highlightSidebarLink);
 });
 
-    const toggleButton1 = document.getElementById('toggleButton1');
-    const pdfViewer = document.getElementById('pdfViewer');
-
-        toggleButton1.addEventListener('click', function () {
-            if (pdfViewer.style.display === 'none') {
-                pdfViewer.style.display = 'block';
-            } else {
-                pdfViewer.style.display = 'none';
-            }
-        });
-
-    const readMoreButton = document.getElementById('read-more-button');
-    const hiddenText = document.querySelector('.hidden-text');
-
-readMoreButton.addEventListener('click', function () {
-    if (hiddenText.style.display === 'none' || hiddenText.style.display === '') {
-        hiddenText.style.display = 'block';
-        readMoreButton.textContent = 'Read Less';
+// Function to toggle element display
+function toggleElementDisplay(element) {
+    if (element.style.display === 'none' || element.style.display === '') {
+        element.style.display = 'block';
     } else {
-        hiddenText.style.display = 'none';
-        readMoreButton.textContent = 'Read More';
+        element.style.display = 'none';
     }
+}
+// Event delegation for "Read More" buttons
+document.addEventListener('click', function (event) {
+    const target = event.target;
+
+    if (target.classList.contains('read-more-button')) {
+        const hiddenText = target.nextElementSibling;
+
+        toggleElementDisplay(hiddenText);
+
+        if (hiddenText.style.display === 'none') {
+            target.textContent = 'Read More';
+        } else {
+            target.textContent = 'Read Less';
+        }
+    }
+});
+
+// Event listeners for toggle buttons
+const toggleButtons = document.querySelectorAll('.toggle-button');
+
+toggleButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        const codeReader = button.nextElementSibling;
+        toggleElementDisplay(codeReader);
+    });
 });
 
     </script>
