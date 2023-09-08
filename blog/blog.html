@@ -149,61 +149,67 @@
             display: none;
         }
         .sidebar {
-            background: linear-gradient(to bottom, #210b38, #431d80);
-            color: white;
-            width: 200px;
-            padding: 20px;
-            position:absolute;
-            top: 72;
-            left: 0;
-            height: 100%;
-            overflow-y: auto; 
-            border-right: 2px solid #9031e9; 
-            border-top: 2px solid #9031e9;
-            border-left: 2px solid #9031e9;
-        }
+    background: linear-gradient(to bottom, #210b38, #431d80);
+    color: white;
+    width: 270px;
+    padding: 20px;
 
-        .sidebar h2 {
-            font-size: 24px;
-            padding-bottom: 10px;
-        }
+    position:fixed;
+    top: 480px; /* Adjust the value to control the sticky position */
+    left: 20px;
+    height:fit-content;
+    border-right: 2px solid #9031e9;
+    border-top: 2px solid #9031e9;
+    border-left: 2px solid #9031e9;
+    border-bottom: 2px solid #9031e9;
+}
 
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
+.sidebar h2 {
+    font-size: 32px;
+    padding-bottom: 20px;
+}
 
-        .sidebar li {
-            margin-bottom: 15px;
-        }
-        .text {
-            position:sticky;
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-            text-align: center;
-        }
-        .text h2{
-            text-decoration: underline;
-            padding-left: 7px;
-        }
-        .sidebar a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            transition: 0.3s; 
-        }
+.sidebar li {
+    margin-bottom: 15px;
+}
 
-        .sidebar a:hover {
-            text-decoration: underline;
-            color: #ffcc00; 
-        }
-           #myvideo {
-            border: 2px solid #9031e9;
-         }
-     
-        .sidebar a.active {
-            font-weight: bold; 
-            color: #ffcc00; 
-        }
+.text {
+    /* You can style the sticky content here */
+    text-align: center;
+    background: linear-gradient(to bottom, #210b38, #431d80); /* Add background color for better visibility */
+    padding: 10px 10px;
+}
+
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s; 
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+    color: #ffcc00; 
+
+}
+   #myvideo {
+    border: 2px solid #9031e9;
+ }
+
+ .sidebar a.active {
+    font-weight: bold;
+    color: #ffcc00;
+    background-color: rgba(255, 255, 255, 0.2); /* Background color for the active link */
+    padding: 4px;
+
+}
+       
         hr {
             border: none;
             border-top: 1px solid #ddd; 
@@ -272,7 +278,7 @@
         </ul>
     </nav>
     <div class="container">
-        <div id="week1" class="blog-section">
+        <div class="blog-section" id="week1">
             <h2>Week 1</h2>
             <h3><em>Fri, Sept 8th, 2023</em></h3>
             <p>Week 1 stuff goes here.</p>
@@ -299,25 +305,42 @@
     <script>
 const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
 
-    const projectSections = document.querySelectorAll('section[id^="project"]');
-const sidebarLinks = document.querySelectorAll('.sidebar a');
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    projectSections.forEach((projectSection) => {
-        const projectTop = projectSection.offsetTop;
-        const projectHeight = projectSection.clientHeight;
-        if (pageYOffset >= projectTop - projectHeight / 2) {
-            current = projectSection.getAttribute('id');
-        }
-    });
+// JavaScript code for highlighting sidebar links on scroll
+document.addEventListener("DOMContentLoaded", function () {
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
 
-    sidebarLinks.forEach((sidebarLink) => {
-        sidebarLink.classList.remove('active');
-        if (sidebarLink.getAttribute('href').substring(1) === current) {
-            sidebarLink.classList.add('active');
-        }
-    });
+    // Function to highlight the current section in the sidebar
+    function highlightSidebarLink() {
+        const currentScroll = window.scrollY;
+
+        // Loop through each project section
+        document.querySelectorAll(".blog-section").forEach(function (section) {
+            const sectionTop = section.offsetTop - 100; // Adjust this value if needed
+
+            if (currentScroll >= sectionTop) {
+                // Get the corresponding sidebar link
+                const sectionId = section.id;
+                const correspondingLink = document.querySelector(`.sidebar a[href="#${sectionId}"]`);
+
+                // Remove active class from all links
+                sidebarLinks.forEach(function (link) {
+                    link.classList.remove("active");
+                });
+
+                // Add active class to the corresponding link
+                if (correspondingLink) {
+                    correspondingLink.classList.add("active");
+                }
+            }
+        });
+    }
+
+    // Initial call to set the initial state
+    highlightSidebarLink();
+
+    // Listen for scroll events to highlight the appropriate link
+    window.addEventListener("scroll", highlightSidebarLink);
 });
 
     const toggleButton1 = document.getElementById('toggleButton1');

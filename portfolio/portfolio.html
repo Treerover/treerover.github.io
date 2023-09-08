@@ -55,7 +55,7 @@
             margin-left: 390px;
         }
         .contact {
-            margin-top: 450px;
+            margin-top: 420px;
         }
         .contact-button-container {
          display: flex;
@@ -140,21 +140,22 @@
 .sidebar {
     background: linear-gradient(to bottom, #210b38, #431d80);
     color: white;
-    width: 200px;
+    width: 270px;
     padding: 20px;
-    position:absolute;
-    top: 72;
-    left: 0;
-    height: 100%;
-    overflow-y: auto; 
-    border-right: 2px solid #9031e9; 
+
+    position:fixed;
+    top: 480px; /* Adjust the value to control the sticky position */
+    left: 20px;
+    height:fit-content;
+    border-right: 2px solid #9031e9;
     border-top: 2px solid #9031e9;
     border-left: 2px solid #9031e9;
+    border-bottom: 2px solid #9031e9;
 }
 
 .sidebar h2 {
-    font-size: 24px;
-    padding-bottom: 10px;
+    font-size: 32px;
+    padding-bottom: 20px;
 }
 
 .sidebar ul {
@@ -165,33 +166,39 @@
 .sidebar li {
     margin-bottom: 15px;
 }
-.text{
-    position:sticky;
+
+.text {
+    /* You can style the sticky content here */
     text-align: center;
+    background: linear-gradient(to bottom, #210b38, #431d80); /* Add background color for better visibility */
+    padding: 10px 10px;
 }
-.text a{
-    position:sticky;
-    text-align: center;
-}
+
+
 .sidebar a {
     text-decoration: none;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     transition: 0.3s; 
 }
 
 .sidebar a:hover {
     text-decoration: underline;
     color: #ffcc00; 
+
 }
    #myvideo {
     border: 2px solid #9031e9;
  }
 
-.sidebar a.active {
-    font-weight: bold; 
-    color: #ffcc00; 
+ .sidebar a.active {
+    font-weight: bold;
+    color: #ffcc00;
+    background-color: rgba(255, 255, 255, 0.2); /* Background color for the active link */
+    padding: 4px;
+
 }
+
 hr {
     border: none;
     border-top: 1px solid #ddd; 
@@ -305,11 +312,20 @@ iframe {
     }
 
 
-
     </style>
 </head>
 <body>
 
+
+    <nav class="horizontal-nav">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li class="active"><a href="#">Portfolio</a></li>
+            <li><a href="../blog/blog.html">Project Blog</a></li>
+            <li><a href="../resume.html">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
     <aside class="sidebar">
         <div class="text">
         <h2>Project Timeline</h2>
@@ -324,24 +340,15 @@ iframe {
         </ul>
         </div>
     </aside>
-    <nav class="horizontal-nav">
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li class="active"><a href="#">Portfolio</a></li>
-            <li><a href="../blog/blog.html">Project Blog</a></li>
-            <li><a href="../resume.html">Resume</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
     <div class="container">
         <div class="portfolio-item" id = "project1">
             <h2>Major Capstone</h2>
             <p>Date Made: September 2023 - April 2024</p>
-            <p>Class: Capstone I</p>
+            <p>Class: Capstone I & II</p>
 
             <img src="item-image.jpg" alt="Item Image">
             <p>
-                Description of your portfolio item goes here. You can provide details about the project, your role, and any notable achievements.
+                Anything thats added here is a work in progress. Ill be posting finished products throughout the year.
             </p>
         </div>
         <hr class="sidebar-divider">
@@ -736,26 +743,43 @@ iframe {
     <script>
 const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
 
-    const projectSections = document.querySelectorAll('section[id^="project"]');
-const sidebarLinks = document.querySelectorAll('.sidebar a');
+// JavaScript code for highlighting sidebar links on scroll
+document.addEventListener("DOMContentLoaded", function () {
+    const sidebarLinks = document.querySelectorAll(".sidebar a");
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    projectSections.forEach((projectSection) => {
-        const projectTop = projectSection.offsetTop;
-        const projectHeight = projectSection.clientHeight;
-        if (pageYOffset >= projectTop - projectHeight / 2) {
-            current = projectSection.getAttribute('id');
-        }
-    });
+    // Function to highlight the current section in the sidebar
+    function highlightSidebarLink() {
+        const currentScroll = window.scrollY;
 
-    sidebarLinks.forEach((sidebarLink) => {
-        sidebarLink.classList.remove('active');
-        if (sidebarLink.getAttribute('href').substring(1) === current) {
-            sidebarLink.classList.add('active');
-        }
-    });
+        // Loop through each project section
+        document.querySelectorAll(".portfolio-item").forEach(function (section) {
+            const sectionTop = section.offsetTop - 100; // Adjust this value if needed
+
+            if (currentScroll >= sectionTop) {
+                // Get the corresponding sidebar link
+                const sectionId = section.id;
+                const correspondingLink = document.querySelector(`.sidebar a[href="#${sectionId}"]`);
+
+                // Remove active class from all links
+                sidebarLinks.forEach(function (link) {
+                    link.classList.remove("active");
+                });
+
+                // Add active class to the corresponding link
+                if (correspondingLink) {
+                    correspondingLink.classList.add("active");
+                }
+            }
+        });
+    }
+
+    // Initial call to set the initial state
+    highlightSidebarLink();
+
+    // Listen for scroll events to highlight the appropriate link
+    window.addEventListener("scroll", highlightSidebarLink);
 });
+ 
 
     const toggleButton1 = document.getElementById('toggleButton1');
     const pdfViewer = document.getElementById('pdfViewer');
