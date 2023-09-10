@@ -7,24 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-            text-align: center;
-            overflow: hidden;
-            cursor:none;
-        }
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    overflow: hidden;
+    cursor: none;
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    justify-content: center; /* Center child elements vertically */
+    align-items: center; /* Center child elements horizontally */
+    min-height: 100vh; /* Ensure a minimum height of 100% of the viewport */
+}
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Vertically distribute content */
+    align-items: center;
+    min-height: 100vh; /* Ensure container takes up at least full viewport height */
+}
+
+
                .trail { /* className for the trail elements */
            position: absolute;
            height: 6px; width: 6px;
@@ -94,8 +101,7 @@
 
         h1 {
             font-size: 64px;
-            margin-bottom: 20px;
-            margin-top:500px;
+            margin-top: auto; /* Adjust this value as needed */
             pointer-events: none;
         }
 
@@ -105,11 +111,12 @@
             pointer-events: none;
         }
         .button-container {
-            display: flex;
-            gap: 20px;
-            flex-direction: row; /* Display buttons horizontally */
-            justify-content: center; /* Center the buttons horizontally */
-          }
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line on small screens */
+    gap: 20px;
+    justify-content: center; /* Center the buttons horizontally */
+   
+}
 
 
         .button {
@@ -131,8 +138,9 @@
         }
 
         .contact {
-            margin-top: 450px;
-        }
+    margin-top: auto; /* Pushes the contact section to the bottom */
+    margin-bottom: 20px; /* Optional: Add some space above the contact section */
+}
         .contact-button-container {
          display: flex;
           gap: 30px;
