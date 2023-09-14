@@ -40,6 +40,23 @@ body {
            z-index: 10000;
            pointer-events: none;
          }
+                 .game-circle {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: rgb(147, 85, 230);
+            border-radius: 50%;
+            animation: pulsate 1s ease-in-out infinite alternate;
+
+        }
+              @keyframes pulsate {
+          0% {
+              transform: scale(1);
+          }
+          100% {
+              transform: scale(1.5);
+          }
+        }
 
         .name-animation {
             animation: wavyAnimation 3s infinite alternate ease-in-out;
@@ -164,7 +181,16 @@ body {
         .contact-buttons:hover  {
             background-color: #2e1459;
         }
+        #counter {
 
+          top: 20px;
+          right: 20px;
+          font-size: 30px;
+          color: #fff;
+          padding: 1px 1px;
+          border-radius: 2px;
+          display: none; /* Hide initially */
+                }
 
 
     </style>
@@ -172,7 +198,7 @@ body {
 <body>
 
     <div class="container">
-
+      <div id="counter" style="display: none;"><span id="circleCount">0</span></div>
       <h1><span class="name-animation">A</span><span class="name-animation">u</span><span class="name-animation">s</span><span class="name-animation">t</span><span class="name-animation">i</span><span class="name-animation">n </span> <span class="name-animation">M</span><span class="name-animation">o</span><span class="name-animation">r</span><span class="name-animation">r</span><span class="name-animation">i</span><span class="name-animation">s</span>
         </h1>
         <div class="button-container">
@@ -195,14 +221,77 @@ body {
 
     <script>
 
-                // dots is an array of Dot objects,
-// mouse is an object used to track the X and Y position
+const container = document.querySelector('.container');
    // of the mouse, set with a mousemove event listener below
-var dots = [],
+   var dots = [],
     mouse = {
       x: 0,
       y: 0
     };
+    const circleCount = document.getElementById('circleCount');
+let collectedCircles = 0;
+const plopSound = new Audio('plop.mp3'); // Replace 'plop.mp3' with your sound file's path
+plopSound.volume = 0.1;
+
+
+function createGameCircle() {
+    const circle = document.createElement('div');
+    circle.classList.add('game-circle');
+
+    // Generate a random hue value between 0 and 360 (for HSL color)
+    const randomHue = Math.floor(Math.random() * 360);
+    
+    // Set the background color using the generated hue
+    circle.style.backgroundColor = `hsl(${randomHue}, 100%, 50%)`;
+
+    circle.style.left = `${Math.random() * document.body.clientWidth}px`;
+    circle.style.top = `${Math.random() * document.body.clientHeight}px`;
+    container.appendChild(circle);
+
+    // Add a mouseover event listener to the circle
+    circle.addEventListener('mouseover', () => {
+        // Remove the circle from the container
+        container.removeChild(circle);
+
+        // Create a new Dot object and add it to the dots array
+        const dot = new Dot();
+        dots.push(dot);
+
+        // Set the dot's background color to match the circle's color
+        dot.node.style.backgroundColor = circle.style.backgroundColor;
+        collectedCircles++;
+        circleCount.textContent = collectedCircles;
+
+        // Show the counter after the first circle is collected
+        if (collectedCircles === 1) {
+            counter.style.display = 'block';
+        }
+        // Play the plop sound effect
+        plopSound.currentTime = 0; // Reset sound to the beginning (in case it's already playing)
+        plopSound.play();
+    });
+}
+// Function to create a game circle
+if (circleCount.length() < 25){
+    // Create game circles at regular intervals
+    setInterval(createGameCircle, 2000);
+}
+
+ // Function to handle mousemove event
+ function handleMouseMove(event) {
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+            trail.style.left = `${event.pageX}px`;
+            trail.style.top = `${event.pageY}px`;
+            document.body.appendChild(trail);
+
+            // Remove trails after a short delay
+            setTimeout(() => {
+                document.body.removeChild(trail);
+            }, 1000);
+        }
+
+
 
 // The Dot object used to scaffold the dots
 var Dot = function() {
@@ -223,7 +312,7 @@ Dot.prototype.draw = function() {
 };
 
 // Creates the Dot objects, populates the dots array
-for (var i = 0; i < 12; i++) {
+for (var i = 0; i < 8; i++) {     
   var d = new Dot();
   dots.push(d);
 }
@@ -268,30 +357,7 @@ animate();
 
         let currentSlide = [0, 0];
 
-        function showSlide(id) {
-            let slides = document.querySelectorAll('.slideshow-container')[id].querySelectorAll('.image-container');
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = 'none';
-            }
-            slides[currentSlide[id]].style.display = 'block';
-        }
-
-        function changeSlideProject1(increment) {
-            currentSlide[0] = (currentSlide[0] + increment) % 3;
-            if (currentSlide[0] < 0) {
-                currentSlide[0] = 2;
-            }
-            showSlide(0);
-        }
-
-        function changeSlideProject2(increment) {
-            currentSlide[1] = (currentSlide[1] + increment) % 3;
-            if (currentSlide[1] < 0) {
-                currentSlide[1] = 2;
-            }
-            showSlide(1);
-        }
-
+    
         // Copy to email button
         function copyToClipboard(text) {
             var textField = document.createElement('textarea');
