@@ -185,13 +185,28 @@ body {
           display: none; /* Hide initially */
                 }
 
+.circular-button {
+    width: 45px; /* Adjust the size as needed */
+    height: 35px; /* Adjust the size as needed */
+    border-radius: 50%;
+    background-color: #210b38;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 1000;
+}
 
+.circular-button:hover {
+    background-color: #2e1459;
+}
     </style>
 </head>
 <body>
 
     <div class="container">
-      <button id="startButton">Start</button> <!-- Add the start button -->
+      <button id="startButton" class="circular-button">Start</button>
       <div id="counter" style="display: none;"><span id="circleCount">0</span></div>
       <h1><span class="name-animation">A</span><span class="name-animation">u</span><span class="name-animation">s</span><span class="name-animation">t</span><span class="name-animation">i</span><span class="name-animation">n </span> <span class="name-animation">M</span><span class="name-animation">o</span><span class="name-animation">r</span><span class="name-animation">r</span><span class="name-animation">i</span><span class="name-animation">s</span>
         </h1>
