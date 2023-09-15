@@ -321,18 +321,7 @@ cursorHitbox.style.height = `${hitboxSize}px`;
     container.appendChild(circle);
 
     // Add a mouseover event listener to check for collision with the cursor hitbox
-    circle.addEventListener('mouseover', () => {
-      updateCursorHitboxSize();
-    const cursorRect = cursorHitbox.getBoundingClientRect();
-    const circleRect = circle.getBoundingClientRect();
-
-    // Check if there's a collision between the cursor hitbox and the circle
-    if (
-        cursorRect.left < circleRect.right &&
-        cursorRect.right > circleRect.left &&
-        cursorRect.top < circleRect.bottom &&
-        cursorRect.bottom > circleRect.top
-    ) {
+    circle.addEventListener('mouseover', () => {{
         // Remove the circle from the container
         container.removeChild(circle);
 
