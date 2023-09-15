@@ -454,7 +454,7 @@ function checkCollisions() {
         const dot = new Dot();
 
         
-        // Check if collectedCircles count has reached a certain amount (e.g., 10)
+
         if (collectedCircles >= 1) {
             // Increase the size of all dots on the trail
             dots.forEach(dot => {
@@ -498,10 +498,8 @@ document.addEventListener('mousemove', handleMouseMove);
         return n;
     }());
 
-     // Method to increase the size of the dot and keep the hitbox centered
-    // Method to increase the size of the dot and keep the hitbox centered
 this.increaseSize = function() {
-    this.size += 2; // You can adjust the size increase as needed
+    this.size += 0.5; // 
 
     const halfSize = this.size / 2;
     
@@ -510,7 +508,6 @@ this.increaseSize = function() {
     this.node.style.height = this.size + "px";
 
 
-    // Calculate the new position to keep the dot centered
     const newX = this.x - halfSize;
     const newY = this.y - halfSize;
 
@@ -518,7 +515,7 @@ this.increaseSize = function() {
     this.node.style.left = newX + "px";
     this.node.style.top = newY + "px";
 
-    this.node.style.borderRadius = "50%"; // Ensures the dot remains circular
+    this.node.style.borderRadius = "50%"; 
 };
 
     // Call the draw function immediately to set the initial position and size
@@ -572,7 +569,7 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// And get it started by calling animate().
+
 animate();
 
 
