@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+#game-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+#player {
+    width: 30px;
+    height: 30px;
+    background-color: #3498db;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.food {
+    width: 20px;
+    height: 20px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    position: absolute;
+    /* Randomly position the food using JavaScript */
+}
+
+</style>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="player"></div>
+        <!-- You can add more small circles here as "food" -->
+        <div class="food"></div>
+        <div class="food"></div>
+        <div class="food"></div>
+        <!-- Add more food as needed -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+const player = document.getElementById('player');
+const foods = document.querySelectorAll('.food');
+
+let playerSize = 30;
+
+// Initialize player position
+let playerX = window.innerWidth / 2 - playerSize / 2;
+let playerY = window.innerHeight / 2 - playerSize / 2;
+player.style.width = playerSize + 'px';
+player.style.height = playerSize + 'px';
+player.style.left = playerX + 'px';
+player.style.top = playerY + 'px';
+
+// Function to update player position based on mouse cursor
+function updatePlayerPosition(event) {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    // Center the player circle on the mouse cursor
+    playerX = mouseX - playerSize / 2;
+    playerY = mouseY - playerSize / 2;
+
+    // Update the player's position
+    player.style.left = playerX + 'px';
+    player.style.top = playerY + 'px';
+}
+
+// Add a mousemove event listener to update the player's position
+document.addEventListener('mousemove', updatePlayerPosition);
+
+// Randomly position the food
+foods.forEach(food => {
+    const foodX = Math.random() * (window.innerWidth - 20); // 20 is the food size
+    const foodY = Math.random() * (window.innerHeight - 20);
+    food.style.left = foodX + 'px';
+    food.style.top = foodY + 'px';
+});
+
+// Function to check for collisions and handle eating
+function checkCollisions() {
+    foods.forEach(food => {
+        if (isColliding(player, food)) {
+            playerSize += 2;
+            player.style.width = playerSize + 'px';
+            player.style.height = playerSize + 'px';
+            food.remove();
+        }
+    });
+}
+
+// Function to check if two elements are colliding
+function isColliding(element1, element2) {
+    const rect1 = element1.getBoundingClientRect();
+    const rect2 = element2.getBoundingClientRect();
+    return !(
+        rect1.right < rect2.left ||
+        rect1.left > rect2.right ||
+        rect1.bottom < rect2.top ||
+        rect1.top > rect2.bottom
+    );
+}
+
+// Update game loop
+function update() {
+    checkCollisions();
+    requestAnimationFrame(update);
+}
+
+update();
+</script>

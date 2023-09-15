@@ -178,7 +178,7 @@ body {
 
           top: 20px;
           right: 20px;
-          font-size: 30px;
+          font-size: 40px;
           color: #fff;
           padding: 1px 1px;
           border-radius: 2px;
@@ -210,13 +210,39 @@ body {
     pointer-events: none; /* Prevent it from blocking interactions with other elements */
     z-index: 10000; /* Make sure it's on top of everything else */
 }
+.speed-button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #2e1459;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            display: none;
+        }
+    .speed-button:active {
+      background-color: #2980b9;
+            transform: scale(1.1);
+    }
+        .speed-button:hover {
+            background-color: #2980b9;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
-  <div id="cursor-hitbox"></div>
+
     <div class="container">
-      <button id="startButton" class="circular-button">Start</button>
       <div id="counter" style="display: none;"><span id="circleCount">0</span></div>
+      <div>
+        <button id="speed1x" class="speed-button">1x Speed</button>
+        <button id="speed2x" class="speed-button">2x Speed</button>
+        <button id="speed5x" class="speed-button">5x Speed</button>
+    </div>
+    <button id="startButton" class="circular-button">Play</button>
+    <button id="resetButton" class="circular-button" style="display: none;">Reset</button>
       <h1><span class="name-animation">A</span><span class="name-animation">u</span><span class="name-animation">s</span><span class="name-animation">t</span><span class="name-animation">i</span><span class="name-animation">n </span> <span class="name-animation">M</span><span class="name-animation">o</span><span class="name-animation">r</span><span class="name-animation">r</span><span class="name-animation">i</span><span class="name-animation">s</span>
         </h1>
         <div class="button-container">
@@ -238,10 +264,48 @@ body {
 
 
     <script>
+let spawnInterval = 1500; // Default spawning interval (1x speed)
+let gameInterval; // Reference to the setInterval
+
+const contact = document.querySelector('.contact');
+const speed1xButton = document.getElementById('speed1x');
+const speed2xButton = document.getElementById('speed2x');
+const speed5xButton = document.getElementById('speed5x');
+
+function startGameWith1xInterval() {
+    spawnInterval = 1500; // 1x speed
+    clearInterval(gameInterval); // Clear the existing interval
+    gameInterval = setInterval(createGameCircle, spawnInterval); // Set a new interval
+}
+
+
+speed1xButton.addEventListener('click', () => {
+    spawnInterval = 1500; // 1x speed
+    clearInterval(gameInterval); // Clear the existing interval
+    gameInterval = setInterval(createGameCircle, spawnInterval); // Set a new interval
+
+});
+
+speed2xButton.addEventListener('click', () => {
+    spawnInterval = 750; // 2x speed
+    clearInterval(gameInterval); // Clear the existing interval
+    gameInterval = setInterval(createGameCircle, spawnInterval); // Set a new interval
+    
+});
+
+speed5xButton.addEventListener('click', () => {
+    spawnInterval = 300; // 5x speed
+    clearInterval(gameInterval); // Clear the existing interval
+    gameInterval = setInterval(createGameCircle, spawnInterval); // Set a new interval
+});
+
+
+
 const cursorHitbox = document.getElementById('cursor-hitbox');
 const container = document.querySelector('.container');
    // of the mouse, set with a mousemove event listener below
    var dots = [];
+   var gameCircles = [];
     mouse = {
       x: 0,
       y: 0
@@ -250,53 +314,97 @@ const container = document.querySelector('.container');
 let collectedCircles = 0;
 const plopSound = new Audio('plop.mp3'); // Replace 'plop.mp3' with your sound file's path
 plopSound.volume = 0.1;
+
+const gameMusic = new Audio ('music.mp3');
+gameMusic.volume = 0.1;
+//Music by 8bit Betty via freemusicarchive.org
 const startButton = document.getElementById('startButton');
+
         startButton.addEventListener('click', startGame);
 
         let gameStarted = false;
-
-
+        const resetButton = document.getElementById('resetButton');
+      // Add a click event listener to the reset button
+resetButton.addEventListener('click', resetGame);
         function startGame() {
             if (!gameStarted) {
+              clearInterval(gameInterval);
                 // Show the game elements
                 startButton.hidden = true;
+
+        gameMusic.currentTime = 0; 
+        gameMusic.play();
+                            // Show the speed buttons when the "Start" button is clicked
+            speed1xButton.style.display = 'inline-block';
+            speed2xButton.style.display = 'inline-block';
+            speed5xButton.style.display = 'inline-block';
                 document.querySelectorAll('.game-circle').forEach(circle => {
                     circle.style.display = 'block';
                 });
                 document.getElementById('counter').style.display = 'block';
-
-                // Start creating game circles
-                setInterval(createGameCircle, 1500);
-
+                startGameWith1xInterval();
+                
                 // Enable the button
                 startButton.disabled = true;
+                startButton.style.display = 'none';
+                 // Show the reset button
+                 resetButton.disabled = false;
+                  resetButton.style.display = 'inline-block';
 
                 // Set gameStarted to true to prevent starting the game again
                 gameStarted = true;
             }
         }
 
-        // Initialize cursor size
-let cursorSize = 20;
-        // Function to update the cursor hitbox size
-function updateCursorHitboxSize() {
- 
-    cursorHitbox.style.width = `${cursorSize}px`;
-    cursorHitbox.style.height = `${cursorSize}px`;
+// Function to reset the game
+function resetGame() {
+    // Reset game variables
+    collectedCircles = 0;
+    circleCount.textContent = collectedCircles;
+
+     // Reset the size of the first 8 dots to the initial size
+     for (let i = 0; i < 8; i++) {
+        dots[i].size = 6; // Set the initial size (adjust as needed)
+        dots[i].node.style.width = dots[i].size + "px";
+        dots[i].node.style.height = dots[i].size + "px";
+    }
+
+    // Remove dots starting from index 8 to the end of the array
+    for (let i = 8; i < dots.length; i++) {
+        dots[i].node.remove();
+    }
+    dots.length = 8; // Keep only the first 8 dots in the array
+
+    // Clear the screen
+    const gameCircleElements = document.querySelectorAll('.game-circle');
+    gameCircleElements.forEach(circle => circle.remove());
+
+    // Stop the game interval
+    clearInterval(gameInterval);
+    gameStarted = false;
+
+    startButton.disabled = false;
+    // Hide the reset button
+    resetButton.style.display = 'none';
+
+    // Show the "Start" button
+    startButton.style.display = 'block';
+
+    gameMusic.pause();
+
+    // Enable the speed buttons
+    speed1xButton.disabled = false;
+    speed2xButton.disabled = false;
+    speed5xButton.disabled = false;
 }
 
-        
 function handleMouseMove(event) {
-  const hitboxSize = Math.max(20, 20 + collectedCircles * 5); // You can adjust the initial and incremental sizes
 
-// Update the position and size of the cursor hitbox
-cursorHitbox.style.left = `${event.pageX - hitboxSize / 2}px`;
-cursorHitbox.style.top = `${event.pageY - hitboxSize / 2}px`;
-cursorHitbox.style.width = `${hitboxSize}px`;
-cursorHitbox.style.height = `${hitboxSize}px`;
 
 }
         function createGameCircle() {
+          if (gameStarted) {
+            // Create a new game circle
     const circle = document.createElement('div');
     circle.classList.add('game-circle');
 
@@ -318,22 +426,34 @@ cursorHitbox.style.height = `${hitboxSize}px`;
     circle.style.left = `${circleX}px`;
     circle.style.top = `${circleY}px`;
 
+    gameCircles.push(circle);
     container.appendChild(circle);
 
-    // Add a mouseover event listener to check for collision with the cursor hitbox
-    circle.addEventListener('mouseover', () => {{
-        // Remove the circle from the container
-        container.removeChild(circle);
+          }
+    
+        
+    }
 
-        // Create a new Dot object and add it to the dots array
+
+function checkCollisions() {
+  const visibleCircles = gameCircles.filter(circle => circle.style.display !== 'none');
+  visibleCircles.forEach(circle => {
+        const rect1 = dots[0].node.getBoundingClientRect();
+        const rect2 = circle.getBoundingClientRect();
+
+        if (
+            !(
+                rect1.right < rect2.left ||
+                rect1.left > rect2.right ||
+                rect1.bottom < rect2.top ||
+                rect1.top > rect2.bottom
+            )
+        ) {
+
+            // Create a new Dot object and add it to the dots array
         const dot = new Dot();
-        dots.push(dot);
 
-        // Set the dot's background color to match the circle's color
-        dot.node.style.backgroundColor = circle.style.backgroundColor;
-        collectedCircles++;
-        circleCount.textContent = collectedCircles;
-
+        
         // Check if collectedCircles count has reached a certain amount (e.g., 10)
         if (collectedCircles >= 1) {
             // Increase the size of all dots on the trail
@@ -341,20 +461,28 @@ cursorHitbox.style.height = `${hitboxSize}px`;
                 dot.increaseSize();
             });
         }
+        dots.push(dot);
+
+        // Set the dot's background color to match the circle's color
+        dot.node.style.backgroundColor = circle.style.backgroundColor;
+        collectedCircles++;
+        circleCount.textContent = collectedCircles;
+
 
         // Show the counter after the first circle is collected
         if (collectedCircles === 1) {
             counter.style.display = 'block';
         }
 
+
         // Play the plop sound effect
         plopSound.currentTime = 0; // Reset sound to the beginning (in case it's already playing)
         plopSound.play();
-    }
+        // Remove the collected circle from the DOM
+        circle.style.display = 'none';
+        }
     });
 }
-
-
 
 // Attach the mousemove event handler
 document.addEventListener('mousemove', handleMouseMove);
@@ -412,25 +540,7 @@ for (var i = 0; i < 10; i++) {
   dots.push(d);
 }
 
-// This is the screen redraw function
-function draw() {
-  // Make sure the mouse position is set everytime
-    // draw() is called.
-  var x = mouse.x,
-      y = mouse.y;
-  
-  
-  dots.forEach(function(dot, index, dots) {
-    var nextDot = dots[index + 1] || dots[0];
-    
-    dot.x = x;
-    dot.y = y;
-    dot.draw();
-    x += (nextDot.x - dot.x) * .6;
-    y += (nextDot.y - dot.y) * .6;
 
-  });
-}
 
 addEventListener("mousemove", function(event) {
   //event.preventDefault();
@@ -438,11 +548,28 @@ addEventListener("mousemove", function(event) {
   mouse.y = event.pageY;
 });
 
-// animate() calls draw() then recursively calls itself
-  // everytime the screen repaints via requestAnimationFrame().
 function animate() {
-  draw();
-  requestAnimationFrame(animate);
+    // Get the current mouse position
+    var x = mouse.x;
+    var y = mouse.y;
+
+    // Check for collisions
+    checkCollisions();
+
+
+    
+    // Update dot positions
+    dots.forEach(function(dot, index, dots) {
+        var nextDot = dots[index + 1] || dots[0];
+        dot.x = x;
+        dot.y = y;
+        dot.draw();
+        x += (nextDot.x - dot.x) * 0.6;
+        y += (nextDot.y - dot.y) * 0.6;
+    });
+
+    // Request the next frame
+    requestAnimationFrame(animate);
 }
 
 // And get it started by calling animate().
