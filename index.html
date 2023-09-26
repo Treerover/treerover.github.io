@@ -233,7 +233,7 @@ body {
     </style>
 </head>
 <body>
-
+  
     <div class="container">
       <div id="counter" style="display: none;"><span id="circleCount">0</span></div>
       <div>
@@ -271,6 +271,7 @@ const contact = document.querySelector('.contact');
 const speed1xButton = document.getElementById('speed1x');
 const speed2xButton = document.getElementById('speed2x');
 const speed5xButton = document.getElementById('speed5x');
+const fish = document.getElementById('fish');
 
 function startGameWith1xInterval() {
     spawnInterval = 1500; // 1x speed
@@ -554,7 +555,6 @@ function animate() {
     checkCollisions();
 
 
-    
     // Update dot positions
     dots.forEach(function(dot, index, dots) {
         var nextDot = dots[index + 1] || dots[0];
