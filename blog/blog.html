@@ -23,8 +23,13 @@
             text-decoration: underline;
         }
         h3 {
-            font-size: 26px;
+            font-size: 34px;
             text-decoration: underline;
+        }
+        h4 {
+            font-size: 30px;
+            text-align: left;
+            padding-left: 10%;
         }
         
         p {
@@ -82,10 +87,14 @@
         .blog-section h3 {
             font-size: 22px;
             text-decoration: wavy;
+            text-align: left;
+            padding-left: 10%;
         }
         .blog-section h2 {
             text-decoration: underline;
-            font-size: 34px;
+            font-size: 38px;
+            text-align: left;
+            padding-left: 10%;
         }
         .blog-section p {
             font-size: 21px;
@@ -253,6 +262,11 @@
             border-top: 1px solid #9031e9;
             margin: 15px 0; 
         }
+        .sidebar-divider2 {
+            border-top: 1px solid #9031e9;
+            margin: 15px 180px; 
+        }
+        
         .centered-container {
     display: flex;
     flex-direction: column; /* Stack content vertically */
@@ -300,11 +314,14 @@ header {
         <div class="text">
         <h2>Weekly Updates</h2>
         <ul>
+            <li><a href="#week4">Week 4</a></li>
+            <hr class="sidebar-divider">
             <li><a href="#week3">Week 3</a></li>
             <hr class="sidebar-divider">
             <li><a href="#week2">Week 2</a></li>
             <hr class="sidebar-divider">
             <li><a href="#week1">Week 1</a></li>
+            
         </ul>
         </div>
     </aside>
@@ -320,11 +337,62 @@ header {
    
     <div class="container">
         <header>
-            <h1>Project Blog</h1>
+            <h1>"Project: Abyss" Blog</h1>
         </header>
+
+        <div class="blog-section" id="week4">
+            <h2>Week 4</h2>
+            <h3><em>Fri, Sept 29, 2023</em></h3>
+            <h4>Pitch Presentation & Gameplan</h4>
+            <p>
+                This was a fairly stressful week, as we had to get our pitch presentation ready for Wednesday. <br>
+                We were well prepared, so it wasn't too bad, but it was still a bit stressful as we aren't too used to presenting. <br>
+                We had to make a slideshow, and a video, and the prototype needed to be playable in front of the audience. <br>
+                There was luckily no technical issues, and the presentation including the prototype went smoothly. <br>
+                <br>
+                After we finished the presentation, we had a meeting on friday to discuss our gameplan for the next few months. <br>
+                Firstly, we decided to use a new git repository, as the old one was a bit messy. <br> As I'm the build engineer, I was tasked with setting up the new repository. <br>
+                I also went over how to use Github for the artists to make sure they were comfortable with it, and there were no issues. <br>
+                <br>
+                Since I pitched the game idea, I've taken initiative with a somewhat leadership role. I've been making sure everyone is on the same page in the project, and I've been making sure everyone is doing okay, <br>
+                and I've been trying to keep the team morale up. <br> After we pivoted games, team morale was a bit down, but after the presentation <br>
+                and a few meetings, everything has started to go extremely well. I'm very happy with how the team is working together, <br>
+                and I'm excited to see what we can do. <br>
+                <br>
+                Here's the slideshow that I mostly completed on my own that we used for the presentation. <br>
+                <button class="toggle-button" id="toggleButton7">See Slideshow</button>
+                    <iframe id="pdfViewer" src="../Project Abyss Pitch Slideshow.pdf" width="1080" height="720" frameborder="0" allowfullscreen style="display: none;"></iframe>
+                <br>
+                Here's our companies identity document. <br>
+                <button class="toggle-button" id="toggleButton8">See Identity Document</button>
+                    <iframe id="pdfViewer" src="../Company Identity .pdf" width="1080" height="720" frameborder="0" allowfullscreen style="display: none;"></iframe>
+                <br>
+                Finally, here's a video of the prototype that we had a week to make. <br> 
+                It turned out really well! <br>
+                <video id="myVideo" width="850" height="560" controls autoplay> 
+                    <source src="../PrototypeDemoVideo.mkv" type="video/mp4" id = "myvideo">
+                        Your browser does not support the video tag.
+                </video>
+                <br>
+                <br>
+                This is a gameplay loop that I created to show off what we plan on creating; the video goes over a few of the core mechanics. <br>
+                <button class="toggle-button" id="toggleButton4">See Loop</button>
+                 <img src="../GameLoop.drawio (1).png" alt="Item Image" width="1200" height="840" style="display: none;">
+
+
+                <br>
+                Until Next Week, <br>
+                Austin M
+
+
+            </p>
+           
+        </div>
+        <hr class="sidebar-divider2">
         <div class="blog-section" id="week3">
             <h2>Week 3</h2>
             <h3><em>Fri, Sept 22, 2023</em></h3>
+            <h4> The Game Pivot</h4>
             <p>
                  This week had an interesting turn of events. On monday, we handed in our One Pagers for each of our game pitches, <br>
                  and we were given the go ahead on our robot-roguelike later that night by the professor. <br>
@@ -346,14 +414,11 @@ header {
                 and make sure everyone was on the same page. I took a bit of lead and decided to make a game design document <br>
                 to make sure everyone was on the same page. People were definitely a bit stressed out from the switch, <br>
                 but I think we're all excited to work on this game. After some working on it over the week, <br>
-                we got almost all of the prototype done by sunday night. <br> We then began fully working on the pitch slideshow and the pitch video. <br>
+                we got almost all of the prototype done by sunday night. <br> 
                 Here's the documents we worked on. 
                 <br>
                 <button class="toggle-button" id="toggleButton5">See Concept Document</button>
                     <iframe id="pdfViewer" src="../Concept Document.pdf" width="1080" height="1080" frameborder="0" allowfullscreen style="display: none;"></iframe>
-
-                    <button class="toggle-button" id="toggleButton6">See Slideshow</button>
-                    <iframe id="pdfViewer" src="../Project Abyss Pitch Slideshow.pdf" width="1080" height="720" frameborder="0" allowfullscreen style="display: none;"></iframe>
                 <br>
                 I'm extremely happy with all of my team members, and I'm excited and confident in our ability to make this game. <br> <br>
                 Signing off, <br>
@@ -363,10 +428,11 @@ header {
             </p>
            
         </div>
-
+        <hr class="sidebar-divider2">
         <div class="blog-section" id="week2">
             <h2>Week 2</h2>
             <h3><em>Fri, Sept 15, 2023</em></h3>
+            <h4> The Prototype Grind</h4>
             <p>
                 This week started off eventful as we had to begin to narrow down our game choices. By friday,  <br>
                 we had decided on a game idea. The voting method we used was elimination voting, where we would vote for<br>
@@ -397,10 +463,11 @@ header {
             </p>
            
         </div>
-
+        <hr class="sidebar-divider2">
         <div class="blog-section" id="week1">
             <h2>Week 1</h2>
             <h3><em>Fri, Sept 8th, 2023</em></h3>
+            <h4>The Project Begins</h4>
             <p>This blog will be semi casual, mainly used as a way to document progress throughout capstone, and keep myself organized. <br>
                 I'll be updating it every week on Friday, with the occasional bi weekly update if stuff is busy. <br>
                 <br>
@@ -427,7 +494,7 @@ header {
         </div>
 
 
-        <hr class="sidebar-divider">
+                <hr class="sidebar-divider2">
         </section>
         <section id="contact">
             <h2>Contact Me</h2>
