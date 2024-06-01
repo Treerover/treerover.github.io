@@ -2,132 +2,99 @@
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <style>
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    overflow: hidden;
-    cursor: none;
-    display: flex;
-    flex-direction: column; /* Stack child elements vertically */
-    justify-content: center; /* Center child elements vertically */
-    align-items: center; /* Center child elements horizontally */
-    min-height: 100vh; /* Ensure a minimum height of 100% of the viewport */
-}
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            cursor: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Vertically distribute content */
-    align-items: center;
-    min-height: 100vh; /* Ensure container takes up at least full viewport height */
-}
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+        }
 
+        .trail {
+            position: absolute;
+            height: 6px; width: 6px;
+            border-radius: 3px;
+            background: rgb(147, 85, 230);
+            z-index: 10000;
+            pointer-events: none;
+        }
 
-            .trail { /* className for the trail elements */
-        position: absolute;
-        height: 6px; width: 6px;
-        border-radius: 3px;
-        background: rgb(147, 85, 230);
-        z-index: 10000;
-        pointer-events: none;
-      }
-              .game-circle {
-         position: absolute;
-         width: 25px;
-         height: 25px;
-         background-color: rgb(147, 85, 230);
-         border-radius: 50%;
-         animation: pulsate 1s ease-in-out infinite alternate;
-     }
-           @keyframes pulsate {
-       0% {
-           transform: scale(1);
-       }
-       100% {
-           transform: scale(1.5);
-       }
-     }
-     .name-animation {
-         animation: wavyAnimation 3s infinite alternate ease-in-out;
-         display: inline-block;
-     }
-     .name-animation:nth-child(1) {
-         animation: wavyAnimation 3s infinite alternate ease-in-out 0.1s;
-     }
-     .name-animation:nth-child(2) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 0.3s;
-     }
-         .name-animation:nth-child(3) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 0.5s;
-     }
-     .name-animation:nth-child(4) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 0.7s;
-     }
-     .name-animation:nth-child(5) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 0.9s;
-     }
-     .name-animation:nth-child(6) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 1.1s;
-     }
-     .name-animation:nth-child(7) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 1.3s;
-     }
-     .name-animation:nth-child(8) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 1.5s;
-     }
-     .name-animation:nth-child(9) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 1.7s;
-     }
-     .name-animation:nth-child(10) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 1.9s;
-     }
-     .name-animation:nth-child(11) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 2.1s;
-     }
-     .name-animation:nth-child(12) {
-       animation: wavyAnimation 3s infinite alternate ease-in-out 2.3s;
-     }
-     @keyframes wavyAnimation {
-         0% {
-             transform: translateY(0);
-             color: #ffffff;
-         }
-         50% {
-             transform: translateY(-5px);
-             color: #a888ff;
-         }
-         100% {
-             transform: translateY(0);
-             color: #ffffff;
-         }
-     }
-     h1 {
-         font-size: 64px;
-         margin-top: auto; /* Adjust this value as needed */
-         pointer-events: none;
-     }
-     h2 {
-         font-size: 32px;
-         margin-bottom: 20px;
-         pointer-events: none;
-     }
-     .button-container {
-    display: flex;
-    flex-wrap: wrap; /* Allow buttons to wrap to the next line on small screens */
-    gap: 20px;
-    justify-content: center; /* Center the buttons horizontally */
-   
-}
+        .game-circle {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: rgb(147, 85, 230);
+            border-radius: 50%;
+            animation: pulsate 1s ease-in-out infinite alternate;
+        }
 
+        @keyframes pulsate {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.5); }
+        }
+
+        .name-animation {
+            animation: wavyAnimation 3s infinite alternate ease-in-out;
+            display: inline-block;
+        }
+
+        .name-animation:nth-child(1) { animation: wavyAnimation 3s infinite alternate ease-in-out 0.1s; }
+        .name-animation:nth-child(2) { animation: wavyAnimation 3s infinite alternate ease-in-out 0.3s; }
+        .name-animation:nth-child(3) { animation: wavyAnimation 3s infinite alternate ease-in-out 0.5s; }
+        .name-animation:nth-child(4) { animation: wavyAnimation 3s infinite alternate ease-in-out 0.7s; }
+        .name-animation:nth-child(5) { animation: wavyAnimation 3s infinite alternate ease-in-out 0.9s; }
+        .name-animation:nth-child(6) { animation: wavyAnimation 3s infinite alternate ease-in-out 1.1s; }
+        .name-animation:nth-child(7) { animation: wavyAnimation 3s infinite alternate ease-in-out 1.3s; }
+        .name-animation:nth-child(8) { animation: wavyAnimation 3s infinite alternate ease-in-out 1.5s; }
+        .name-animation:nth-child(9) { animation: wavyAnimation 3s infinite alternate ease-in-out 1.7s; }
+        .name-animation:nth-child(10) { animation: wavyAnimation 3s infinite alternate ease-in-out 1.9s; }
+        .name-animation:nth-child(11) { animation: wavyAnimation 3s infinite alternate ease-in-out 2.1s; }
+        .name-animation:nth-child(12) { animation: wavyAnimation 3s infinite alternate ease-in-out 2.3s; }
+
+        @keyframes wavyAnimation {
+            0% { transform: translateY(0); color: #ffffff; }
+            50% { transform: translateY(-5px); color: #a888ff; }
+            100% { transform: translateY(0); color: #ffffff; }
+        }
+
+        h1 {
+            font-size: 64px;
+            margin-top: auto;
+            pointer-events: none;
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            pointer-events: none;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
 
         .button {
             padding: 10px 20px;
@@ -144,19 +111,20 @@ body {
 
         .button:hover {
             background-color: #2e1459;
-            transform: scale(1.15); 
+            transform: scale(1.15);
         }
 
         .contact {
-    margin-top: auto; /* Pushes the contact section to the bottom */
-    margin-bottom: 5%; /* Optional: Add some space above the contact section */
-}
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
         .contact-button-container {
-         display: flex;
-          gap: 30px;
-         flex-direction: row; /* Display buttons horizontally */
-        justify-content: center; /* Center the buttons horizontally */
-          }
+            display: flex;
+            gap: 30px;
+            flex-direction: row;
+            justify-content: center;
+        }
 
         .contact-buttons {
             padding: 10px 20px;
@@ -171,425 +139,332 @@ body {
             z-index: 1000;
         }
 
-        .contact-buttons:hover  {
+        .contact-buttons:hover {
             background-color: #2e1459;
         }
+
         #counter {
-
-          top: 20px;
-          right: 20px;
-          font-size: 40px;
-          color: #fff;
-          padding: 1px 1px;
-          border-radius: 2px;
-          display: none; /* Hide initially */
-                }
-
-.circular-button {
-    width: 45px; /* Adjust the size as needed */
-    height: 35px; /* Adjust the size as needed */
-    border-radius: 50%;
-    background-color: #210b38;
-    color: #fff;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    z-index: 1000;
-}
-
-.circular-button:hover {
-    background-color: #2e1459;
-}
-#cursor-hitbox {
-    position: absolute;
-    width: 25px; /* Adjust the hitbox size as needed */
-    height: 25px; /* Adjust the hitbox size as needed */
-    border-radius: 50%;
-    background: transparent; /* Make it transparent */
-    pointer-events: none; /* Prevent it from blocking interactions with other elements */
-    z-index: 10000; /* Make sure it's on top of everything else */
-}
-.speed-button {
-            font-size: 20px;
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: #2e1459;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
             color: #fff;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.2s;
+            padding: 1px 1px;
+            border-radius: 2px;
             display: none;
         }
-    .speed-button:active {
-      background-color: #2980b9;
-            transform: scale(1.1);
-    }
+
+        .portfolio-preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .portfolio-item {
+            text-align: center;
+        }
+
+        .portfolio-item img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item-title {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        #startButton {
+            padding: 10px 20px;
+            background-color: #210b38;
+            color: #fff;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
+
+        #startButton:hover {
+            background-color: #2e1459;
+            transform: scale(1.15);
+        }
+
+        #speedButtons {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .speed-button {
+            padding: 10px 20px;
+            background-color: #210b38;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 0 10px;
+        }
+
         .speed-button:hover {
-            background-color: #2980b9;
-            transform: scale(1.1);
+            background-color: #2e1459;
+        }
+
+        #resetButton {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #210b38;
+            color: #fff;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #resetButton:hover {
+            background-color: #2e1459;
+        }
+
+        #togglePortfolioButton {
+            padding: 10px 20px;
+            background-color: #210b38;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        #togglePortfolioButton:hover {
+            background-color: #2e1459;
         }
     </style>
 </head>
 <body>
-  
     <div class="container">
-      <div id="counter" style="display: none;"><span id="circleCount">0</span></div>
-      <div>
-        <button id="speed1x" class="speed-button">1x Speed</button>
-        <button id="speed2x" class="speed-button">2x Speed</button>
-        <button id="speed5x" class="speed-button">5x Speed</button>
-    </div>
-    <button id="startButton" class="circular-button">Play</button>
-    <button id="resetButton" class="circular-button" style="display: none;">Reset</button>
-      <h1><span class="name-animation">A</span><span class="name-animation">u</span><span class="name-animation">s</span><span class="name-animation">t</span><span class="name-animation">i</span><span class="name-animation">n </span> <span class="name-animation">M</span><span class="name-animation">o</span><span class="name-animation">r</span><span class="name-animation">r</span><span class="name-animation">i</span><span class="name-animation">s</span>
+        <button id="startButton">Start</button> <!-- Start button -->
+        <div id="speedButtons"> <!-- Speed buttons -->
+            <button class="speed-button" onclick="changeSpeed(1000)">Slow</button>
+            <button class="speed-button" onclick="changeSpeed(500)">Medium</button>
+            <button class="speed-button" onclick="changeSpeed(200)">Fast</button>
+        </div>
+        <button id="resetButton" onclick="resetGame()">Reset</button> <!-- Reset button -->
+        <div id="counter"><span id="circleCount">0</span></div>
+        <h1>
+            <span class="name-animation">A</span><span class="name-animation">u</span><span class="name-animation">s</span><span class="name-animation">t</span><span class="name-animation">i</span><span class="name-animation">n </span>
+            <span class="name-animation">M</span><span class="name-animation">o</span><span class="name-animation">r</span><span class="name-animation">r</span><span class="name-animation">i</span><span class="name-animation">s</span>
         </h1>
         <div class="button-container">
             <a class="button" href="portfolio/portfolio.html">Portfolio</a>
+            <a class="button" href="blog/blog.html">Project: Abyss Dev Blog</a>
+            <a class="button" href="https://treerover.itch.io/">Itch.io</a>
             <a class="button" href="resume.html">Resume</a>
         </div>
-        <br>
-        <div class="button-container">
-            <a class="button" href="blog/blog.html">"Project: Abyss" Dev Blog</a>
+        <button id="togglePortfolioButton" onclick="togglePortfolio()">Hide Portfolio Items</button> <!-- Toggle button -->
+
+
+        <!-- Portfolio Previews Section -->
+        <div class="portfolio-preview-container" id="portfolioPreviewContainer">
+            <div class="portfolio-item">
+                <a href="https://projectabyss.ca/">
+                    <div class="portfolio-item-title">Project: Abyss</div>
+                    <img src="portfolio/ProjectAbyss_WebsiteBanner.png" alt="Project 2">
+                </a>
+            </div>
+            <div class="portfolio-item">
+                <a href="https://treerover.itch.io/sea-sorting">
+                    <div class="portfolio-item-title">Sea Sorting</div>
+                    <img src="Project1.png" alt="Project 1">
+                </a>
+            </div>
+            <div class="portfolio-item">
+                <a href="https://treerover.itch.io/escape-the-memerooms">
+                    <div class="portfolio-item-title">Escape the Memerooms</div>
+                    <img src="escapetherooms.png" alt="Project 3">
+                </a>
+            </div>
+            <div class="portfolio-item">
+                <a href="portfolio/portfolio.html">
+                    <div class="portfolio-item-title">Grim Harvest</div>
+                    <img src="image4.png" alt="Project 4">
+                </a>
+            </div>
         </div>
-       <div class="contact">
+
+        <div class="contact">
             <h2>Contact Me</h2>
             <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
-             <section id="contact-button-container">
-                <a class ="contact-buttons" onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</a>
-                <a class ="contact-buttons" href="tel:+1234567890">Phone:705-854-xxxx</a>
-                <a class ="contact-buttons" href="https://www.linkedin.com/in/austin-macdonald-morris/" target="_blank">LinkedIn</a>
-        </section>
+            <div class="contact-button-container">
+                <a class="contact-buttons" onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: Click to Copy</a>
+                <a class="contact-buttons" href="https://www.linkedin.com/in/austin-macdonald-morris/" target="_blank">LinkedIn</a>
+            </div>
         </div>
-
     </div>
 
-
     <script>
-let spawnInterval = 1500; // Default spawning interval (1x speed)
-let gameInterval; // Reference to the setInterval
-
-const contact = document.querySelector('.contact');
-const speed1xButton = document.getElementById('speed1x');
-const speed2xButton = document.getElementById('speed2x');
-const speed5xButton = document.getElementById('speed5x');
-const fish = document.getElementById('fish');
-
-function startGameWith1xInterval() {
-    spawnInterval = 1500; // 1x speed
-    clearInterval(gameInterval); // Clear the existing interval
-    gameInterval = setInterval(createGameCircle, spawnInterval); // Set a new interval
-}
-
-
-speed1xButton.addEventListener('click', () => {
-    spawnInterval = 1500; // 1x speed
-    clearInterval(gameInterval); // Clear the existing interval
-    gameInterval = setInterval(createGameCircle, spawnInterval); // Set a new interval
-
-});
-
-speed2xButton.addEventListener('click', () => {
-    spawnInterval = 750; // 2x speed
-    clearInterval(gameInterval); // Clear the existing interval
-    gameInterval = setInterval(createGameCircle, spawnInterval); // Set a new interval
-    
-});
-
-speed5xButton.addEventListener('click', () => {
-    spawnInterval = 300; // 5x speed
-    clearInterval(gameInterval); // Clear the existing interval
-    gameInterval = setInterval(createGameCircle, spawnInterval); // Set a new interval
-});
-
-
-
-const cursorHitbox = document.getElementById('cursor-hitbox');
-const container = document.querySelector('.container');
-   // of the mouse, set with a mousemove event listener below
-   var dots = [];
-   var gameCircles = [];
-    mouse = {
-      x: 0,
-      y: 0
-    };
-    const circleCount = document.getElementById('circleCount');
-let collectedCircles = 0;
-const plopSound = new Audio('plop.mp3'); // Replace 'plop.mp3' with your sound file's path
-plopSound.volume = 0.1;
-
-const gameMusic = new Audio ('music.mp3');
-gameMusic.volume = 0.1;
-//Music by 8bit Betty via freemusicarchive.org
-const startButton = document.getElementById('startButton');
+        const container = document.querySelector('.container');
+        var dots = [];
+        var mouse = { x: 0, y: 0 };
+        const circleCount = document.getElementById('circleCount');
+        let collectedCircles = 0;
+        const plopSound = new Audio('plop.mp3');
+        plopSound.volume = 0.1;
+        const startButton = document.getElementById('startButton');
+        const speedButtons = document.getElementById('speedButtons');
+        const resetButton = document.getElementById('resetButton');
+        let gameStarted = false;
+        let intervalId;
 
         startButton.addEventListener('click', startGame);
 
-        let gameStarted = false;
-        const resetButton = document.getElementById('resetButton');
-      // Add a click event listener to the reset button
-resetButton.addEventListener('click', resetGame);
         function startGame() {
             if (!gameStarted) {
-              clearInterval(gameInterval);
-                // Show the game elements
-                startButton.hidden = true;
-
-        gameMusic.currentTime = 0; 
-        gameMusic.play();
-                            // Show the speed buttons when the "Start" button is clicked
-            speed1xButton.style.display = 'inline-block';
-            speed2xButton.style.display = 'inline-block';
-            speed5xButton.style.display = 'inline-block';
+                startButton.style.display = 'none';
+                speedButtons.style.display = 'block';
+                resetButton.style.display = 'block';
                 document.querySelectorAll('.game-circle').forEach(circle => {
                     circle.style.display = 'block';
                 });
                 document.getElementById('counter').style.display = 'block';
-                startGameWith1xInterval();
-                
-                // Enable the button
-                startButton.disabled = true;
-                startButton.style.display = 'none';
-                 // Show the reset button
-                 resetButton.disabled = false;
-                  resetButton.style.display = 'inline-block';
-
-                // Set gameStarted to true to prevent starting the game again
+                intervalId = setInterval(createGameCircle, 2000);
                 gameStarted = true;
             }
         }
 
-// Function to reset the game
-function resetGame() {
-    // Reset game variables
-    collectedCircles = 0;
-    circleCount.textContent = collectedCircles;
-
-     // Reset the size of the first 8 dots to the initial size
-     for (let i = 0; i < 8; i++) {
-        dots[i].size = 6; // Set the initial size (adjust as needed)
-        dots[i].node.style.width = dots[i].size + "px";
-        dots[i].node.style.height = dots[i].size + "px";
-    }
-
-    // Remove dots starting from index 8 to the end of the array
-    for (let i = 8; i < dots.length; i++) {
-        dots[i].node.remove();
-    }
-    dots.length = 8; // Keep only the first 8 dots in the array
-
-    // Clear the screen
-    const gameCircleElements = document.querySelectorAll('.game-circle');
-    gameCircleElements.forEach(circle => circle.remove());
-
-    // Stop the game interval
-    clearInterval(gameInterval);
-    gameStarted = false;
-
-    startButton.disabled = false;
-    // Hide the reset button
-    resetButton.style.display = 'none';
-
-    // Show the "Start" button
-    startButton.style.display = 'block';
-
-    gameMusic.pause();
-
-    // Enable the speed buttons
-    speed1xButton.disabled = false;
-    speed2xButton.disabled = false;
-    speed5xButton.disabled = false;
-}
-
-function handleMouseMove(event) {
-
-
-}
         function createGameCircle() {
-          if (gameStarted) {
-            // Create a new game circle
-    const circle = document.createElement('div');
-    circle.classList.add('game-circle');
+            const circle = document.createElement('div');
+            circle.classList.add('game-circle');
+            const randomHue = Math.floor(Math.random() * 360);
+            circle.style.backgroundColor = `hsl(${randomHue}, 100%, 50%)`;
+            circle.style.left = `${Math.random() * document.body.clientWidth}px`;
+            circle.style.top = `${Math.random() * document.body.clientHeight}px`;
+            container.appendChild(circle);
 
-    // Generate a random hue value between 0 and 360 (for HSL color)
-    const randomHue = Math.floor(Math.random() * 360);
-    
-    // Set the background color using the generated hue
-    circle.style.backgroundColor = `hsl(${randomHue}, 100%, 50%)`;
+            circle.addEventListener('mouseover', () => {
+                container.removeChild(circle);
+                const dot = new Dot();
+                dots.push(dot);
+                dot.node.style.backgroundColor = circle.style.backgroundColor;
+                collectedCircles++;
+                circleCount.textContent = collectedCircles;
 
-    const circleSize = 15; // Adjust the circle size as needed
-    const maxWidth = document.body.clientWidth;
-    const maxHeight = document.body.clientHeight;
+                if (collectedCircles === 1) {
+                    counter.style.display = 'block';
+                }
 
-    // Randomly position the circle within the viewport
-    const circleX = Math.random() * (maxWidth - circleSize);
-    const circleY = Math.random() * (maxHeight - circleSize);
-
-    // Set the circle's position
-    circle.style.left = `${circleX}px`;
-    circle.style.top = `${circleY}px`;
-
-    gameCircles.push(circle);
-    container.appendChild(circle);
-
-          }
-    
-        
-    }
-
-
-function checkCollisions() {
-  const visibleCircles = gameCircles.filter(circle => circle.style.display !== 'none');
-  visibleCircles.forEach(circle => {
-        const rect1 = dots[0].node.getBoundingClientRect();
-        const rect2 = circle.getBoundingClientRect();
-
-        if (
-            !(
-                rect1.right < rect2.left ||
-                rect1.left > rect2.right ||
-                rect1.bottom < rect2.top ||
-                rect1.top > rect2.bottom
-            )
-        ) {
-
-            // Create a new Dot object and add it to the dots array
-        const dot = new Dot();
-
-        
-
-        if (collectedCircles >= 1) {
-            // Increase the size of all dots on the trail
-            dots.forEach(dot => {
-                dot.increaseSize();
+                plopSound.currentTime = 0;
+                plopSound.play();
             });
         }
-        dots.push(dot);
 
-        // Set the dot's background color to match the circle's color
-        dot.node.style.backgroundColor = circle.style.backgroundColor;
-        collectedCircles++;
-        circleCount.textContent = collectedCircles;
+        function handleMouseMove(event) {
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+            trail.style.left = `${event.pageX}px`;
+            trail.style.top = `${event.pageY}px`;
+            document.body.appendChild(trail);
 
-
-        // Show the counter after the first circle is collected
-        if (collectedCircles === 1) {
-            counter.style.display = 'block';
+            setTimeout(() => {
+                document.body.removeChild(trail);
+            }, 1000);
         }
-
-
-        // Play the plop sound effect
-        plopSound.currentTime = 0; // Reset sound to the beginning (in case it's already playing)
-        plopSound.play();
-        // Remove the collected circle from the DOM
-        circle.style.display = 'none';
-        }
-    });
-}
-
-// Attach the mousemove event handler
-document.addEventListener('mousemove', handleMouseMove);
 
         var Dot = function() {
-    this.x = 0;
-    this.y = 0;
-    this.size = 6; // Initial size
-    this.node = (function() {
-        var n = document.createElement("div");
-        n.className = "trail";
-        document.body.appendChild(n);
-        return n;
-    }());
+            this.x = 0;
+            this.y = 0;
+            this.node = (function() {
+                var n = document.createElement("div");
+                n.className = "trail";
+                document.body.appendChild(n);
+                return n;
+            }());
+        };
 
-this.increaseSize = function() {
-    this.size += 0.5; // 
+        Dot.prototype.draw = function() {
+            this.node.style.left = this.x + "px";
+            this.node.style.top = this.y + "px";
+        };
 
-    const halfSize = this.size / 2;
-    
-    // Set the width and height
-    this.node.style.width = this.size + "px";
-    this.node.style.height = this.size + "px";
+        for (var i = 0; i < 10; i++) {
+            var d = new Dot();
+            dots.push(d);
+        }
 
+        function draw() {
+            var x = mouse.x, y = mouse.y;
+            dots.forEach(function(dot, index, dots) {
+                var nextDot = dots[index + 1] || dots[0];
+                dot.x = x;
+                dot.y = y;
+                dot.draw();
+                x += (nextDot.x - dot.x) * .6;
+                y += (nextDot.y - dot.y) * .6;
+            });
+        }
 
-    const newX = this.x - halfSize;
-    const newY = this.y - halfSize;
+        addEventListener("mousemove", function(event) {
+            mouse.x = event.pageX;
+            mouse.y = event.pageY;
+        });
 
-    // Set the position
-    this.node.style.left = newX + "px";
-    this.node.style.top = newY + "px";
+        function animate() {
+            draw();
+            requestAnimationFrame(animate);
+        }
 
-    this.node.style.borderRadius = "50%"; 
-};
+        animate();
 
-    // Call the draw function immediately to set the initial position and size
-    this.draw();
-};
-// The Dot.prototype.draw() method sets the position of 
-  // the object's <div> node
-Dot.prototype.draw = function() {
-  this.node.style.width = this.size + "px";
-    this.node.style.height = this.size + "px";
-  this.node.style.left = this.x + "px";
-  this.node.style.top = this.y + "px";
-};
+        function copyToClipboard(text) {
+            var textField = document.createElement('textarea');
+            textField.innerText = text;
+            document.body.appendChild(textField);
+            textField.select();
+            document.execCommand('copy');
+            textField.remove();
+        }
 
-// Creates the Dot objects, populates the dots array
-for (var i = 0; i < 10; i++) {     
-  var d = new Dot();
+        function changeSpeed(speed) {
+            clearInterval(intervalId);
+            intervalId = setInterval(createGameCircle, speed);
+        }
 
-  dots.push(d);
-}
+        function resetGame() {
+            clearInterval(intervalId);
+            collectedCircles = 0;
+            circleCount.textContent = collectedCircles;
+            startButton.style.display = 'block';
+            speedButtons.style.display = 'none';
+            resetButton.style.display = 'none';
+            document.querySelectorAll('.game-circle').forEach(circle => container.removeChild(circle));
+            gameStarted = false;
+        }
 
-
-
-addEventListener("mousemove", function(event) {
-  //event.preventDefault();
-  mouse.x = event.pageX;
-  mouse.y = event.pageY;
-});
-
-function animate() {
-    // Get the current mouse position
-    var x = mouse.x;
-    var y = mouse.y;
-
-    // Check for collisions
-    checkCollisions();
-
-
-    // Update dot positions
-    dots.forEach(function(dot, index, dots) {
-        var nextDot = dots[index + 1] || dots[0];
-        dot.x = x;
-        dot.y = y;
-        dot.draw();
-        x += (nextDot.x - dot.x) * 0.6;
-        y += (nextDot.y - dot.y) * 0.6;
-    });
-
-    // Request the next frame
-    requestAnimationFrame(animate);
-}
-
-
-animate();
-
-
-
-    // Copy to email button
-    function copyToClipboard(text) {
-        var textField = document.createElement('textarea');
-        textField.innerText = 'austinmacdonaldmorris@gmail.com';
-        document.body.appendChild(textField);
-        textField.select();
-        document.execCommand('copy');
-        textField.remove();
-    }
-
-
-
-        const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
+        function togglePortfolio() {
+            const portfolioContainer = document.getElementById('portfolioPreviewContainer');
+            if (portfolioContainer.style.display === 'none') {
+                portfolioContainer.style.display = 'flex';
+                document.getElementById('togglePortfolioButton').textContent = 'Hide Portfolio';
+            } else {
+                portfolioContainer.style.display = 'none';
+                document.getElementById('togglePortfolioButton').textContent = 'Show Portfolio';
+            }
+        }
     </script>
 </body>
 </html>
