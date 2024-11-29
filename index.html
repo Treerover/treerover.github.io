@@ -78,7 +78,7 @@
         }
 
         h1 {
-            font-size: 64px;
+            font-size: 85px;
             margin-top: auto;
             pointer-events: none;
         }
@@ -101,7 +101,7 @@
             background-color: #210b38;
             color: #fff;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 25px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -272,7 +272,6 @@
         </h1>
         <div class="button-container">
             <a class="button" href="portfolio/portfolio.html">Portfolio</a>
-            <a class="button" href="blog/blog.html">Project: Abyss Dev Blog</a>
             <a class="button" href="https://treerover.itch.io/">Itch.io</a>
             <a class="button" href="resume.html">Resume</a>
         </div>
@@ -282,7 +281,7 @@
         <!-- Portfolio Previews Section -->
         <div class="portfolio-preview-container" id="portfolioPreviewContainer">
             <div class="portfolio-item">
-                <a href="https://projectabyss.ca/">
+                <a href="portfolio/portfolio.html">
                     <div class="portfolio-item-title">Project: Abyss</div>
                     <img src="portfolio/ProjectAbyss_WebsiteBanner.png" alt="Project 2">
                 </a>
@@ -347,6 +346,8 @@
             }
         }
 
+        
+
         function createGameCircle() {
             const circle = document.createElement('div');
             circle.classList.add('game-circle');
@@ -356,22 +357,30 @@
             circle.style.top = `${Math.random() * document.body.clientHeight}px`;
             container.appendChild(circle);
 
-            circle.addEventListener('mouseover', () => {
-                container.removeChild(circle);
-                const dot = new Dot();
-                dots.push(dot);
-                dot.node.style.backgroundColor = circle.style.backgroundColor;
-                collectedCircles++;
-                circleCount.textContent = collectedCircles;
+        // Add a mouseover event listener to the circle
+        circle.addEventListener('mouseover', () => {
+        // Remove the circle from the container
+        container.removeChild(circle);
 
-                if (collectedCircles === 1) {
-                    counter.style.display = 'block';
-                }
+        // Create a new Dot object and add it to the dots array
+        const dot = new Dot();
+        dots.push(dot);
 
-                plopSound.currentTime = 0;
-                plopSound.play();
-            });
+        // Set the dot's background color to match the circle's color
+        dot.node.style.backgroundColor = circle.style.backgroundColor;
+        collectedCircles++;
+        circleCount.textContent = collectedCircles;
+
+        // Show the counter after the first circle is collected
+        if (collectedCircles === 1) {
+            counter.style.display = 'block';
         }
+        // Play the plop sound effect
+        plopSound.currentTime = 0; // Reset sound to the beginning (in case it's already playing)
+        plopSound.play();
+    });
+}
+
 
         function handleMouseMove(event) {
             const trail = document.createElement('div');
@@ -385,38 +394,49 @@
             }, 1000);
         }
 
-        var Dot = function() {
-            this.x = 0;
-            this.y = 0;
-            this.node = (function() {
-                var n = document.createElement("div");
-                n.className = "trail";
-                document.body.appendChild(n);
-                return n;
-            }());
-        };
+       // The Dot object used to scaffold the dots
+var Dot = function() {
+  this.x = 0;
+  this.y = 0;
+  this.node = (function(){
+    var n = document.createElement("div");
+    n.className = "trail";
+    document.body.appendChild(n);
+    return n;
+  }());
+};
+// The Dot.prototype.draw() method sets the position of 
+  // the object's <div> node
+Dot.prototype.draw = function() {
+  this.node.style.left = this.x + "px";
+  this.node.style.top = this.y + "px";
+};
 
-        Dot.prototype.draw = function() {
-            this.node.style.left = this.x + "px";
-            this.node.style.top = this.y + "px";
-        };
+// Creates the Dot objects, populates the dots array
+for (var i = 0; i < 10; i++) {     
+  var d = new Dot();
+  dots.push(d);
+}
 
-        for (var i = 0; i < 10; i++) {
-            var d = new Dot();
-            dots.push(d);
-        }
+// This is the screen redraw function
+function draw() {
+  // Make sure the mouse position is set everytime
+    // draw() is called.
+  var x = mouse.x,
+      y = mouse.y;
+  
+  // This loop is where all the 90s magic happens
+  dots.forEach(function(dot, index, dots) {
+    var nextDot = dots[index + 1] || dots[0];
+    
+    dot.x = x;
+    dot.y = y;
+    dot.draw();
+    x += (nextDot.x - dot.x) * .6;
+    y += (nextDot.y - dot.y) * .6;
 
-        function draw() {
-            var x = mouse.x, y = mouse.y;
-            dots.forEach(function(dot, index, dots) {
-                var nextDot = dots[index + 1] || dots[0];
-                dot.x = x;
-                dot.y = y;
-                dot.draw();
-                x += (nextDot.x - dot.x) * .6;
-                y += (nextDot.y - dot.y) * .6;
-            });
-        }
+  });
+}
 
         addEventListener("mousemove", function(event) {
             mouse.x = event.pageX;
