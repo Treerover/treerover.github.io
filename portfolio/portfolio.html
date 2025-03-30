@@ -1,418 +1,599 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            font-size: 18px;
-            position: relative;
-            min-height: 100vh;
-            background-color: #000000;
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            color: #ddd;
+            display: flex;
         }
-        h1 {
-            font-size: 54px;
-        }
-        h2 {
-            font-size: 34px;
-            text-decoration: underline;
-        }
-        h3 {
-            font-size: 26px;
-            text-decoration: underline;
-        }
-        h4 {
-            font-size: 26px;
-        }
-        
-        p {
-            font-size: 24px;
-        }
-
-        nav {
+        .media-container {
+    max-width: fit-content;
+}
+        .navbar {
+            width: 100%;
+            background: #222;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
             text-align: center;
-            background-color: #210b38;
-        }
-        nav a {
-            text-decoration: none;
-            color: #ffffff;
-            padding: 10px 20px;
-            display: inline-block;
-        }
-        .container {
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 20px;
-            margin-left: 390px;
-            align-items: center;
-            flex-direction: column; /* Stack content vertically */
-          align-items: center; /* Center items horizontally */
-        }
-        .contact {
-            margin-top: 420px;
-        }
-        .contact-button-container {
-         display: flex;
-          gap: 30px;
-         flex-direction: row; /* Display buttons horizontally */
-        justify-content: center; /* Center the buttons horizontally */
-          }
-
-        .contact-buttons {
-            padding: 10px 20px;
-            background-color: #210b38;
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.2);
             z-index: 1000;
         }
 
-        .contact-buttons:hover  {
-            background-color: #2e1459;
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 20px;
+            padding: 10px 15px;
+            transition: background 0.3s ease;
         }
-        .slideshow-image {
-            max-width: 35%;
-            height: auto;}
 
-    .horizontal-nav ul {
-    list-style-type: none;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-size: 24px;
-    text-indent: 20;
-    display: flex;
-    justify-content: center; 
-}
-
-.horizontal-nav li {
-    margin-right: 0px;
-}
-.horizontal-nav li:hover {
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+.navbar a.active {
     text-decoration: underline;
-    color: #ffcc00; 
+    color: #7e2eb3; /* Highlight color */
+    font-weight: bold;
 }
-.horizontal-nav li a {
-    text-decoration: none;
-    color: #fff; /* Set the default color */
-    border-bottom: 2px solid transparent; /* Add a transparent bottom border to all links */
-    padding-bottom: 2px; /* Add some space below the text for the underline effect */
-}
-.horizontal-nav li.active a {
-    text-decoration: underline;
-    color: #ffcc00;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-.project-details {
-    display: flex;
-    align-items: center;
-}
-
-.project-image {
-    flex: 1;
-}
-.project-image img {
-    max-width: 100%; 
-    height: auto;
-}
-
-.project-description {
-    flex: 2;
-}
-
-
-.code-image {
-    display: none;
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-}
-.sidebar {
-    background: linear-gradient(to bottom, #210b38, #431d80);
-    color: white;
-    width: 270px;
-    padding: 20px;
-
-    position:fixed;
-    top: 480px; /* Adjust the value to control the sticky position */
-    left: 20px;
-    height:fit-content;
-    border-right: 2px solid #9031e9;
-    border-top: 2px solid #9031e9;
-    border-left: 2px solid #9031e9;
-    border-bottom: 2px solid #9031e9;
-}
+   .sidebar {
+            width: 250px;
+            background: #1a1a1a;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 50px;
+            left: 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(255, 255, 255, 0.2);
+            border-right: 2px solid #333;
+        }
 
 .sidebar h2 {
-    font-size: 32px;
-    padding-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar li {
-    margin-bottom: 15px;
-}
-
-.text {
-    /* You can style the sticky content here */
-    text-align: center;
-    background: linear-gradient(to bottom, #210b38, #431d80); /* Add background color for better visibility */
-    padding: 10px 10px;
-}
-
 
 .sidebar a {
-    text-decoration: none;
+    display: flex;
+    align-items: center;
     color: white;
-    font-size: 20px;
-    transition: 0.3s; 
+    text-decoration: none;
+    font-size: 1.2em;
+    margin: 15px 0;
+    padding: 5px;
+    transition: background 0.3s ease, padding-left 0.3s ease;
 }
 
 .sidebar a:hover {
-    text-decoration: underline;
-    color: #ffcc00; 
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 15px; /* Adds a little left padding on hover */
+    border-radius: 5px;
+}
+
+.sidebar .date {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-left: auto;
+    font-style: italic;
+}
+
+.sidebar .star {
+    margin-left: 10px;
+    color: #FFD700; /* Golden star color */
+    font-size: 1.5em;
+}
+
+.sidebar .proud-project {
+    font-weight: bold;
+    color: #4CAF50;
+}
+.sidebar a.active {
+    background: rgba(126, 46, 179, 0.5); /* Purple background highlight */
+    padding-left: 20px; /* Slight indent */
+    border-radius: 5px;
     font-weight: bold;
 }
-   #myvideo {
-    border: 2px solid #9031e9;
- }
-
- .sidebar a.active {
-    font-weight: bold;
-    color: #ffcc00;
-    background-color: rgba(255, 255, 255, 0.2); /* Background color for the active link */
-    padding: 4px;
-}
-
-hr {
-    border: none;
-    border-top: 1px solid #ddd; 
-    margin: 20px 0; 
-}
-
-
-.toggle-button {
-        padding: 10px 20px;
-        background-color: #210b38;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-bottom: 20px; 
-    }
-.toggle-button:hover {
-        background-color: #2e1459;
-    }
-   
-#read-more-button {
-        padding: 10px 20px;
-        background-color: #210b38;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-bottom: 10px;
-}
-#read-more-button:hover {
-        background-color: #2e1459;
-    }
-
-
- 
-    .horizontal-nav a:hover {
-        background-color: #2e1459;
-        color: white;
-    }
-    .sidebar-divider {
-            border-top: 1px solid #9031e9;
-            margin: 15px 0; 
-        }
-    #Item Image{
-        width: 100%;
-        height: auto;
-        flex-wrap:wrap;
-    }
-    #pdfViewer {
-        display: none; 
-
-    }
-    .centered-container {
+.container {
+    width: 1400px;
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px;
     display: flex;
-    flex-direction: column; /* Stack content vertically */
-    align-items: center; /* Center items horizontally */
-    text-align: center; /* Center text inside items */
+    flex-direction: column; /* Stack items vertically */
+    gap: 30px; /* Space between items */
 }
-@media (max-width: 768px) {
-    .centered-container {
-        padding: 10px; /* Adjust padding for smaller screens */
+
+@media (max-width: 1200px) {
+    .container {
+        margin-left: 0;
+        padding: 20px;
     }
 }
-header {
-    background-color: #210b38; /* Set a background color */
-    color: #fff; /* Set text color to white */
-    text-align: center; /* Center-align text */
-    border-radius: 10px; /* Add rounded corners */
-    box-shadow: 0px 4px 6px rgba(69, 7, 85, 0.445); /* Add a subtle shadow */
-    max-width: 80%; /* Set a maximum width for the header */
-    margin: 0 auto; /* Center the header within the container */
-    padding: 1px;
+
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            grid-column: span 2;
+            border-bottom: 4px solid white;
+	    margin: 20px;
+	    padding-bottom: 10px;
+        }
+	        h3 {
+            text-align: left;
+            font-size: 1.3em;
+            grid-column: span 2;
+            padding-bottom: 0px;
+	    margin: 0px;
+            font-style: italic;
+	    font-weight: normal;
+        }
+
+.about-me {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 300px;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
+
+.about-me img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.about-me h3, .about-me h4 {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.about-me ul {
+    padding: 0;
+    list-style: none;
+}
+
+.about-me li {
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+        .project {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+.project:hover {
+    transform: translateY(-5px); /* Slightly lift the item */
+    box-shadow: 0 0px 30px rgba(255, 255, 255, 0.5); /* Enhance the shadow on hover */
+}
+        .project h2 {
+            font-size: 2.2em;
+            border-bottom: 3px solid white;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        .project p {
+            margin: 10px 0;
+            font-size: 1.3em;
+        }
+        .media-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .media-container img, .media-container video {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+        .expand-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .expanded-content {
+            display: none;
+            margin-top: 20px;
+        }
+        @media (max-width: 1200px) {
+           
+            .container {
+                margin-left: 0;
+                padding: 20px;
+                grid-template-columns: 1fr;
+            }
+        }
+.contact-container {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.contact-toggle {
+    background: #7e2eb3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-toggle:hover {
+    background: #7e2eb3;
+}
+
+.contact-bar {
+    display: none; /* Hidden initially */
+    bottom: -100px; /* Start hidden below the viewport */
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    transition: bottom 0.4s ease-in-out; /* Smooth slide animation */
+}
+
+.contact-bar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.contact-bar a:hover {
+    color: #7e2eb3;
+}
+.contact-bar.active {
+    bottom: 20px; /* Adjust to bring it into view */
+}
+@media (max-width: 1600px) { 
+    .about-me {
+        display: none;
+    }
+}
+@media (max-width: 1800px) { 
+    .sidebar {
+        display: none;
+    }
+}
+@media (max-width: 800px) {
+    .navbar {
+        padding: 10px 0; /* Reduce padding to make navbar smaller */
+    }
+
+    .container {
+        margin-top: 40px; /* Push content down to avoid navbar overlap */
+    }
+
+    h1 {
+        margin-top: 40px; /* Add extra margin to prevent it from getting cut off */
+    }
+
+}
+
+.project-section {
+    margin-bottom: 30px;
+}
+
+.project-section h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+}
+
+.project-section ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.project-section ul li {
+    margin: 10px 0;
+}
+
+.media-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.media-container img, .media-container video {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 800px) {
+    #game-embed {
+        display: none; /* Hide the game embed on smaller screens */
+    }
+}
+
+
     </style>
 </head>
 <body>
 
+    <div class="navbar">
+        <a href="../index.html">Home</a>
+        <a href=>Portfolio</a>
+        <a href="../Resume.html">Resume</a>
+    </div>
 
-    <nav class="horizontal-nav">
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li class="active"><a href="#">Portfolio</a></li>
-            <li><a href="../blog/blog.html">Project Blog</a></li>
-            <li><a href="../resume.html">Resume</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <aside class="sidebar">
-        <div class="text">
-        <h2>Project Timeline</h2>
-        <ul>
-            <li><a href="#project7">⭐The Last Mile</a></li>
-            <hr class="sidebar-divider">
-            <li><a href="#project5">Sea Sorting</a></li>
-            <hr class="sidebar-divider">
-            <li><a href="#project1">Project: Abyss</a></li>
-            <hr class="sidebar-divider">
-            <li><a href="#project6">Power Rush</a></li>
-            <hr class="sidebar-divider">
-            <li><a href="#project2">Grim Harvest</a></li>
-            <hr class="sidebar-divider">
-            <li><a href="#project3">Custom 3D Game Engine</a></li>
-            <hr class="sidebar-divider">
-            <li><a href="#project4">Custom 2D Game Engine</a></li>
-        </ul>
-        </div>
-    </aside>
-    
-    <div class="container">
-        <header>
-            <h1>Portfolio</h1>
-        </header>
-        <hr class="sidebar-divider">
-        If you would like to see further details on any code snippets for these projects, please contact me and I'd be happy to provide them!
-        <hr class="sidebar-divider">
-        <div class="portfolio-item" id = "project7">
-            <h2>The Last Mile</h2>
-            <p>Date Made: Jan-April 2025</p>
-            <p>Team of 8 - My Role: Lead Designer & Project Manager / Programmer</p>  
-            <p>This game came from me and my team participating in the Road Trip Game Jam on itch.io. I had originally created a post with a game idea, and was requesting teammates to work with. <br>
-            The team started with just 5 people, but eventually grew to 8 as more talented people messaged me! <br> <br> Our team consists of the following: <br> 
-            Programmer/Lead Designer - Me
-            <br>2 Programmers - Shadow/Nath
-            <br>1 Prop/Environment Artist - Scorcher
-            <br>1 Character Artist - Cuuras
-            <br>1 Writer - Seb
-            <br>1 Sound Designer/Composer - Hozach
-            <br> 1 VA - Prima <br>
-                Please see the link below to see the dedicated page on my website for our submission, including the itch.io page. (THIS WILL BE ADDED SHORTLY)
-            </p>
-            
-        </div>
-        <hr class="sidebar-divider">
-        <div class="portfolio-item" id = "project5">
-            <h2>Sea Sorting</h2>
-            <p>Date Made: April 2024</p>
-            <p>Solo Project with Aaron McAfee</p>
-            <p>
-                This was a solo project that I set out to do upon graduating. My goal was to make a small Unity game within a week to post on my itch.io. <br>
-                The project was a success! The programming only took a few days, and the art took a few more. <br> Me and Aaron had a blast finishing this cute project, and plan to add a few more small things to the game. 
-                <br>
-                <h3>Gameplay Showcase</h1>
-                <video id="myVideo" width="850" height="560" controls autoplay>
-                    <source src="SeaSorting.mp4" type="video/mp4" id = "myvideo">
-                    
-                    Your browser does not support the video tag.
-                </video>
-                <br>
-                <br>
-                <iframe frameborder="0" src="https://itch.io/embed/2651402?border_width=4&amp;bg_color=8e7c8f&amp;fg_color=000000&amp;border_color=929292" width="558" height="173"><a href="https://treerover.itch.io/sea-sorting">Sea Sorting by Treerover</a></iframe>
-                <br>
-                <br>
-                <iframe frameborder="0" src="https://itch.io/embed-upload/10277582?color=333333" allowfullscreen="" width="1320" height="740"><a href="https://treerover.itch.io/sea-sorting-web-version">Play Sea Sorting - Web Version on itch.io</a></iframe>
-            </p>    
-        </div>
+<div class="sidebar">
+    <h2>Projects</h2>
+    <a href="#the-last-mile">
+        ⭐The Last Mile
+        <span class="date">Jan 2025</span>
+    </a>    
+    <a href="#sea-sorting">
+        Sea Sorting
+        <span class="date">Apr 2024</span>
+    </a>
+    <a href="#project-abyss">
+        Project: Abyss
+        <span class="date">Apr 2024</span>
+    </a>
+    <a href="#grim-harvest">
+        Grim Harvest
+        <span class="date">Apr 2023</span>
+    </a>
+    <a href="#custom-3d-engine">
+        Custom 3D Game Engine
+        <span class="date">Apr 2023</span>
+    </a>
+    <a href="#custom-2d-engine">
+        Custom 2D Game Engine
+        <span class="date">Apr 2023</span>
+    </a>
+</div>
+ <div class="about-me">
+    <img src="../download.png" alt="Your Photo">
+    <h3>Austin MacDonald Morris</h3>
+    <p>Game Developer & Designer specializing in gameplay systems, AI, and UI.</p>
+    <h4>Highlighted Skills</h4>
+    <ul>
+        <li>Unreal Engine (C++, BP)</li>
+        <li>Unity (C#)</li>
+        <li>Game Design</li>
+        <li>Project Management</li>
+        <li>Networking</li> 
+        <li>SQL/Databases</li>
+    </ul>
+</div>  
+<div class="container">
+    <h1>My Projects</h1>
+    <h3> Please contact me regarding any of the below work and I'd be happy to speak with you regarding it! <br> If you would like to see any of the code for the below projects, please let me know as well! </h3>
 
-        <hr class="sidebar-divider">
-        <div class="portfolio-item" id = "project1">
-            <h2>Project: Abyss</h2>
-            <p>Date Made: September 2023 - April 2024</p>
-            <p>Class: Capstone I & II</p>
-
-            <img src="ProjectAbyss_WebsiteBanner.png" alt="Item Image">
-            <p>
-                Project: Abyss was a student project in development for 8 months, and has been finished and showcased at Level Up in Toronto. <br>
-                If you would like to download the game, please click this itch.io link! <a href="https://crazycreature.itch.io/project-abyss">Project: Abyss Download Page</a>
-                <br>
-            </p>
+    <div class="project" id="the-last-mile">
+        <h2>The Last Mile</h2>
+        <p><strong>Date:</strong> January 2025 - April 2025</p>
+        <p><strong>Team Size:</strong> 8</p>
+        <p><strong>Role:</strong> Team Lead, Gameplay Programmer, UI Programmer</p>
+        <div class="project-section">
+            <h3>Project Description (NOT YET RELEASED, MORE INFO COMING SOON)</h3>
+            <p>The Last Mile is a collaborative project between 8 people for the Itch.io game jam "Road Trip Game Jam 2025". I created a post on the forum because I had an idea, and formed the team for the project. I organized the discord, all of the game documents, and Trello. <br>
+            Website link here: <a href="https://austinmacdonaldmor.wixsite.com/thelastmile-game" target="_blank">https://austinmacdonaldmor.wixsite.com/thelastmile-game</a></p>
         </div>
-        <hr class="sidebar-divider">
-        <div class="portfolio-item" id = "project6">
-            <h2>Power Rush</h2>
-            <p>Date Made: December 2023</p>
-            <p>Solo Prototype Project for a Game Jam</p>
-            <p>
-                My program often held game jams, and this was my submission for for the one in December 2023. The theme was "Running out of power". The game was made using Unity.
-                <br> I decided to make a timed shooter where you need to turn on generators to keep the lights on, before the time runs out. <br>
-                <br>
-                 See a video of the prototype in action below!
-                <br>
-                <video id="myVideo" width="850" height="560" controls autoplay>
-                    <source src="PowerRush.mp4" type="video/mp4" id = "myvideo">
-                    
-                    Your browser does not support the video tag.
-                </video>
-            </p>    
-        </div>
-        <hr class="sidebar-divider">
-        <div class="portfolio-item" id = "project2">
-            <h2>Grim Harvest - Mini Capstone</h2>
-            <p>Date Made: January 2023 - April 2023</p>
-            <p>Class: High Level Development 2</p>
-            <video id="myVideo" width="850" height="560" controls autoplay>
-                //Add border to the video
+        <div class="media-container">
+            <img src="../TheLastMileImg.png" alt="Project: Abyss">
+      </div>
+        <button class="expand-btn" onclick="toggleExpand(this)">Expand</button>
 
-                <source src="your-video.mp4" type="video/mp4" id = "myvideo">
-                
+        <div class="expanded-content">
+            <div class="project-section">
+                <h3>What I Contributed</h3>
+                <ul>
+                    <li>Led the project from concept to completion, managing the team and organizing the workflow.</li>
+                    <li>Programmed core gameplay mechanics and ensured the game was fun and engaging.</li>
+                    <li>Developed the UI to ensure smooth and intuitive user experiences.</li>
+                    <li>Coordinated the project timeline and ensured that all deliverables were met on schedule.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Key Elements Learned</h3>
+                <ul>
+                    <li>Refined leadership and team management skills in a collaborative game development environment.</li>
+                    <li>Enhanced gameplay programming skills, especially under time constraints during a game jam.</li>
+                    <li>Developed expertise in balancing both creative and technical aspects of game development.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Showcase</h3>
+                <!-- Insert the project showcase details -->
+            </div>
+        </div>
+    </div>
+
+    <div class="project" id="sea-sorting">
+        <h2>Sea Sorting</h2>
+        <p><strong>Date:</strong> April 2024</p>
+        <p><strong>Team Size:</strong> Solo Project with Aaron McAfee</p>
+        <p><strong>Role:</strong> Designer & Developer</p>
+
+        <div class="media-container">
+            <video controls>
+                <source src="SeaSorting.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <p>
-                Grim Harvest is a 3D top-down vampire survivors-esque roguelike made by a team of 5 students. 
-                <br> The game was in a prototype stage, so animations & art assets weren't completely implemented.
-                <br> I was the main gameplay programmer and implemented most of the UI in the game.
-            </p>
+        </div>
+        <p>Check out the gameplay video above to see the game in action!</p>
+        <div class="project-section">
+            <h3>Project Description</h3>
+            <p>This was a solo project that I set out to do upon graduating. My goal was to make a small Unity game within a week to post on my itch.io. The project was a success! The programming only took a few days, and the art took a few more. Aaron and I had a blast finishing this cute project, and we plan to add a few more small features to the game.</p>
+        </div>
+        <button class="expand-btn" onclick="toggleExpand(this)">Expand</button>
 
-            <h3>Documentation</h3>
+        <div class="expanded-content">
+            <div class="project-section">
+                <h3>What I Contributed</h3>
+                <ul>
+                    <li>Designed gameplay mechanics and puzzle logic.</li>
+                    <li>Developed the Unity project using C#.</li>
+                    <li>Created the game's UI and integrated art assets.</li>
+                    <li>Managed the project's timeline and published the game on itch.io.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Key Elements Learned</h3>
+                <ul>
+                    <li>Improved Unity and C# skills for rapid game development.</li>
+                    <li>Learned to effectively manage time while creating a complete game in under a week.</li>
+                    <li>Gained insights into UI/UX design for mobile games.</li>
+                    <li>Refined my understanding of balancing gameplay to keep players engaged.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Showcase</h3>
+
+                <iframe frameborder="0" src="https://itch.io/embed/2651402?border_width=4&amp;bg_color=8e7c8f&amp;fg_color=000000&amp;border_color=929292" width="558" height="173">
+                    <a href="https://treerover.itch.io/sea-sorting">Sea Sorting by Treerover</a>
+                </iframe>
+                <br>
+                <iframe frameborder="0" src="https://itch.io/embed-upload/10277582?color=333333" allowfullscreen="" width="1320" height="740" id="game-embed">
+                    <a href="https://treerover.itch.io/sea-sorting-web-version">Play Sea Sorting - Web Version on itch.io</a>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="project" id="project-abyss">
+        <h2>Project: Abyss</h2>
+        <p><strong>Date:</strong> September 2024 - April 2025</p>
+        <p><strong>Team Size:</strong> 14</p>
+        <p><strong>Role:</strong> Original Game Concepter, Gameplay Programmer, UI Programmer</p>
+        <div class="project-section">
+            <h3>Project Description</h3>
+            <p>Project: Abyss was a student project in development for 8 months, and has been finished and showcased at Level Up in Toronto. <br>
+                If you would like to download the game, please click this itch.io link! <a href="https://crazycreature.itch.io/project-abyss">Project: Abyss Download Page</a></p>
+                
+                <div class="media-container">
+                    <img src="ProjectAbyss_WebsiteBanner.png" alt="Project: Abyss">
+              </div>
+        <button class="expand-btn" onclick="toggleExpand(this)">Expand</button>
+
+        <div class="expanded-content">
+            <div class="project-section">
+                <h3>What I Contributed</h3>
+                <ul>
+                    <li>Developed the game’s core mechanics, focusing on photography and the PC.</li>
+                    <li>Programmed many UI elements to provide a unique and engaging experience.</li>
+                    <li>Collaborated with the art team to integrate assets and ensure a cohesive aesthetic.</li>
+                    <li>Helped manage the team’s workflow, ensuring we met deadlines and stayed on track throughout the project.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Key Elements Learned</h3>
+                <ul>
+                    <li>Enhanced my skills in game design, balancing mechanics and narrative.</li>
+                    <li>Deepened my understanding of team coordination and leadership in a large development environment.</li>
+                    <li>Refined my problem-solving skills in overcoming technical challenges during development.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Showcase</h3>
+                <!-- Insert showcase details here -->
+                <div class="media-container">
+                    <img src="MoLTpf.png" alt="Project: Abyss">
+                </div>
+                <div class="media-container">
+                    <video controls>
+                        <source src="../FocusShowcase.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    </div>  
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="project" id="grim-harvest">
+        <h2>Grim Harvest</h2>
+        <p><strong>Date:</strong> January 2023 - April 2023</p>
+        <p><strong>Team Size:</strong> 4</p>
+        <p><strong>Role:</strong> Gameplay Programmer, Game Concepter</p>
+        <div class="project-section">
+            <h3>Project Description</h3>
+            <p>Grim Harvest is a top-down action RPG where players battle through a dark and eerie world, facing off against increasingly difficult enemies. The game’s unique mechanic revolves around harvesting souls to upgrade the player’s character.</p>
+        </div>
+              
+        <div class="media-container">
+            <img src="../image4.png" alt="Grim-Harvest">
+      </div>
+        <button class="expand-btn" onclick="toggleExpand(this)">Expand</button>
+
+        <div class="expanded-content">
+            <div class="project-section">
+                <h3>What I Contributed</h3>
+                <ul>
+                    <li>Designed and implemented core gameplay systems, including combat and character progression.</li>
+                    <li>Developed the game's UI and integrated assets from the art team.</li>
+                    <li>Worked on enemy AI and balance to create a challenging but fair game experience.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Key Elements Learned</h3>
+                <ul>
+                    <h2>Documentation</h2>
             <p>
                 A very crucial part of this class was keeping proper documentation of all development, including <br>
                 progress on a Trello page for our team. We were tasked to make 4 documentation pages for each programmer.<br>
                 Here is an example of the Player Module that I made.
             </p>
+
             <div class="centered-container">
-            <button class="toggle-button" id="toggleButton">See PDF</button>
-            <iframe id="pdfViewer" src="grimharvestpdf.pdf" width="1080" height="720" frameborder="0" allowfullscreen style="display: none;"></iframe>
-             </div>
-            <h3>UML Diagrams</h3>
+                <button class="toggle-button" id="toggleButton">See PDF</button>
+                <iframe id="pdfViewer" src="grimharvestpdf.pdf" width="1080" height="720" frameborder="0" allowfullscreen style="display: none;"></iframe>
+                 </div>
+            </div>
+            <h2>UML Diagrams</h2>
             <p>
                 Another crucial part of this class was making UML diagrams for our game. We were tasked to make 4 UML diagrams for each programmer.<br>
                 Below is an example of the UML diagram I made for the player module, including an overarching view of every diagram and how they connect.
@@ -422,15 +603,8 @@ header {
             <img src="../PlayerUML.png" alt="Item Image">
             <img src="../CombinedUMLDesigns.png" alt="Item Image" width="1280" height="540">
             </div>
-            <h3>Project Organization</h3>
-            <p>
-                We used Trello to keep track of weekly sprint tasks, and our team members work. Our professor also looked at these bi weekly to make sure <br>
-                we were on track and established a good workflow. Here is a snippet of our Trello board. I'm the blue "AM".
-            </p>
-            <button class="toggle-button" id="toggleButton5">See Trello</button>
-            <img src="trello.png" alt="trello"  width="1480" height="720" style="display: none; margin-left: 8.5%;">
-            <h3>What I Learned</h3>
-            <h4> Modular Design </h4>
+
+            <h2> Modular Design </h2>
                <p>
                 One of the main systems that I worked on was the player ability system. At first, my idea was to make a modular <br>
                 ability system that has one ability parent class, with multiple child abilities depending on what needed to be made. <br>
@@ -447,7 +621,7 @@ header {
                 Each weapon had 5 abilities, and each ability had a different effect. Below is an example of the ability system.<br>
                 </p>
                 <img src="abilityexample.png" alt="abilityexample">
-                <h4> UE5 Subsystems </h4>
+                <h2> UE5 Subsystems </h2>
                 <p>
                     Doing this project, I also learned a signifcant amount about Unreal Engine Subsystems. I originally designed a subsystem around a Blood <br> 
                     Moon event that occurs in the game every 5 minutes. During this event, enemies gain increased damage and movement speed. Once I designed <br>
@@ -463,366 +637,153 @@ header {
                 <img src="../ondeath.png" alt="ondeath" width ="720" height="480" alt ="Item Image">
                 <img src="../ondeath1.png" alt="ondeath1" width ="720" height="480" alt ="Item Image">
             </div>
-               
-            </p>
-        </div>
-        <hr class="sidebar-divider">
-        <div class="portfolio-item" id = "project3">
-            <h2>Custom 3D Game Engine Using Open GL</h2>
-            <p>Date Made: January 2023 - April 2023</p>
-            <p>Class: Game & Graphics 3</p>
-            <br>
-            
-            <p>
-                This class was a continuation of Game & Graphics 2, where we made a custom 3D game engine using OpenGL. <br>
-                We were tasked to make a 3D game engine with a custom renderer and physics engine. <br>
-                The first part of the final assignment was to create a island with varying terrain heights, and a water plane. <br>
-            </p>
-            
-            <p>
-                Here is an example of terraforming, with lowering the ground, and raising the ground.
-            </p>
-            <h3>Terraforming</h3>
-            <video id="myVideo" width="850" height="560" controls autoplay>
-                <source src="../lowerground.mp4" type="video/mp4" id = "myvideo">
-                
-                Your browser does not support the video tag.
-            </video>
-            <video id="myVideo" width="850" height="560" controls autoplay>
-                <source src="../raiseground.mp4" type="video/mp4" id = "myvideo">
-                
-                Your browser does not support the video tag.
-            </video>
-
-            <br>
-            <button class="toggle-button" id="toggleButton1">See Code</button>
-            <textarea id = "codeReader" cols="150" rows="30" readonly style ="background-color: #272525; color:white; display: none; margin-left: 325px;">
-                void HeightmapComponent::RaiseTerrain(float x, float z, float radius, float height, float falloff)
-                {
-                    float sqrRadius = radius * radius;
-                
-                    for (uint32 i = 0; i < m_vertNum.x; i++)
-                    {
-                        for (uint32 j = 0; j < m_vertNum.y; j++)
-                        {
-                            // Calculate the position of the current vertex.
-                            uint32 index = i * m_vertNum.x + j;
-                
-                            vec3 vertPos = m_meshVertices[index].pos;
-                            float  sqrDist = (vertPos.x - x) * (vertPos.x - x) + (vertPos.z - z) * (vertPos.z - z);
-                
-                            // If the vertex is within the radius of the brush, and in front of the player
-                            if (sqrDist <= sqrRadius)
-                            {
-                                float dist = sqrt(sqrDist);
-                                float Falloff = 1 - dist / falloff;
-                                float raise = height * Falloff;
-                
-                                m_meshVertices[index].pos.y += raise;
-                            }
-                        }
-                
-                    }
-                
-                    Rebuild();
-                }
-            </textarea>
-
-            <h3>Dynamic Lighting</h3>
-            <p> 
-                We were also tasked to implement dynamic lighting into our game engine. <br>
-                This was done in GLSL shaders, and we were tasked to implement a simple point light that interacts with the terrain and player. <br>
-                The player was given the ability to place down up to 8 torches, and the closest 6 torches to the player would be used for lighting. <br>
-                As seen in the video to the right, the torches are always placed at the height of the terrain. This was accomplished by <br>
-                getting the height of the terrain at the location in front of the player. We used math to loop through every vertice in the terrain, <br>
-                and return the height for the torch to be placed at. 
-            </p>
-            <video id="myVideo" width="850" height="560" controls autoplay>
-                <source src="../dynamiclighting.mp4" type="video/mp4" id = "myvideo">
-                
-                Your browser does not support the video tag.
-            </video>
-            <video id="myVideo" width="850" height="560" controls autoplay>
-                <source src="../GLSLlighting.mp4" type="video/mp4" id = "myvideo">
-                
-                Your browser does not support the video tag.
-            </video>
-            <br>
-            <button class="toggle-button" id="toggleButton2">See Code</button>
-            <textarea id = "codeReader1" cols="150" rows="50" readonly style ="background-color: #272525; color:white; display: none; margin-left: 325px;">
-                void IslandScene::LightUpdate(float deltaTime)
-            {
-                //Makes torches always follow the island height at xz
-                for (int i = 0; i < m_pLightObj.size(); i++)
-                {
-            		m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.y = m_Objects[0]->GetComponent<fw::HeightmapComponent>()->GetHeightAtXZ(m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.x, m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.z);
-            	}
-            
-            
-            
-                //Updates the lights of the player and sun
-                for (int i = 0; i < 2; i++)
-                {
-                    m_LightPosition[i] = vec4(m_Objects[i + 3]->GetComponent<fw::TransformComponent>()->m_Position, 1);
-                    m_LightColor[i] = vec4(m_Objects[i + 3]->GetComponent<fw::LightComponent>()->GetColor(), 1);
-                    m_LightRange[i] = m_Objects[i + 3]->GetComponent<fw::LightComponent>()->GetRange();
-                }
-            
-                //Updates the lights of the closest 6 torches to the player
-                std::vector<fw::GameObject*> pClosestLights;
-                std::vector<float> closestDistances(6, std::numeric_limits<float>::max());
-                int Index = 0;
-                
-                for (int i = 0; i < m_pLightObj.size(); i++)
-                {
-                    float dx = m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.x - m_Objects[3]->GetComponent<fw::TransformComponent>()->m_Position.x;
-                    float dy = m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.y - m_Objects[3]->GetComponent<fw::TransformComponent>()->m_Position.y;
-                    float dz = m_pLightObj[i]->GetComponent<fw::TransformComponent>()->m_Position.z - m_Objects[3]->GetComponent<fw::TransformComponent>()->m_Position.z;
-                    //Gets distance from light object and player using pythagorean theorem
-                    float distance = sqrt(dx * dx + dy * dy + dz * dz);
-                
-                    //Check if this light is closer than any of the current closest lights
-                    bool bIsCloser = false;
-                    for (int j = 0; j < pClosestLights.size(); j++) 
-                    {
-                        if (distance < closestDistances[j]) 
-                        {
-                            //Insert the new light at this position
-                            pClosestLights.insert(pClosestLights.begin() + j, m_pLightObj[i]);
-                            closestDistances.insert(closestDistances.begin() + j, distance);
-                        
-                            //If theres more than 6 lights, remove the last one
-                            if (pClosestLights.size() > 6) 
-                            {
-                                pClosestLights.pop_back();
-                                closestDistances.pop_back();
-                            }
-                        
-                            bIsCloser = true;
-                            break;
-                        }
+            <div class="project-section">
+                <h3>Showcase</h3>
+                <!-- Insert showcase details here -->
+                       
+                <div class="media-container">
+                    <img src="../image5.png" alt="Project: Abyss">
+                </div>
+                <div class="media-container">
+                    <img src="../image6.png" alt="Project: Abyss">
+                </div>
+                <div class="media-container">
+                    <video controls>
+                        <source src="your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    </div>  
                     
-                    }
-                    //If this light is closer than any of the current closest lights, add it to the list
-                    if (!bIsCloser && pClosestLights.size() < 6)
-                    {
-                        pClosestLights.push_back(m_pLightObj[i]);
-                        closestDistances.push_back(distance);
-                    }
-                }
-            
-                for (int i = 0; i < pClosestLights.size(); i++)
-                {
-                    m_LightPosition[i+2] = vec4(pClosestLights[i]->GetComponent<fw::TransformComponent>()->m_Position, 1);
-                    m_LightColor[i+2] = vec4(pClosestLights[i]->GetComponent<fw::LightComponent>()->GetColor(), 1);
-                    m_LightRange[i+2] = pClosestLights[i]->GetComponent<fw::LightComponent>()->GetRange();
-                }
-            
-            
-                fw::Uniforms* pUniforms = m_Objects[4]->GetScene()->GetGameCore()->GetUniforms();
-            
-                bgfx::setUniform(pUniforms->GetUniform("u_LightColor"), &m_LightColor, 8);
-                bgfx::setUniform(pUniforms->GetUniform("u_LightPosition"), &m_LightPosition, 8);
-                bgfx::setUniform(pUniforms->GetUniform("u_LightRange"), &m_LightRange, 8);
-            }
-
-            </textarea>
-            <p>
-                These were the main features that I implemented into the game engine, however there is much more going on behind the scenes, <br>
-               so if you wish to discuss it, please contact me at the avenues below!
-            </p>
-            <hr class="sidebar-divider">
+            </div>
         </div>
-       
-        <div class="portfolio-item" id = "project4">
-            <h2>Custom 2D Game Engine Using OpenGL</h2>
-            <p>Date Made: September 2022 - December 2022</p>
-            <p>Class: Game & Graphics 2</p>
-            <img src="item-image.jpg" alt="Item Image">
-            <p>
-                Game and Graphics 2 was our introduction to OpenGL and custom game engines in C++. <br>
-                We started with a very basic template, and expanded on it weekly in classes and assignments. <br>
-                The final assignment was to make a 2D game with custom collision, and rendering with OpenGL. <br>
-                I decided to make a Vampire Survivors like game, with a focus on gaining new weapons the more you play. <br>
-                Here's an example of the game in action.
-            </p>
-            <video id="myVideo" width="850" height="560" controls autoplay>
-                <source src="../walking.mp4" type="video/mp4" id = "myvideo">
-                
-                Your browser does not support the video tag.
-            </video>
-            <video id="myVideo" width="850" height="560" controls autoplay>
-                <source src="upgrading.mp4" type="video/mp4" id = "myvideo">
-                
-                Your browser does not support the video tag.
-            </video>
-            <br>
-
-            <button class="toggle-button" id="toggleButton3">See Code</button>
-            <textarea id = "codeReader2" cols="150" rows="30" readonly style ="background-color: #272525; color:white; display: none;  margin-left: 355px;">
-                const FrameData* Animation::GetCurrentFrame()
-                {
-                    if (m_Frames.size() != 0)
-                    {
-                        return &m_Frames[m_FrameIndex];
-                    }
-            
-                    return nullptr;
-                }
-            
-                bool Animation::UpdateFrame(float deltaTime)
-                {
-                    if (m_Frames.size() != 0)
-                    {
-                        m_CurrentFrameTime += deltaTime;
-            
-                        if (m_CurrentFrameTime >= m_Frames[m_FrameIndex].displayTime)
-                        {
-                            m_CurrentFrameTime = 0.0f;
-                            IncrementFrame();
-                            return true;
-                        }
-                    }
-                    return false;
-                }
-            
-                void Animation::IncrementFrame()
-                {
-                    if (m_FrameIndex == (m_Frames.size() - 1))
-                    {
-                        m_FrameIndex = 0;
-                    }
-                    else
-                    {
-                        m_FrameIndex++;
-                    }
-                }  
-            </textarea>
-
-            <p>
-                If you look on the left, you can see the custom spritesheet animation we made for the player. <br>
-                The player had 4 animations, and directly used the spritesheet file to animate the player. <br>
-                The weapons that the player is firing can be seen on the right, with a basic fireball, and an explosion attack. <br>
-                The explosion attack has a lingering hitbox that damages enemies that walk into it. <br> 
-                This lingering hitbox is also used effectively in the next example, where the player can throw an acid pool on the ground. <br>
-            </p>
-            <video id="myVideo" width="850" height="560" controls autoplay>
-                <source src="../collision.mp4" type="video/mp4" id = "myvideo">
-                
-                Your browser does not support the video tag.
-            </video>
-            <br>
-            <button class="toggle-button" id="toggleButton4">See Code</button>
-            <textarea id = "codeReader3" cols="150" rows="30" readonly style ="background-color: #272525; color:white; display: none; margin-left: 355px;">
-               //In gameobject.cpp
-                bool GameObject::DidCollide(const GameObject& gameobj1)
-                {
-                    float distanceSquared = m_Position.DistanceSquared(gameobj1.m_Position);
-                
-                    float radiiSquared = (m_Radius + gameobj1.m_Radius) * (m_Radius + gameobj1.m_Radius);
-                
-                    bool didCollide = (distanceSquared <= radiiSquared);
-                    return didCollide;
-                }
-
-               //Collision example In game.cpp
-                for (int i = 0; i < m_AcidPool.size(); i++)
-                {
-                    for (int j = 0; j < m_Enemy.size(); j++)
-                    {
-                        if (m_AcidPool[i]->DidCollide(*m_Enemy[j]))
-                        {
-                          
-                            if (m_Enemy[j]->GetHealth() != 0)
-                            {
-                              
-                                m_Enemy[j]->TakeDamage(m_AcidPool[i]->GetAttack());
-                                
-                                if (m_Enemy[j]->GetHealth() == 0)
-                                {
-                                    m_EXPOrbs.push_back(new EXPOrb(m_Shaders[0], m_Enemy[j], m_Textures[3]));
-                                    m_Enemy.erase(m_Enemy.begin() + j);
-                                    m_EnemiesKilled++;
-                                }
-                              
-                            }
-                            
-                            
-                          
-                        }
-                    }
-                }
-
-            </textarea>
-            <p>
-                The collision in this game was done using a simple AABB collision system. <br>
-                The player and enemies had a collision box, and the projectiles had a collision box. <br>
-                The collision was done by checking if the player/enemy collision box was colliding with the projectile collision box. <br>
-                If it was, the projectile would be destroyed, and the player/enemy would take damage. <br>
-            </p>
-            <p>
-                I had a lot of fun with this project, and even though almost all of the collision & enemy stuff was <br>
-                not in the assignments, I enjoyed making it. If you wish to discuss it further, please contact me at the avenues below!
-
-            </p>
-            <hr class="sidebar-divider">
-        </div>
-
-        </section>
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
-            <section id="contact-button-container">
-                <a class ="contact-buttons" onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: austinmacdonaldmorris@gmail.com</a>
-                <a class ="contact-buttons" href="tel:+1234567890">Phone:705-854-xxxx</a>
-                <a class ="contact-buttons" href="https://www.linkedin.com/in/austin-macdonald-morris/" target="https://www.linkedin.com/in/austin-macdonald-morris/">LinkedIn</a>
-                <br>
-                <br>
-                <a class ="contact-buttons" onclick="toTop()" target="">To Top</a>
-            </section>
-        </section>
     </div>
 
+    <div class="project" id="custom-3d-engine">
+        <h2>Custom 3D Game Engine</h2>
+        <p><strong>Date:</strong> January 2023 - April 2023</p>
+        <p><strong>Team Size:</strong> 4</p>
+        <p><strong>Role:</strong> Gameplay Programmer, Game Concepter</p>
+        <div class="project-section">
+            <h3>Project Description</h3>
+            <p>This class was a continuation of Game & Graphics 2, where we made a custom 3D game engine using OpenGL.
+                We were tasked to make a 3D game engine with a custom renderer and physics engine. <br> The first part of the final assignment was to create a island with varying terrain heights, and a water plane.
+                </p>    
+        </div>
+        <button class="expand-btn" onclick="toggleExpand(this)">Expand</button>
+
+        <div class="expanded-content">
+            <div class="project-section">
+                <h3>What I Contributed</h3>
+                <ul>
+                    <li>Designed and implemented various components of the game engine, including physics and rendering.</li>
+                    <li>Developed the engine’s core scripting system and UI integration for debugging.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Key Elements Learned</h3>
+                <ul>
+                    <li>Gained experience in low-level game engine development, including performance optimizations.</li>
+                    <li>Learned about the importance of modular design for creating reusable systems in a game engine.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                
+                <h3>Terraforming</h3>
+                <video width="850" height="560" controls autoplay>
+                    <source src="../lowerground.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video width="850" height="560" controls autoplay>
+                    <source src="../raiseground.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>Dynamic Lighting</h3>
+    <p>We also implemented dynamic lighting using GLSL shaders. The player could place up to 8 torches, with the closest 6 contributing to lighting calculations.</p>
+    <video width="850" height="560" controls autoplay>
+        <source src="../dynamiclighting.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="850" height="560" controls autoplay>
+        <source src="../GLSLlighting.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+            </div>
+        </div>
+    </div>
+
+    <div class="project" id="custom-2d-engine">
+        <h2>Custom 2D Game Engine</h2>
+        <p><strong>Date:</strong>  September 2022 - December 2022 </p>
+        <p><strong>Team Size:</strong> 1</p>
+        <p><strong>Role:</strong> Programmer</p>
+        <div class="project-section">
+            <h3>Project Description</h3>
+            <p> Game and Graphics 2 was our introduction to OpenGL and custom game engines in C++. 
+                We started with a very basic template, and expanded on it weekly in classes and assignments.
+                The final assignment was to make a 2D game with custom collision, and rendering with OpenGL.
+                I decided to make a Vampire Survivors like game, with a focus on gaining new weapons the more you play. <br>
+                
+        </div>
+        <button class="expand-btn" onclick="toggleExpand(this)">Expand</button>
+
+        <div class="expanded-content">
+
+            <div class="project-section">
+                <h3>Key Elements Learned</h3>
+                <ul>
+                    <li>Implemented a <strong>custom 2D game engine</strong> using OpenGL and C++.</li>
+                    <li>Designed a <strong>custom sprite animation system</strong> using spritesheets.</li>
+                    <li>Developed a <strong>basic collision detection system</strong> using AABB checks.</li>
+                    <li>Created a <strong>Vampire Survivors-style game</strong>, focusing on enemy waves and weapon upgrades.</li>
+                    <li>Implemented <strong>dynamic lingering hitboxes</strong> for attacks like explosions and acid pools.</li>
+                    <li>Optimized <strong>enemy spawning, health tracking, and experience orbs</strong>.</li>
+                    <li>Gained experience in <strong>OpenGL rendering, game logic, and physics handling</strong>.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h3>Showcase</h3>
+                <!-- Insert showcase details here -->
+                 
+        <video id="myVideo" width="850" height="560" controls autoplay>
+            <source src="../walking.mp4" type="video/mp4" id = "myvideo">
+            
+            Your browser does not support the video tag.
+        </video>
+        <video id="myVideo" width="850" height="560" controls autoplay>
+            <source src="upgrading.mp4" type="video/mp4" id = "myvideo">
+            
+            Your browser does not support the video tag.
+        </video>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="contact-container">
+    <button class="contact-toggle" onclick="toggleContact()">Contact</button>
+    <div class="contact-bar">
+        <a href="mailto:austinmacdonaldmorris@gmail.com">Email: austinmacdonaldmorris@gmail.com</a>
+        <a href="tel:+7058540734">Phone: +705 854 0734</a>
+        <a href="https://www.linkedin.com/in/austin-macdonald-morris/" target="_blank">LinkedIn</a>
+    </div>
+</div>
+
     <script>
-const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
+        function toggleExpand(button) {
+            const content = button.nextElementSibling;
+            content.style.display = content.style.display === "block" ? "none" : "block";
+            button.textContent = content.style.display === "block" ? "Collapse" : "Expand";
+        }
 
-// JavaScript code for highlighting sidebar links on scroll
-document.addEventListener("DOMContentLoaded", function () {
-    const sidebarLinks = document.querySelectorAll(".sidebar a");
+        function toggleContact() {
+            const contactBar = document.querySelector(".contact-bar");
+            contactBar.style.display = contactBar.style.display === "flex" ? "none" : "flex";
+        }
 
-    // Function to highlight the current section in the sidebar
-    function highlightSidebarLink() {
-        const currentScroll = window.scrollY;
-
-        // Loop through each project section
-        document.querySelectorAll(".portfolio-item").forEach(function (section) {
-            const sectionTop = section.offsetTop - 100; // Adjust this value if needed
-
-            if (currentScroll >= sectionTop) {
-                // Get the corresponding sidebar link
-                const sectionId = section.id;
-                const correspondingLink = document.querySelector(`.sidebar a[href="#${sectionId}"]`);
-
-                // Remove active class from all links
-                sidebarLinks.forEach(function (link) {
-                    link.classList.remove("active");
-                });
-
-                // Add active class to the corresponding link
-                if (correspondingLink) {
-                    correspondingLink.classList.add("active");
-                }
-            }
-        });
-    }
-
-    // Initial call to set the initial state
-    highlightSidebarLink();
-
-    // Listen for scroll events to highlight the appropriate link
-    window.addEventListener("scroll", highlightSidebarLink);
-});
- 
+        
 // Function to toggle element display
 function toggleElementDisplay(element) {
     if (element.style.display === 'none' || element.style.display === '') {
@@ -867,7 +828,31 @@ toggleButtons.forEach(function (button) {
             document.execCommand('copy');
             textField.remove();
         }
+        document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll(".project");
+    const navLinks = document.querySelectorAll(".sidebar a");
 
+    function highlightNav() {
+        let scrollPos = window.scrollY;
+
+        sections.forEach((section) => {
+            let sectionTop = section.offsetTop - 100;
+            let sectionBottom = sectionTop + section.offsetHeight;
+            let sectionId = section.getAttribute("id");
+
+            if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                navLinks.forEach((link) => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${sectionId}`) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener("scroll", highlightNav);
+});
     </script>
 </body>
 </html>

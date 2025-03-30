@@ -1,216 +1,339 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-    
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            font-size: 18px;
-            position: relative;
-            min-height: 100vh;
-            background-color: #000000;
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            color: #ddd;
-        }
-        h1 {
-            font-size: 54px;
-        }
-        h2 {
-            font-size: 34px;
-            text-decoration: underline;
-        }
-        h3 {
-            font-size: 20px;
-            text-decoration: underline;
-        }
-        
-        p {
-            font-size: 24px;
+            display: flex;
         }
 
-        header {
-            background-color: #210b38;
-            color: #ffffff;
-            padding: 10px 0;
+        .navbar {
+            width: 100%;
+            background: #222;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
             text-align: center;
-        }
-        nav {
-            text-align: center;
-            background-color: #210b38;
-        }
-        nav a {
-            text-decoration: none;
-            color: #ffffff;
-            padding: 10px 20px;
-            display: inline-block;
-        }
-        .container {
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 20px;
-            margin-left: 390px;
-            align-items: center;
-            flex-direction: column; /* Stack content vertically */
-          align-items: center; /* Center items horizontally */
-        }
-        .contact {
-            margin-top: 450px;
-        }
-        .contact-button-container {
-         display: flex;
-          gap: 30px;
-         flex-direction: row; /* Display buttons horizontally */
-        justify-content: center; /* Center the buttons horizontally */
-          }
-
-        .contact-buttons {
-            padding: 10px 20px;
-            background-color: #210b38;
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.2);
             z-index: 1000;
         }
 
-        .contact-buttons:hover  {
-            background-color: #2e1459;
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 20px;
+            padding: 10px 15px;
+            transition: background 0.3s ease;
         }
-        .slideshow-image {
-            max-width: 35%;
-            height: auto;}
 
-
-            .horizontal-nav ul {
-    list-style-type: none;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-size: 24px;
-    text-indent: 20;
-    display: flex;
-    justify-content: center; 
-}
-
-.horizontal-nav li {
-    margin-right: 0px;
-}
-
-.horizontal-nav a:hover {
-        background-color: #2e1459; /* Change the background color on hover */
-        color: white; /* Change the text color on hover */
-    }
-    img {
-        display: block;
-        margin: 0 auto;
-    }
-
-    .horizontal-nav li a {
-    text-decoration: none;
-    color: #fff; /* Set the default color */
-    border-bottom: 2px solid transparent; /* Add a transparent bottom border to all links */
-    padding-bottom: 2px; /* Add some space below the text for the underline effect */
-}
-.horizontal-nav li.active a {
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+.navbar a.active {
     text-decoration: underline;
-    color: #ffcc00;
+    color: #7e2eb3; /* Highlight color */
+    font-weight: bold;
 }
-header {
-    background-color: #210b38; /* Set a background color */
-    color: #fff; /* Set text color to white */
-    text-align: center; /* Center-align text */
-    border-radius: 10px; /* Add rounded corners */
-    box-shadow: 0px 4px 6px rgba(69, 7, 85, 0.445); /* Add a subtle shadow */
-    max-width: 80%; /* Set a maximum width for the header */
-    margin: 0 auto; /* Center the header within the container */
-    padding: 1px;
+   .sidebar {
+            width: 250px;
+            background: #1a1a1a;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 50px;
+            left: 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(255, 255, 255, 0.2);
+            border-right: 2px solid #333;
+        }
+@media (max-width: 1200px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+.sidebar h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin: 15px 0;
+    padding: 5px;
+    transition: background 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 15px; /* Adds a little left padding on hover */
+    border-radius: 5px;
+}
+
+.sidebar .date {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-left: auto;
+    font-style: italic;
+}
+
+.sidebar .star {
+    margin-left: 10px;
+    color: #FFD700; /* Golden star color */
+    font-size: 1.5em;
+}
+
+.sidebar .proud-project {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+@media (min-width: 1024px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    width: 100%; /* Controls the length of the line */
+    margin: 20px auto; /* Centers it */
+    padding-bottom: 10px;
+    border-bottom: 4px solid white;
+    display: block; /* Ensures width is respected */
+}
+
+	        h3 {
+            text-align: center;
+            font-size: 1.3em;
+            grid-column: span 2;
+            padding-bottom: 0px;
+	    margin: 0px;
+            font-style: italic;
+	    font-weight: normal;
+        }
+
+.about-me {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 300px;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.about-me img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.about-me h3, .about-me h4 {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.about-me ul {
+    padding: 0;
+    list-style: none;
+}
+
+.about-me li {
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+        .project {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+.project:hover {
+    transform: translateY(-5px); /* Slightly lift the item */
+    box-shadow: 0 0px 30px rgba(255, 255, 255, 0.5); /* Enhance the shadow on hover */
+}
+        .project h2 {
+            font-size: 2.2em;
+            border-bottom: 3px solid white;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        .project p {
+            margin: 10px 0;
+            font-size: 1.3em;
+        }
+        .media-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .media-container img, .media-container video {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+        .expand-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .expanded-content {
+            display: none;
+            margin-top: 20px;
+        }
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                text-align: center;
+                padding: 10px 0;
+            }
+            .container {
+                margin-left: 0;
+                padding: 20px;
+                grid-template-columns: 1fr;
+            }
+        }
+.contact-container {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.contact-toggle {
+    background: #7e2eb3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-toggle:hover {
+    background: #7e2eb3;
+}
+
+.contact-bar {
+    display: none; /* Hidden initially */
+    bottom: -100px; /* Start hidden below the viewport */
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    transition: bottom 0.4s ease-in-out; /* Smooth slide animation */
+}
+
+.contact-bar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.contact-bar a:hover {
+    color: #7e2eb3;
+}
+.contact-bar.active {
+    bottom: 20px; /* Adjust to bring it into view */
+}
+@media (max-width: 1200px) {
+    .about-me {
+        display: none;
+    }
+
 }
 
     </style>
 </head>
 <body>
-    <nav class="horizontal-nav">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="portfolio/portfolio.html">Portfolio</a></li>
-            <li><a href="blog/blog.html">Project Blog</a></li>
-            <li class="active"><a href="">Resume</a></li>
-            <li><a href="#contact">Contact</a></li>
 
-            <!-- Other navigation links... -->
-        </ul>
-    </nav>
-    <div class="container">
-        <header>
-            <h1>Resume</h1>
-        </header>
-        <iframe id="pdfViewer" src="Resume.pdf" width="1280" height="1100" frameborder="0" allowfullscreen></iframe>
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p>If you're interested in working together or have any questions, contact me at these avenues!</p>
-            <section id="contact-button-container">
-                <a class ="contact-buttons" onclick="copyToClipboard('austinmacdonaldmorris@gmail.com')">Email: austinmacdonaldmorris@gmail.com</a>
-                <a class ="contact-buttons" href="tel:+1234567890">Phone:705-854-xxxx</a>
-                <a class ="contact-buttons" href="https://www.linkedin.com/in/austin-macdonald-morris/" target="https://www.linkedin.com/in/austin-macdonald-morris/">LinkedIn</a>
-                <br>
-                <br>
-                <a class ="contact-buttons" onclick="toTop()" target="_blank">To Top</a>
-            </section>
-        </section>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="portfolio/Portfolio.html">Portfolio</a>
+        <a href="Resume.html">Resume</a>
     </div>
 
+
+    <div class="container">
+        <h1>Resume</h1>
+         <br>
+         <iframe id="pdfViewer" src="Resume.pdf" width="1280" height="1100" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="contact-container">
+    <button class="contact-toggle" onclick="toggleContact()">Contact</button>
+    <div class="contact-bar">
+        <a href="mailto:austinmacdonaldmorris@gmail.com">Email: austinmacdonaldmorris@gmail.com</a>
+        <a href="tel:+7058540734">Phone: +705 854 0734</a>
+        <a href="https://www.linkedin.com/in/austin-macdonald-morris/" target="_blank">LinkedIn</a>
+    </div>
+</div>
+
     <script>
-        const toTop = () => window.scrollTo({top: 0, behavior:'smooth'});
-        // Define the currentSlide array for each project
-        let currentSlide = [0, 0]; // Initial slide index for each project
-
-        // Function to show the correct slide for a project
-        function showSlide(id) {
-            let slides = document.querySelectorAll('.slideshow-container')[id].querySelectorAll('.image-container');
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = 'none';
-            }
-            slides[currentSlide[id]].style.display = 'block';
+        function toggleExpand(button) {
+            const content = button.nextElementSibling;
+            content.style.display = content.style.display === "block" ? "none" : "block";
+            button.textContent = content.style.display === "block" ? "Collapse" : "Expand";
         }
 
-        // Separate functions for changing slides in each project
-        function changeSlideProject1(increment) {
-            currentSlide[0] = (currentSlide[0] + increment) % 3;
-            if (currentSlide[0] < 0) {
-                currentSlide[0] = 2;
-            }
-            showSlide(0);
+        function toggleContact() {
+            const contactBar = document.querySelector(".contact-bar");
+            contactBar.style.display = contactBar.style.display === "flex" ? "none" : "flex";
         }
-
-        function changeSlideProject2(increment) {
-            currentSlide[1] = (currentSlide[1] + increment) % 3;
-            if (currentSlide[1] < 0) {
-                currentSlide[1] = 2;
-            }
-            showSlide(1);
-        }
-
-        // Copy to email button
-        function copyToClipboard(text) {
-            var textField = document.createElement('textarea');
-            textField.innerText = 'austinmacdonaldmorris@gmail.com';
-            document.body.appendChild(textField);
-            textField.select();
-            document.execCommand('copy');
-            textField.remove();
-        }
-        // Initialize slides for each project
-        showSlide(0);
-        showSlide(1);
-
-        
     </script>
 </body>
 </html>
+
